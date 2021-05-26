@@ -1,0 +1,103 @@
+// 单选框
+// 圆形样式
+$--radio-font-color: $--primary-color-text !default; // 字体
+$--radio-border-color: $--form-border-color !default; // 边框
+$--radio-bg-color: transparent !default; // 背景
+
+$--radio-border-color-hover: $--action-color-4 !default; // 边框 hover
+
+$--radio-font-color-checked: $--action-color-4 !default; // 字体 选中
+$--radio-border-color-checked: $--action-color-4 !default; // 边框 选中
+$--radio-bg-color-checked: $--action-color-4 !default; // 背景 选中
+$--radio-center-color: $--card-bg-color !default; // 圆心 选中
+
+$--radio-font-color-disabled: $--const-color-disabled !default; // 字体 禁用
+$--radio-border-color-disabled: $--const-color-disabled !default; // 边框 禁用
+$--radio-bg-color-disabled: $--const-color-disabled !default; // 背景 禁用
+
+// 按钮样式
+$--radio-btn-font-color: $--primary-color-text !default; // 字体
+$--radio-btn-border-color: $--form-border-color !default; // 边框
+$--radio-btn-bg-color: transparent !default; // 背景
+
+$--radio-btn-font-color-hover: $--action-color-4 !default; // 字体 hover
+$--radio-btn-border-color-hover: $--action-color-4 !default; // 边框 hover
+
+$--radio-btn-font-color-checked: $--primary-color-white !default; // 字体 选中
+$--radio-btn-border-color-checked: $--action-color-4 !default; // 边框 选中
+$--radio-btn-bg-color-checked: $--action-color-4 !default; // 背景 选中
+$--radio-btn-shadow-color-checked: $--action-color-4 !default; // 阴影 选中
+
+$--radio-btn-font-color-disabled: $--primary-color-text !default; // 字体 禁用
+$--radio-btn-border-color-disabled: $--const-color-disabled !default; // 边框 禁用
+$--radio-btn-bg-color-disabled: $--const-color-disabled !default; // 背景 禁用
+$--radio-btn-shadow-color-disabled: $--const-color-disabled !default; // 阴影 禁用
+
+.el-radio {
+  font-size: 0.875rem;
+  color: $--radio-font-color;
+  // 圆形checkbox样式
+  &__input {
+    &.is-checked {
+      .el-radio__inner {
+        border-color: $--radio-border-color-checked;
+        background-color: $--radio-bg-color-checked;
+        &:after {
+          background-color: $--radio-center-color;
+        }
+      }
+      & + .el-radio__label {
+        color: $--radio-font-color-checked;
+      }
+    }
+    &.is-disabled {
+      .el-radio__inner {
+        background-color: $--radio-bg-color-disabled;
+        border-color: $--radio-border-color-disabled;
+      }
+      & + span {
+        .el-radio__label {
+          color: $--radio-font-color-disabled;
+        }
+      }
+    }
+  }
+  &__inner {
+    width: 0.875rem;
+    height: 0.875rem;
+    border-color: $--radio-border-color;
+    background-color: $--radio-bg-color;
+    &:hover {
+      border-color: $--radio-border-color-hover;
+    }
+  }
+  // 按钮样式
+  &-button {
+    &__inner {
+      background-color: $--radio-btn-bg-color;
+      border-color: $--radio-btn-border-color;
+      color: $--radio-btn-font-color;
+      &:hover {
+        color: $--radio-btn-font-color-hover;
+        border-color: $--radio-btn-border-color-hover;
+      }
+    }
+    // 选中
+    &__orig-radio:checked + .el-radio-button__inner {
+      color: $--radio-btn-font-color-checked;
+      background-color: $--radio-btn-bg-color-checked;
+      border-color: $--radio-btn-border-color-checked;
+      box-shadow: -1px 0 0 0 $--radio-btn-shadow-color-checked;
+    }
+    // 置灰
+    &__orig-radio:disabled + .el-radio-button__inner {
+      color: $--radio-btn-font-color-disabled;
+      background-color: $--radio-btn-bg-color-disabled;
+      border-color: $--radio-btn-border-color-disabled;
+      box-shadow: -1px 0 0 0 $--radio-btn-shadow-color-disabled;
+    }
+  }
+  &__label {
+    font-size: 0.875rem;
+  }
+}

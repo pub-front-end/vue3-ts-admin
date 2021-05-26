@@ -1,0 +1,50 @@
+// 对话框
+
+$--dialog-font-color: $--primary-color-text !default; // 字体
+$--dialog-title-font-color: $--action-color-7 !default; // 字体
+$--dialog-bg-color: $--popup-bg-color !default; // 背景
+$--dialog-title-bg-color: $--popup-title-bg-color !default; // 背景
+
+$--dialog-border-color: $--popup-border-color !default; // 边框
+$--dialog-shadow-color: $--popup-shadow-color !default; // 阴影
+
+$--dialog-close-color: $--popup-title-bg-color !default; // 关闭按钮
+$--dialog-close-color-hover: $--action-color-4 !default; // 关闭按钮 hover
+$--dialog-close-bg-color: $--popup-close-bg-color !default; //  关闭按钮 背景
+$--dialog-close-bg-color-hover: $--action-color-4 !default; // 关闭按钮 背景
+
+.el-dialog {
+  background-color: $--dialog-bg-color;
+  box-shadow: 0 1px 3px $--dialog-shadow-color;
+  &__header {
+    background-color: $--dialog-title-bg-color;
+    padding: 0.5rem 1.25rem;
+    text-align: left;
+  }
+  &__title {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    color: $--dialog-title-font-color;
+  }
+  &__body {
+    color: $--dialog-font-color;
+    padding: 1rem;
+    font-size: 0.875rem;
+  }
+  &__headerbtn {
+    top: 0.875rem;
+    height: 0.875rem;
+    font-size: 0.875rem;
+    border-radius: 50%;
+    background-color: $--dialog-close-bg-color;
+    &:hover {
+      background-color: $--dialog-close-bg-color-hover;
+    }
+    .el-dialog__close {
+      color: $--dialog-close-color;
+      // &:hover {
+      //   color: $--dialog-close-color-hover;
+      // }
+    }
+  }
+}

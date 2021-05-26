@@ -1,0 +1,122 @@
+// 分页
+$--pagination-font-color: $--primary-color-text !default; // 字体
+$--pagination-font-color-disabled: $--const-color-disabled !default; // 字体 禁用
+$--pagination-font-color-active: $--action-color-4 !default; // 字体 激活/选中
+$--pagination-font-color-hover: $--action-color-4 !default; // 字体 hover
+
+$--pagination-bg-color: transparent !default; // 背景
+$--pagination-bg-color-disabled: transparent !default; // 背景 禁用
+
+$--bg-pagination-font-color: $--primary-color-text !default; // 带背景分页 字体
+$--bg-pagination-font-color-hover: $--action-color-4 !default; // 带背景分页 字体 hover
+$--bg-pagination-font-color-active: $--primary-color-white !default; // 带背景分页 字体 active
+$--bg-pagination-bg-color: $--action-color-3 !default; // 带背景分页 背景
+$--bg-pagination-bg-color-active: $--action-color-4 !default; // 带背景分页 背景
+
+$--pagination-total-font-color: $--primary-color-text !default; // 总页数 字体
+$--pagination-select-border-color: $--form-border-color !default; // 下拉框 边框
+$--pagination-select-border-color-hover: $--action-color-4 !default; // 下拉框 边框 hover
+
+.el-pagination {
+  // 正常 字体
+  color: $--pagination-font-color;
+  button,
+  span:not([class*='suffix']) {
+    height: 1.75rem;
+    min-width: 2.21875rem;
+    font-size: 0.8125rem;
+    line-height: 1.75rem;
+  }
+  // 置灰 字体/背景
+  button:disabled {
+    &,
+    &:hover {
+      color: $--pagination-font-color-disabled;
+    }
+  }
+  .btn-prev,
+  .btn-next {
+    color: $--pagination-font-color;
+    background-color: $--pagination-bg-color;
+    &:hover {
+      color: $--pagination-font-color-hover;
+    }
+    .el-icon {
+      font-size: 0.75rem;
+    }
+  }
+  // 带背景分页
+  &.is-background {
+    .btn-prev,
+    .btn-next,
+    .el-pager li {
+      background-color: $--bg-pagination-bg-color;
+      color: $--bg-pagination-font-color;
+      &:not(.disabled):hover {
+        color: $--bg-pagination-font-color-hover;
+      }
+      &:not(.disabled).active {
+        background-color: $--bg-pagination-bg-color-active;
+        color: $--bg-pagination-font-color-active;
+      }
+      &:disabled {
+        &,
+        &:hover {
+          color: $--pagination-font-color-disabled;
+        }
+      }
+    }
+  }
+  // 统计/跳转
+  &__total,
+  &__jump {
+    color: $--pagination-total-font-color;
+  }
+  &__sizes {
+    .el-input {
+      &__inner {
+        font-size: 0.8125rem;
+        padding-left: 0.5rem;
+        border-color: $--pagination-select-border-color;
+        &:hover {
+          border-color: $--pagination-select-border-color-hover;
+        }
+      }
+    }
+  }
+  .el-select .el-input {
+    width: 6.25rem;
+  }
+  &__editor {
+    &.el-input {
+      width: 3.125rem;
+    }
+  }
+}
+.el-pager {
+  li {
+    height: 1.75rem;
+    min-width: 2.21875rem;
+    padding: 0 0.25rem;
+    font-size: 0.8125rem;
+    line-height: 1.75rem;
+    // 正常 背景
+    background-color: $--pagination-bg-color;
+    // 激活字体
+    &.active {
+      color: $--pagination-font-color-active;
+    }
+    // hover 字体
+    &:hover {
+      color: $--pagination-font-color-hover;
+    }
+    // 快进/后退 图标
+    &.btn-quicknext,
+    &.btn-quickprev {
+      color: $--pagination-font-color;
+      &:hover {
+        color: $--pagination-font-color-hover;
+      }
+    }
+  }
+}

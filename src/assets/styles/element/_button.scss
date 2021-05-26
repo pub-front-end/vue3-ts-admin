@@ -1,0 +1,344 @@
+// 按钮样式
+
+// 默认按钮
+$--btn-font-color: $--primary-color-black !default; // 字体
+$--btn-border-color: $--form-border-color !default; // 边框
+$--btn-bg-color: $--primary-color-white !default; // 背景
+$--btn-font-color-hover: $--action-color-4 !default; // 字体 hover
+$--btn-border-color-hover: $--action-color-4 !default; // 边框 hover
+$--btn-bg-color-hover: $--primary-color-white !default; // 背景 hover
+
+// 默认朴素按钮
+$--plain-btn-font-color: $--primary-color-text !default; // 字体
+$--plain-btn-border-color: $--primary-color-text !default; // 边框
+$--plain-btn-font-color-hover: $--action-color-4 !default; // 字体 hover
+$--plain-btn-border-color-hover: $--action-color-4 !default; // 边框 hover
+
+// 主要按钮
+$--primary-btn-font-color: $--primary-color-white !default; // 字体
+$--primary-btn-border-color: $--action-color-4 !default; // 边框
+$--primary-btn-bg-color: $--action-color-4 !default; // 背景
+$--primary-btn-font-color-hover: $--primary-color-white !default; // 字体 hover
+$--primary-btn-border-color-hover: $--action-color-5 !default; // 边框 hover
+$--primary-btn-bg-color-hover: $--action-color-5 !default; // 背景 hover
+
+// 朴素主要按钮
+$--plain-primary-font-color: $--action-color-4 !default; // 字体
+$--plain-primary-border-color: $--action-color-4 !default; // 边框
+$--plain-primary-bg-color: transparent !default; // 背景
+$--plain-primary-font-color-hover: $--primary-color-white !default; // 字体 hover
+$--plain-primary-border-color-hover: $--action-color-4 !default; // 边框 hover
+$--plain-primary-bg-color-hover: $--action-color-4 !default; // 背景 hover
+
+// 危险按钮
+$--danger-btn-font-color: $--primary-color-white !default; // 字体
+$--danger-btn-border-color: $--const-color-error !default; // 边框
+$--danger-btn-bg-color: $--const-color-error !default; // 背景
+$--danger-btn-font-color-hover: $--primary-color-white !default; // 字体 hover
+$--danger-btn-border-color-hover: $--const-color-error-middle !default; // 边框 hover
+$--danger-btn-bg-color-hover: $--const-color-error-middle !default; // 背景 hover
+
+// 朴素危险按钮
+$--plain-danger-font-color: $--const-color-error !default; // 字体
+$--plain-danger-border-color: $--const-color-error !default; // 边框
+$--plain-danger-bg-color: transparent !default; // 背景
+$--plain-danger-font-color-hover: $--primary-color-text !default; // 字体 hover
+$--plain-danger-border-color-hover: $--const-color-error-middle !default; // 边框 hover
+$--plain-danger-bg-color-hover: $--const-color-error-middle !default; // 背景 hover
+
+// 警告按钮
+$--warn-btn-font-color: $--primary-color-text !default; // 字体
+$--warn-btn-border-color: $--const-color-warning !default; // 边框
+$--warn-btn-bg-color: $--const-color-warning !default; // 背景
+$--warn-btn-font-color-hover: $--primary-color-text !default; // 字体 hover
+$--warn-btn-border-color-hover: $--const-color-warning-middle !default; // 边框 hover
+$--warn-btn-bg-color-hover: $--const-color-warning-middle !default; // 背景 hover
+
+// 朴素警告按钮
+$--plain-warn-font-color: $--const-color-warning !default; // 字体
+$--plain-warn-border-color: $--const-color-warning !default; // 边框
+$--plain-warn-bg-color: transparent !default; // 背景
+$--plain-warn-font-color-hover: $--primary-color-text !default; // 字体 hover
+$--plain-warn-border-color-hover: $--const-color-warning-middle !default; // 边框 hover
+$--plain-warn-bg-color-hover: $--const-color-warning-middle !default; // 背景 hover
+
+// 成功按钮
+$--success-btn-font-color: $--primary-color-text !default; // 字体
+$--success-btn-border-color: $--const-color-success !default; // 边框
+$--success-btn-bg-color: $--const-color-success !default; // 背景
+$--success-btn-font-color-hover: $--primary-color-text !default; // 字体 hover
+$--success-btn-border-color-hover: $--const-color-success-middle !default; // 边框 hover
+$--success-btn-bg-color-hover: $--const-color-success-middle !default; // 背景 hover
+
+// 朴素成功按钮
+$--plain-success-font-color: $--const-color-success !default; // 字体
+$--plain-success-border-color: $--const-color-success !default; // 边框
+$--plain-success-bg-color: transparent !default; // 背景
+$--plain-success-font-color-hover: $--primary-color-text !default; // 字体 hover
+$--plain-success-border-color-hover: $--const-color-success-middle !default; // 边框 hover
+$--plain-success-bg-color-hover: $--const-color-success-middle !default; // 背景 hover
+
+// 信息按钮
+$--info-btn-font-color: $--primary-color-text !default; // 字体
+$--info-btn-border-color: $--const-color-info !default; // 边框
+$--info-btn-bg-color: $--const-color-info !default; // 背景
+$--info-btn-font-color-hover: $--primary-color-text !default; // 字体 hover
+$--info-btn-border-color-hover: $--const-color-info-middle !default; // 边框 hover
+$--info-btn-bg-color-hover: $--const-color-info-middle !default; // 背景 hover
+
+// 朴素信息按钮
+$--plain-info-font-color: $--const-color-info !default; // 字体
+$--plain-info-border-color: $--const-color-info !default; // 边框
+$--plain-info-bg-color: transparent !default; // 背景
+$--plain-info-font-color-hover: $--primary-color-text !default; // 字体 hover
+$--plain-info-border-color-hover: $--const-color-info-middle !default; // 边框 hover
+$--plain-info-bg-color-hover: $--const-color-info-middle !default; // 背景 hover
+
+// 文本按钮
+$--text-btn-font-color: $--action-color-4 !default; // 字体
+$--text-btn-border-color: transparent !default; // 边框
+$--text-btn-bg-color: transparent !default; // 背景
+$--text-btn-font-color-hover: $--action-color-4 !default; // 字体 hover
+$--text-btn-border-color-hover: transparent !default; // 边框 hover
+$--text-btn-bg-color-hover: transparent !default; // 背景 hover
+
+// 置灰按钮
+$--disabled-btn-font-color: $--primary-color-white !default; // 字体
+$--disabled-btn-border-color: $--const-color-disabled !default; // 边框
+$--disabled-btn-bg-color: $--const-color-disabled !default; // 背景
+$--disabled-btn-font-color-hover: $--primary-color-white !default; // 字体 hover
+$--disabled-btn-border-color-hover: $--const-color-disabled !default; // 边框 hover
+$--disabled-btn-bg-color-hover: $--const-color-disabled !default; // 背景 hover
+.el-button-group {
+  .el-button--small,
+  .el-button--small.is-round {
+    padding: 0.5rem 0.625rem;
+  }
+  .el-button + .el-button {
+    margin-left: 0;
+  }
+}
+.el-button + .el-button {
+  margin-left: 0.5rem;
+}
+.el-button {
+  > i {
+    vertical-align: top;
+  }
+  @mixin button-color($font, $border, $background, $font-hover, $border-hover, $background-hover) {
+    color: $font;
+    border-color: $border;
+    background-color: $background;
+    &:focus,
+    &:hover,
+    &:active {
+      color: $font-hover;
+      border-color: $border-hover;
+      background-color: $background-hover;
+    }
+  }
+  // 默认按钮
+  @include button-color(
+    $--btn-font-color,
+    $--btn-border-color,
+    $--btn-bg-color,
+    $--btn-font-color-hover,
+    $--btn-border-color-hover,
+    $--btn-bg-color-hover
+  );
+  &.is-plain {
+    // 朴素
+    @include button-color(
+      $--plain-btn-font-color,
+      $--plain-btn-border-color,
+      transparent,
+      $--plain-btn-font-color-hover,
+      $--plain-btn-border-color-hover,
+      transparent
+    );
+  }
+  // 主要按钮
+  &--primary {
+    @include button-color(
+      $--primary-btn-font-color,
+      $--primary-btn-border-color,
+      $--primary-btn-bg-color,
+      $--primary-btn-font-color-hover,
+      $--primary-btn-border-color-hover,
+      $--primary-btn-bg-color-hover
+    );
+    &.is-plain {
+      @include button-color(
+        $--plain-primary-font-color,
+        $--plain-primary-border-color,
+        $--plain-primary-bg-color,
+        $--plain-primary-font-color-hover,
+        $--plain-primary-border-color-hover,
+        $--plain-primary-bg-color-hover
+      );
+    }
+  }
+  // 危险按钮
+  &--danger {
+    @include button-color(
+      $--danger-btn-font-color,
+      $--danger-btn-border-color,
+      $--danger-btn-bg-color,
+      $--danger-btn-font-color-hover,
+      $--danger-btn-border-color-hover,
+      $--danger-btn-bg-color-hover
+    );
+    &.is-plain {
+      // 朴素
+      @include button-color(
+        $--plain-danger-font-color,
+        $--plain-danger-border-color,
+        $--plain-danger-bg-color,
+        $--plain-danger-font-color-hover,
+        $--plain-danger-border-color-hover,
+        $--plain-danger-bg-color-hover
+      );
+    }
+  }
+  // 警告按钮
+  &--warning {
+    @include button-color(
+      $--warn-btn-font-color,
+      $--warn-btn-border-color,
+      $--warn-btn-bg-color,
+      $--warn-btn-font-color-hover,
+      $--warn-btn-border-color-hover,
+      $--warn-btn-bg-color-hover
+    );
+    &.is-plain {
+      // 朴素
+      @include button-color(
+        $--plain-warn-font-color,
+        $--plain-warn-border-color,
+        $--plain-warn-bg-color,
+        $--plain-warn-font-color-hover,
+        $--plain-warn-border-color-hover,
+        $--plain-warn-bg-color-hover
+      );
+    }
+  }
+  // 成功按钮
+  &--success {
+    @include button-color(
+      $--success-btn-font-color,
+      $--success-btn-border-color,
+      $--success-btn-bg-color,
+      $--success-btn-font-color-hover,
+      $--success-btn-border-color-hover,
+      $--success-btn-bg-color-hover
+    );
+    &.is-plain {
+      // 朴素
+      @include button-color(
+        $--plain-success-font-color,
+        $--plain-success-border-color,
+        $--plain-success-bg-color,
+        $--plain-success-font-color-hover,
+        $--plain-success-border-color-hover,
+        $--plain-success-bg-color-hover
+      );
+    }
+  }
+  // 信息按钮
+  &--info {
+    @include button-color(
+      $--info-btn-font-color,
+      $--info-btn-border-color,
+      $--info-btn-bg-color,
+      $--info-btn-font-color-hover,
+      $--info-btn-border-color-hover,
+      $--info-btn-bg-color-hover
+    );
+    &.is-plain {
+      // 朴素
+      @include button-color(
+        $--plain-info-font-color,
+        $--plain-info-border-color,
+        $--plain-info-bg-color,
+        $--plain-info-font-color-hover,
+        $--plain-info-border-color-hover,
+        $--plain-info-bg-color-hover
+      );
+    }
+  }
+  // 文本按钮
+  &--text {
+    @include button-color(
+      $--text-btn-font-color,
+      $--text-btn-border-color,
+      $--text-btn-bg-color,
+      $--text-btn-font-color-hover,
+      $--text-btn-border-color-hover,
+      $--text-btn-bg-color-hover
+    );
+  }
+  // 置灰按钮
+  &.is-disabled {
+    @include button-color(
+      $--disabled-btn-font-color,
+      $--disabled-btn-border-color,
+      $--disabled-btn-bg-color,
+      $--disabled-btn-font-color-hover,
+      $--disabled-btn-border-color-hover,
+      $--disabled-btn-bg-color-hover
+    );
+  }
+}
+.el-badge__content--primary {
+  background-color: $--action-color-4;
+}
+.el-badge__content--info {
+  background-color: $--const-color-info;
+}
+
+// 修改表格按钮组间隔色
+.pub-button {
+  .el-button {
+    border: none;
+  }
+  .el-button-group > {
+    .el-button:first-child {
+      .el-button--small {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+    .el-button:not(:first-child):not(:last-child) {
+      .el-button--small {
+        border-radius: 0;
+      }
+    }
+    .el-button:last-child {
+      .el-button--small {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+
+  .el-button-group {
+    .el-button:last-child {
+      border-right: none;
+    }
+    .el-button:first-child {
+      border-left: none;
+    }
+  }
+}
+.el-button--mini,
+.el-button--small {
+  font-size: 0.75rem;
+}
+.el-button--small,
+.el-button--small.is-round {
+  padding: 0.5625rem 0.9375rem;
+}
+.el-button--mini,
+.el-button--mini.is-round {
+  padding: 0.4375rem 0.9375rem;
+}

@@ -1,0 +1,39 @@
+// 树形控件
+$--tree-font-color: $--primary-color-text !default; // 字体
+$--tree-item-bg-color-hover: $--action-color-2 !default; // item hover背景
+$--tree-item-bg-color-focus: $--action-color-3 !default; // item focus背景
+
+.el-tree {
+  background-color: transparent;
+  color: $--tree-font-color;
+  &-node {
+    &__content {
+      height: 1.625rem;
+      // hover 背景
+      &:hover {
+        background-color: $--tree-item-bg-color-hover;
+      }
+      > .el-tree-node__expand-icon {
+        padding: 0.375rem;
+      }
+    }
+    // focus 背景
+    &:focus {
+      & > .el-tree-node__content {
+        background-color: $--tree-item-bg-color-focus;
+      }
+    }
+    &__expand-icon {
+      font-size: 0.75rem;
+    }
+    &__label {
+      font-size: 0.875rem;
+    }
+  }
+  &--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+    background-color: $--tree-item-bg-color-hover;
+  }
+  &__empty-text {
+    font-size: 0.75rem;
+  }
+}

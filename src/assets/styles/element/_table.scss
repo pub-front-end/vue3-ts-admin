@@ -1,0 +1,138 @@
+.el-table {
+  color: $--table-font-color;
+
+  background-color: $--table-remain-bg-color;
+  display: flex;
+  flex-direction: column;
+  thead {
+    color: $--table-font-color;
+  }
+  th {
+    background-color: $--table-th-bg-color;
+  }
+  tr {
+    background-color: $--table-tr-bg-color;
+  }
+  th,
+  td {
+    padding: 0.75rem 0;
+  }
+  .cell {
+    width: 100% !important;
+    line-height: 1.5rem;
+    &.el-tooltip {
+      min-width: 3.125rem;
+    }
+  }
+  td {
+    border: 0;
+  }
+}
+
+// 表格行 hover
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background-color: $--table-tr-bg-color--hover !important;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped {
+  background-color: $--table-tr-bg-color--striped;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: none;
+}
+
+.el-table__body-wrapper {
+  background-color: $--table-remain-bg-color;
+  flex-grow: 1;
+  height: 0;
+}
+// 去掉边框
+.el-table td,
+.el-table th.is-leaf {
+  border-bottom: 0;
+  border-right: 1px solid $--table-border-color;
+  &:nth-last-child(1) {
+    border-right: 0;
+  }
+}
+.el-table th.is-leaf {
+  &:nth-last-child(2) {
+    border-right: 0;
+  }
+}
+.el-table--border,
+.el-table--group {
+  border: 0;
+}
+.el-table--border::after,
+.el-table--group::after {
+  width: 0;
+}
+.el-table::before {
+  height: 0;
+}
+.el-table--border th.gutter:last-of-type {
+  border: 0;
+}
+
+.el-table--small,
+.el-table__expand-icon {
+  font-size: 0.875rem;
+}
+.el-table-column--selection .cell {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+// load 刷新状态
+.el-loading-mask {
+  background-color: $--table-loading-mask;
+}
+.el-loading-text,
+.el-loading-spinner i {
+  color: $--primary-color;
+}
+.pub-table__bottom {
+  border-top: 1px solid $--table-border-color;
+}
+.el-loading-spinner .el-loading-text {
+  font-size: 0.75rem;
+}
+
+// 普通行 选中
+.el-table__body tr.current-row {
+  & > td {
+    background-color: $--table-row-selected-bg-color;
+  }
+  &:hover {
+    & > td {
+      background-color: $--table-row-selected-bg-color !important;
+    }
+  }
+}
+// 斑马线行 选中
+.el-table--striped .el-table__body tr.el-table__row--striped.current-row td {
+  background-color: $--table-row-selected-bg-color;
+}
+
+// 表头内置 筛选框
+.pub-card {
+  &__header-right {
+    .pub-search {
+      padding: 0;
+      .el-form-item--mini.el-form-item,
+      .el-form-item--small.el-form-item {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.el-table .cell,
+.el-table--border td:first-child .cell,
+.el-table--border th:first-child .cell {
+  padding-left: 0.625rem;
+}
+
+// 表格数据为空
+.el-table__empty-text {
+  font-size: 0.8rem;
+}

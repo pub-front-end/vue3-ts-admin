@@ -1,0 +1,111 @@
+// nofity 通知
+$--notification-icon-color-info: $--const-color-info !default; // icon info
+$--notification-icon-color-success: $--const-color-success !default; // icon success
+$--notification-icon-color-warning: $--const-color-warning !default; // icon warning
+$--notification-icon-color-error: $--const-color-error !default; // icon error
+
+$--notification-font-color: $--primary-color-text !default; // 字体
+$--notification-bg-color: $--popup-bg-color !default; // 背景
+$--notification-border-color: $--popup-border-color !default; // 边框
+$--notification-shadow-color: $--popup-shadow-color !default; // 阴影
+
+$--notification-close-color: $--popup-close-bg-color !default; // $--card-bg-color !default; // 关闭按钮
+$--notification-close-bg-color: $--popup-close-bg-color !default; // 关闭按钮 背景
+$--notification-close-bg-color-hover: $--action-color-4 !default; // 关闭按钮 背景 hover
+$--notification-close-color-hover: $--action-color-4 !default; // 关闭按钮 hover
+
+.el-notification {
+  border-radius: 0.1875rem;
+  width: 14%;
+  padding: 0.5rem 1rem 0.5rem 0.8125rem;
+  background-color: rgba($--notification-bg-color, 0.9);
+  border-color: $--notification-border-color;
+  box-shadow: 0 0.125rem 0.75rem 0 $--notification-shadow-color;
+  &__title {
+    color: $--notification-font-color;
+  }
+  &__content {
+    margin: 0px;
+    color: $--notification-font-color;
+  }
+  .el-icon-success {
+    color: $--notification-icon-color-success;
+  }
+  .el-icon-warning {
+    color: $--notification-icon-color-warning;
+  }
+  .el-icon-error {
+    color: $--notification-icon-color-error;
+  }
+  .el-icon-info {
+    color: $--notification-icon-color-info;
+  }
+  &__closeBtn {
+    top: 0.625rem;
+    background-color: transparent; // $--notification-close-bg-color;
+    border-radius: 50%;
+    // &:hover {
+    //   background-color: $--notification-close-bg-color-hover;
+    // }
+    color: $--notification-close-color;
+    &:hover {
+      color: $--notification-close-color-hover;
+    }
+  }
+}
+.alarm-notify {
+  cursor: pointer;
+}
+$--notify-level-color: (
+  0: $--const-alarm-level-1,
+  1: $--const-alarm-level-2,
+  2: $--const-alarm-level-3,
+  3: $--const-alarm-level-4,
+  4: $--const-alarm-level-5
+);
+.el-notification {
+  @each $i, $color in $--notify-level-color {
+    &.notify#{$i} {
+      border-left: 0.1875rem solid $color;
+    }
+    .textColor#{$i} {
+      color: $color;
+      .el-icon-warning {
+        color: $color;
+      }
+    }
+  }
+  .el-icon-warning {
+    font-size: 1rem;
+  }
+  &__group {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+.controlIns-title {
+  margin-bottom: 0.375rem;
+  margin-left: 0.375rem;
+  display: inline-block;
+  font-weight: 800;
+}
+.controlInsNotify {
+  background-color: rgba(255, 54, 78, 0.9) !important;
+  // height: 14%;
+  width: 14% !important;
+  padding: 0.375rem !important;
+  .el-icon-warning {
+    color: #fff !important;
+  }
+}
+.notify-content {
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+.notify-time {
+  margin-right: 1.5rem;
+  font-size: 0.8rem;
+  float: right;
+}

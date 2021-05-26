@@ -1,0 +1,44 @@
+// 文字提示
+
+$--tooltip-font-color: $--primary-color-text !default; // 字体
+$--tooltip-bg-color: $--expanded-bg-color !default; // 背景
+$--tooltip-shadow-color: $--expanded-shadow-color !default; // 背景
+
+.el-tooltip {
+  &__popper {
+    padding: 0.625rem;
+    min-width: 0.625rem;
+    max-width: 56.25rem;
+    font-size: 0.75rem;
+    &.is-dark {
+      color: $--tooltip-font-color;
+      background: $--tooltip-bg-color;
+      box-shadow: 0 0.125rem 0.75rem 0 $--tooltip-shadow-color;
+    }
+    // 弹框箭头
+    &[x-placement^='bottom'] .popper__arrow {
+      border-bottom-color: $--tooltip-bg-color !important;
+      &:after {
+        border-bottom-color: $--tooltip-bg-color !important;
+      }
+    }
+    &[x-placement^='top'] .popper__arrow {
+      border-top-color: $--tooltip-bg-color !important;
+      &:after {
+        border-top-color: $--tooltip-bg-color !important;
+      }
+    }
+    &[x-placement^='left'] .popper__arrow {
+      border-left-color: $--tooltip-bg-color !important;
+      &:after {
+        border-left-color: $--tooltip-bg-color !important;
+      }
+    }
+    &[x-placement^='right'] .popper__arrow {
+      border-right-color: $--tooltip-bg-color !important;
+      &:after {
+        border-right-color: $--tooltip-bg-color !important;
+      }
+    }
+  }
+}

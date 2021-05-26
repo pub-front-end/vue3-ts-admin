@@ -1,0 +1,124 @@
+.el-picker-panel {
+  &__shortcut {
+    font-size: 0.875rem;
+    padding-left: 0.75rem;
+    line-height: 1.75rem;
+  }
+  &__sidebar {
+    width: 6.875rem;
+    + .el-picker-panel__body {
+      margin-left: 6.875rem;
+    }
+  }
+  &__icon-btn {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+}
+.el-date-range-picker {
+  width: 40.375rem;
+  .el-picker-panel__body {
+    min-width: 32.0625rem;
+  }
+  &.has-sidebar {
+    width: 47.25rem;
+  }
+  &__header {
+    height: 1.75rem;
+    div {
+      font-size: 1rem;
+      .el-date-range-picker__content & {
+        margin-left: 3.125rem;
+        margin-right: 3.125rem;
+      }
+    }
+  }
+}
+.el-date-table {
+  font-size: 0.75rem;
+  td {
+    width: 2rem;
+    padding: 0.25rem 0;
+    div {
+      height: 1.875rem;
+    }
+    &.end-date div {
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+    }
+    &.start-date div {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+    span {
+      width: 1.5rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+
+.el-time-panel {
+  width: 11.25rem;
+  &__footer {
+    height: 2.25rem;
+    padding: 0.25rem;
+    line-height: 1.5625rem;
+  }
+  &__btn {
+    padding: 0 0.3125rem;
+    margin: 0 0.3125rem;
+    line-height: 1.75rem;
+    font-size: 0.75rem;
+  }
+  &__content::after,
+  &__content::before {
+    height: 2rem;
+    margin-top: -0.9375rem;
+    padding-top: 0.375rem;
+  }
+}
+.el-time-spinner {
+  &__wrapper {
+    max-height: 11.875rem;
+  }
+  &__item {
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 0.75rem;
+  }
+  &__list {
+    &::after,
+    &::before {
+      height: 5rem;
+    }
+  }
+}
+
+.el-month-table,
+.el-year-table {
+  font-size: 0.75rem;
+}
+
+.el-date-picker {
+  width: 20.125rem;
+  .el-picker-panel__content {
+    width: 18.25rem;
+  }
+  &__header-label {
+    font-size: 1rem;
+    line-height: 1.375rem;
+  }
+}
+
+.el-year-table td .cell {
+  width: 3rem;
+  height: 2rem;
+  line-height: 2rem;
+}
+.el-month-table td .cell {
+  width: 3.75rem;
+  height: 2.25rem;
+  line-height: 2.25rem;
+  border-radius: 1.125rem;
+}

@@ -1,0 +1,57 @@
+// message-box 弹框
+
+$--message-box-font-color: $--primary-color-text !default; // 字体
+$--message-box-bg-color: $--popup-bg-color !default; // 背景
+$--message-box-border-color: $--popup-border-color !default; // 边框
+$--message-box-shadow-color: $--popup-shadow-color !default; // 阴影
+
+$--message-box-close-color: $--card-bg-color !default; // 关闭按钮
+$--message-box-close-color-hover: $--popup-title-bg-color !default; // 关闭按钮 hover
+$--message-box-close-bg-color: $--popup-close-bg-color !default; // 关闭按钮 背景
+$--message-box-close-bg-color-hover: $--action-color-4 !default; // 关闭按钮 背景 hover
+
+.el-message {
+  &-box {
+    width: 28rem;
+    background-color: $--message-box-bg-color;
+    box-shadow: 0 2px 12px 0 $--message-box-shadow-color;
+    border-color: $--message-box-border-color;
+    font-size: 1.2rem;
+    &__title {
+      font-size: 1.2rem;
+      color: $--message-box-font-color;
+    }
+    &__content {
+      font-size: 0.875rem;
+      color: $--message-box-font-color;
+    }
+    &__headerbtn {
+      top: 1rem;
+      right: 1rem;
+      border-radius: 50%;
+      background-color: $--message-box-close-bg-color;
+      font-size: 1rem;
+      &:hover {
+        background-color: $--message-box-close-bg-color-hover;
+      }
+      .el-message-box__close {
+        color: $--message-box-close-color;
+        // &:hover {
+        //   color: $--message-box-close-color-hover;
+        // }
+      }
+      &_message p {
+        line-height: 1.5;
+      }
+    }
+    .el-button {
+      &--confirm {
+        float: right;
+        margin-right: 1rem;
+      }
+      &--cancel {
+        float: right;
+      }
+    }
+  }
+}

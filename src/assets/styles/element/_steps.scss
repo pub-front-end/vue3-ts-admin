@@ -1,0 +1,41 @@
+// 步骤条
+$--step-font-color: $--primary-color-text !default; // 字体
+$--step-font-color-process: $--action-color-4 !default; // 字体 处理中
+$--step-border-color-process: $--action-color-4 !default; // 边框 处理中
+$--step-font-color-success: $--const-color-success !default; // 字体 完成
+$--step-border-color-success: $--const-color-success !default; // 边框 完成
+
+$--step-icon-bg-color: $--card-bg-color !default; // 圆形 背景
+
+$--step-lint-color: $--divider-border-color !default; // 未达到/处理线条
+
+.el-step {
+  &__head {
+    // 处理中 圆形
+    &.is-process {
+      color: $--step-font-color-process;
+      border-color: $--step-border-color-process;
+    }
+    &.is-success {
+      color: $--step-font-color-success;
+      border-color: $--step-border-color-success;
+    }
+  }
+  // 图标下 文字
+  &__title {
+    color: $--step-font-color;
+    &.is-process {
+      color: $--step-font-color-process;
+    }
+    &.is-success {
+      color: $--step-font-color-success;
+    }
+  }
+  // 未达到 线条
+  &__line {
+    background-color: $--step-lint-color;
+  }
+  &__icon {
+    background-color: $--step-icon-bg-color;
+  }
+}

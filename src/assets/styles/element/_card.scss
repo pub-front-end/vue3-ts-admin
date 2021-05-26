@@ -1,0 +1,14 @@
+
+$--card-font-color: $--primary-color-text !default; // 字体
+$--card-bg-color: $--card-bg-color !default; // 背景
+$--card-title-border-color: $--transparent-border-color !default; // 标题下边框
+
+.el-card {
+  border: 0px;
+  background-color: $--card-bg-color;
+  color: $--card-font-color;
+  .el-card__header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid $--card-title-border-color;
+  }
+}

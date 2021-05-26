@@ -1,0 +1,70 @@
+// tabs 标签页
+
+$--tabs-font-color: $--primary-color-text !default; // 字体
+$--tabs-font-color-active: $--action-color-4 !default; // 字体
+$--tabs-border-color: $--divider-border-color !default; // 下边框
+$--tabs-border-color-active: $--action-color-4 !default; // 下边框 激活
+
+$--card-tabs-border-color-active: $--card-bg-color !default; // 卡片tab 内下边框 激活
+
+.el-tabs {
+  &__header {
+    margin: 0;
+  }
+  &__item {
+    padding: 0 1.25rem;
+    height: 2.5rem;
+    font-size: 0.75rem;
+    line-height: 2.5rem;
+    color: $--tabs-font-color;
+    &.is-active {
+      color: $--tabs-font-color-active;
+    }
+  }
+  // 激活 下边框
+  &__active-bar {
+    background-color: $--tabs-border-color-active;
+  }
+  // 未激活 下边框
+  &__nav-wrap {
+    &::after {
+      background-color: $--tabs-border-color;
+    }
+  }
+  // 常规格式
+  .el-tabs__nav {
+    // 下边框
+    &-wrap::after {
+      background-color: transparent;
+    }
+  }
+  &--top {
+    border-top: 1px solid $--tags-view-border-color;
+  }
+  // 卡片格式
+  &--card {
+    border-top: 1px solid transparent;
+    & > .el-tabs__header {
+      // 下边框
+      border-bottom: 1px solid $--tabs-border-color;
+      .el-tabs__item {
+        // 内边框
+        border-bottom: 1px solid $--tabs-border-color;
+        border-left: none;
+        border-right: 1px solid $--tabs-border-color;
+        &.is-active {
+          border-bottom: 1px solid $--card-tabs-border-color-active;
+        }
+      }
+      // 上/左/右 外部边框
+      .el-tabs__nav {
+        border-color: $--tabs-border-color;
+        border-right: none;
+      }
+    }
+  }
+  // 边框卡片格式
+  &--border-card {
+    background-color: transparent;
+  }
+}

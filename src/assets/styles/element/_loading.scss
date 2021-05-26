@@ -1,0 +1,9 @@
+// 加载中
+
+.el-loading {
+  &-spinner {
+    .path {
+      stroke: $--primary-color;
+    }
+  }
+}

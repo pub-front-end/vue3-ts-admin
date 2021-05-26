@@ -1,0 +1,138 @@
+// 级联选择器
+
+$--cascader-font-color: $--primary-color-text !default; // 文字
+$--cascader-bg-color: $--expanded-bg-color !default; // 展开背景
+$--cascader-border-color: $--expanded-border-color !default; // 展开边框
+$--cascader-layer-border-color: $--expanded-border-color !default; // 每个层级右边框
+$--cascader-shadow-color: $--expanded-shadow-color !default; // 展开阴影
+
+$--cascader-border-color-hover: $--action-color-4 !default; // 边框 hover
+$--cascader-bg-color-hover: $--action-color-2 !default; // item hover 背景
+$--cascader-bg-color-active: $--action-color-3 !default; // item active 背景
+
+$--cascader-font-color-disabled: $--const-color-disabled !default; // 文字 禁用
+
+$--cascader-font-color-selected: $--action-color-4 !default; // 文字 选中
+
+$--cascader-icon-color: $--const-color-disabled !default; // icon颜色
+$--cascader-icon-color-hover: $--action-color-4 !default; // icon颜色 hover
+
+.el-cascader {
+  width: 100%;
+  &-panel {
+    font-size: 0.875rem;
+  }
+  // hover边框
+  &:not(.is-disabled) {
+    &:hover .el-input__inner {
+      border-color: $--cascader-border-color-hover;
+    }
+  }
+  &__dropdown {
+    background-color: $--cascader-bg-color;
+    border-color: $--cascader-border-color;
+    box-shadow: 0 0.125rem 0.75rem 0 $--cascader-shadow-color;
+  }
+  // 字体
+  &-menu {
+    min-width: 11.25rem;
+    color: $--cascader-font-color;
+    border-right: solid 1px $--cascader-layer-border-color;
+    &__wrap {
+      height: 12.75rem;
+    }
+  }
+  // 每项hover背景
+  &-node {
+    padding: 0 1.875rem 0 1.25rem;
+    height: 2.125rem;
+    line-height: 2.125rem;
+    &:not(.is-disabled) {
+      &:hover {
+        background-color: $--cascader-bg-color-hover;
+      }
+      &:focus {
+        background-color: $--cascader-bg-color-active;
+      }
+    }
+    // 选中的被隐藏的路径 字体
+    &.is-selectable.in-checked-path {
+      color: $--cascader-font-color-selected;
+    }
+    // 选中项字体颜色
+    &.in-active-path,
+    &.is-active {
+      color: inherit;
+    }
+    // 禁用字体颜色
+    &.is-disabled {
+      color: $--cascader-font-color-disabled;
+    }
+    //单选框样式
+    & > .el-radio {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+    &__postfix {
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+  & .el-input.is-focus .el-input__inner {
+    border-color: $--primary-color;
+  }
+  // icon
+  & .el-input {
+    .el-icon-arrow-down {
+      font-size: 0.875rem;
+    }
+    .el-icon-circle-close {
+      color: $--cascader-icon-color;
+      &:hover {
+        color: $--cascader-icon-color-hover;
+      }
+    }
+  }
+  &__suggestion-list {
+    color: $--cascader-font-color;
+    .el-cascader__suggestion-item:focus,
+    .el-cascader__suggestion-item:hover {
+      background: $--cascader-bg-color-hover;
+    }
+    .el-cascader__empty-text {
+      text-align: center;
+      margin: 0.25rem 0;
+    }
+  }
+  &__search-input::placeholder {
+    color: $--const-color-disabled;
+  }
+  .el-tag.el-tag--info {
+    color: rgba($--cascader-font-color, 0.75);
+    border-color: rgba($--cascader-font-color, 0.65);
+  }
+}
+.el-cascader-menu__hover-zone {
+  display: none;
+}
+.el-cascader__tags {
+  right: 1.875rem;
+  .el-cascader__search-input {
+    color: rgba($--cascader-font-color, 0.85);
+    background-color: $--card-bg-color;
+  }
+}
+.el-cascader__search-input {
+  height: 1.5rem;
+  min-width: 3.75rem;
+  margin: 0.125rem 0 0.125rem 0.9375rem;
+}
+
+.el-cascader--small {
+  font-size: 0.8125rem;
+  line-height: 2rem;
+}

@@ -1,0 +1,92 @@
+// 多选框
+
+$--checkbox-font-color: $--primary-color-text !default; // 字体
+$--checkbox-border-color: $--form-border-color !default; // 边框
+$--checkbox-bg-color: transparent !default; // 背景
+
+$--checkbox-border-color-hover: $--action-color-4 !default; // 边框 hover
+
+$--checkbox-bg-color-checked: $--action-color-4 !default; // 背景 选中
+$--checkbox-border-color-checked: $--action-color-4 !default; // 边框 选中
+$--checkbox-check-color-checked: $--card-bg-color !default; // 勾勾 选中
+$--checkbox-font-color-checked: $--action-color-4 !default; // 字体 选中
+
+$--checkbox-border-color-focus: $--action-color-4 !default; // 边框 聚焦
+
+$--checkbox-font-color-disabled: $--const-color-disabled !default; // 字体 禁用
+$--checkbox-border-color-disabled: $--const-color-disabled !default; // 边框 禁用
+$--checkbox-bg-color-disabled: $--const-color-disabled !default; // 背景 禁用
+
+$--checkbox-check-color-disabled-checked: $--primary-color-text !default; // 勾勾 禁用且选中
+
+.el-checkbox {
+  color: $--checkbox-font-color;
+  font-size: 0.875rem;
+  // 框选
+  &__inner {
+    width: 0.875rem;
+    height: 0.875rem;
+    border-color: $--checkbox-border-color;
+    background-color: $--checkbox-bg-color;
+    &:hover {
+      border-color: $--checkbox-border-color-hover;
+    }
+    &::after {
+      height: 0.5rem;
+      width: 0.23rem;
+      left: 0.25rem;
+      top: 0.05rem;
+    }
+  }
+  &__input {
+    // 选中
+    &.is-checked,
+    &.is-indeterminate {
+      .el-checkbox__inner {
+        background-color: $--checkbox-bg-color-checked;
+        border-color: $--checkbox-border-color-checked;
+        &::after {
+          border-color: $--checkbox-check-color-checked;
+        }
+        &::before {
+          background-color: $--checkbox-check-color-checked;
+          top: 0.3125rem;
+          height: 0.125rem;
+        }
+      }
+      // 文本
+      & + .el-checkbox__label {
+        color: $--checkbox-font-color-checked;
+      }
+    }
+    // 聚焦
+    &.is-focus {
+      .el-checkbox__inner {
+        border-color: $--checkbox-border-color-focus;
+      }
+    }
+    // 置灰
+    &.is-disabled {
+      .el-checkbox__inner {
+        background-color: $--checkbox-bg-color-disabled;
+        border-color: $--checkbox-border-color-disabled;
+      }
+      & + span.el-checkbox__label {
+        color: $--checkbox-font-color-disabled;
+      }
+      // 置灰且选中
+      &.is-checked {
+        .el-checkbox__inner {
+          &::after {
+            border-color: $--checkbox-check-color-disabled-checked;
+          }
+        }
+      }
+    }
+  }
+  &__label {
+    padding-left: 0.6rem;
+    line-height: 1.5;
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,181 @@
+.el-menu-item,
+.el-submenu__title {
+  font-size: 0.875rem;
+}
+.el-submenu__icon-arrow {
+  right: 1.25rem;
+  margin-top: -0.5rem;
+  font-size: 0.75rem;
+}
+.left-menu {
+  .menu-container {
+    width: 100%;
+    height: 100%;
+    background-color: $--menu-bg-color;
+  }
+  .el-menu {
+    background-color: $--menu-bg-color;
+    .el-menu-item,
+    .el-submenu__title {
+      height: 3.125rem;
+      line-height: 3.125rem;
+      padding: 0 1rem;
+      text-align: left;
+      color: $--menu-font-color;
+      border-left: 0.1875rem solid $--menu-bg-color;
+      user-select: none;
+      i {
+        color: $--menu-font-color;
+      }
+      .iconfont {
+        padding-right: 0.5rem;
+      }
+    }
+    .el-submenu {
+      width: 12.5rem; // 同菜单树宽度
+      .el-menu-item {
+        height: 2.5rem;
+        line-height: 2.5rem;
+      }
+    }
+
+    .el-menu-item:hover,
+    .el-submenu__title:hover {
+      background-color: $--menu-item-bg-color-hover !important;
+    }
+
+    .el-menu-item:focus {
+      background-color: transparent;
+    }
+    .is-opened {
+      background-color: $--menu-item-opened-bg-color;
+      .el-menu-item,
+      .el-submenu {
+        background-color: $--menu-item-opened-bg-color;
+      }
+      & > div {
+        color: $--menu-font-color-opend;
+        i {
+          color: $--menu-font-color-opend;
+        }
+      }
+    }
+    .el-menu-item.is-active {
+      background-color: $--menu-item-actived-bg-color;
+      border-left: 0.1875rem solid $--menu-item-actived-border-color;
+    }
+  }
+}
+
+.layout-container__body__aside {
+  background-color: $--menu-bg-color;
+}
+.el-menu.el-menu--horizontal {
+  border: none;
+}
+/** 垂直向菜单 */
+
+.el-menu--horizontal {
+  display: flex;
+  align-items: center;
+  background: none;
+  .el-menu {
+    background-color: $--top-bar-bg-color;
+  }
+  & > .el-submenu:focus .el-submenu__title,
+  & > .el-submenu:hover .el-submenu__title {
+    color: $--menu-font-color;
+  }
+  .el-menu-item,
+  .el-submenu__title {
+    // height: 45px;
+    // line-height: 45px;
+    // padding: 0 16px;
+    height: 2.8rem;
+    line-height: 2.8;
+    padding: 0 1rem;
+    text-align: left;
+    color: $--menu-font-color;
+    user-select: none;
+    i {
+      color: $--menu-font-color;
+    }
+    .iconfont {
+      // padding-right: 8px;
+      padding-right: 0.5rem;
+    }
+  }
+  .el-submenu {
+    .el-menu-item {
+      // height: 45px;
+      // line-height: 45px;
+      // min-width: 132px;
+      height: 2.8rem;
+      line-height: 2.8;
+      min-width: 8.25rem;
+    }
+  }
+
+  .el-menu-item:hover,
+  .el-submenu__title:hover {
+    background-color: $--menu-item-bg-color-hover !important;
+    color: $--menu-font-color;
+  }
+  .el-menu-item:not(.is-disabled):hover {
+    color: $--menu-font-color;
+  }
+  .el-menu-item.is-active,
+  .el-submenu.is-active .el-submenu__title {
+    color: $--menu-font-color-opend;
+    border-bottom: 0;
+    i,
+    span {
+      color: $--menu-font-color-opend;
+    }
+  }
+  .el-menu-item:not(.is-disabled):focus {
+    background-color: $--top-bar-bg-color;
+  }
+  .el-menu--popup {
+    min-width: 8.25rem;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.8);
+  }
+  .el-submenu {
+    & > .el-menu--horizontal {
+      background: none;
+    }
+  }
+  // 下拉菜单
+  .el-menu.el-menu--popup.el-menu--popup-bottom-start {
+    background-color: $--card-bg-color;
+    border: 1px solid $--form-border-color;
+    .el-menu {
+      background-color: $--card-bg-color;
+    }
+
+    .el-menu-item,
+    .el-submenu__title {
+      background-color: $--card-bg-color;
+      color: $--menu-popup-font-color;
+      i {
+        color: $--menu-popup-font-color;
+      }
+    }
+    .el-menu-item.is-active,
+    .el-submenu.is-active .el-submenu__title {
+      color: $--menu-font-color-opend;
+      border-bottom: 0;
+      i,
+      span {
+        color: $--menu-font-color-opend;
+      }
+    }
+    .el-submenu__icon-arrow {
+      right: 0.625rem;
+    }
+  }
+}
+
+.layout-container__body__aside--show {
+  width: 12.5rem;
+}

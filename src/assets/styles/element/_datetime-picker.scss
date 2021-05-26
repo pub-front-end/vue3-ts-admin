@@ -1,0 +1,290 @@
+// 日期/时间选择器
+$--picker-font-color: $--primary-color-text !default; // 文字
+$--picker-font-color-hover: $--action-color-4 !default; // 文字 hover
+$--picker-font-color-selected: $--action-color-4 !default; // 文字 选中
+$--picker-font-color-disabled: $--const-color-disabled !default; // 文字 禁用
+
+$--picker-bg-color: $--expanded-bg-color !default; // 展开内容背景
+$--picker-bg-color-selected: $--action-color-3 !default; // 背景 选中
+$--picker-bg-color-hover: $--action-color-2 !default; // 每一项时间/日期 hover 背景
+
+$--picker-border-color: $--expanded-border-color !default; // 展开内容边框
+$--picker-shadow-color: $--expanded-shadow-color !default; // 展开内容阴影
+
+$--select-icon-color: $--const-color-disabled !default; // 输入框 清空icon颜色
+$--select-icon-color-hover: $--action-color-4 !default; // 清空icon颜色 hover
+
+$--picker-content-divider-color: $--divider-border-color !default; // 选择器内容分割线边框(header,footer,sider)
+
+$--time-select-border-color: $--divider-border-color !default; // 时间选择器 选中的时间 上下border
+$--picker-time-arrow-color: $--divider-border-color !default; // 时间/日期选择器 箭头颜色
+$--picker-time-arrow-color-hover: $--action-color-4 !default; // 时间/日期选择器 箭头 hover 颜色
+$--date-picker-range-to-font-color: $--primary-color-text !default; // 日期/时间范围选择器 “至” 字体
+$--range-picker-border-color: $--divider-border-color !default; // 时间范围选择器 边框
+
+$--date-picker-border-bottom-color: $--divider-border-color !default; // 日期选择器 星期/年/月下边框
+$--date-picker-font-color-select: $--primary-color-text !default; // 日期选择器 选中日期 字体
+$--date-picker-bg-color-select: $--action-color-4 !default; // 日期选择器 选中日期 背景
+$--date-picker-range-bg-color-select: $--action-color-2 !default; // 日期选择器 选中日期范围 背景
+
+.el-picker {
+  // 固定时间/日期下拉框面板
+  &-panel {
+    color: $--picker-font-color;
+    background-color: $--select-bg-color;
+    border-color: $--select-border-color;
+    box-shadow: 0 0.125rem 0.75rem 0 $--select-shadow-color;
+    .time-select-item {
+      // 选中时间
+      &.selected:not(.diabled) {
+        color: $--picker-font-color-selected;
+      }
+      // hover
+      &:hover {
+        background-color: $--picker-bg-color-hover;
+      }
+    }
+    // 日期选择器 header年月左右的 箭头
+    &__icon-btn {
+      color: $--picker-time-arrow-color;
+      &:hover {
+        color: $--picker-time-arrow-color-hover;
+      }
+    }
+    // 日期选择器 快捷选项 侧边栏
+    &__sidebar {
+      background-color: $--picker-bg-color;
+      border-right: 1px solid $--picker-content-divider-color;
+    }
+    // 日期选择器 快捷选项 侧边栏 按钮
+    &__shortcut {
+      color: $--picker-font-color;
+      &:hover {
+        color: $--picker-font-color-hover;
+      }
+    }
+    // 日期选择器 底部按钮组
+    &__footer {
+      background-color: $--picker-bg-color;
+      border-top: 1px solid $--picker-content-divider-color;
+    }
+  }
+}
+.el-date {
+  &-editor {
+    // 时间下拉框 清空按钮
+    .el-icon-circle-close {
+      color: $--select-icon-color;
+      &:hover {
+        color: $--select-icon-color-hover;
+      }
+    }
+    // 日期范围下拉框 “至” 字体
+    .el-range-separator {
+      color: $--date-picker-range-to-font-color;
+    }
+  }
+  // 日期选择器
+  &-picker {
+    // 顶部 年 月
+    &__header {
+      &-label {
+        color: $--picker-font-color;
+        &:hover {
+          color: $--picker-font-color-hover;
+        }
+      }
+      // 年/月 下边框
+      &--bordered {
+        border-bottom: 1px solid $--date-picker-border-bottom-color;
+      }
+    }
+  }
+  &-table {
+    // 日期选择器 星期
+    th {
+      color: $--picker-font-color;
+      border-bottom: 1px solid $--date-picker-border-bottom-color;
+    }
+    // 日期选择器 前/后一个月 日期
+    td.prev-month,
+    td.next-month {
+      color: $--picker-font-color-disabled;
+    }
+    // 选中日期
+    td.current:not(.disabled) span {
+      color: $--date-picker-font-color-select;
+      background-color: $--date-picker-bg-color-select;
+    }
+    // hover日期
+    td.available:hover {
+      color: $--picker-font-color-hover;
+    }
+    // 当前日期
+    td.today span {
+      color: $--picker-font-color-selected;
+    }
+    // 选择多个日期 div
+    td.selected div {
+      background-color: transparent;
+    }
+    // 选择多个日期 span
+    td.selected span {
+      background-color: $--date-picker-bg-color-select;
+      color: $--date-picker-font-color-select;
+    }
+    // 日期范围 选中
+    td.in-range div {
+      background-color: $--date-picker-range-bg-color-select;
+    }
+    // 日期范围 开始/结束日期
+    td.start-date span,
+    td.end-date span {
+      background-color: $--date-picker-bg-color-select;
+      color: $--date-picker-font-color-select;
+    }
+    // 日期范围不可选
+    td.disabled div {
+      background: transparent;
+    }
+  }
+  // 日期范围 中间分割线
+  &-range-picker {
+    &__content.is-left {
+      border-right: 1px solid $--picker-content-divider-color;
+    }
+  }
+}
+
+.el-time {
+  // 任意时间下拉面板
+  &-panel {
+    background-color: $--select-bg-color;
+    border-color: $--select-border-color;
+    box-shadow: 0 0.125rem 0.75rem 0 $--select-shadow-color;
+    // 选中的时间上下边框线
+    &__content {
+      &::after,
+      &:before {
+        border-top: 1px solid $--time-select-border-color;
+        border-bottom: 1px solid $--time-select-border-color;
+      }
+    }
+    // 底部按钮
+    // 上边框
+    &__footer {
+      border-top: 1px solid $--picker-content-divider-color;
+    }
+    // 按钮
+    &__btn {
+      color: $--picker-font-color;
+      &.confirm {
+        color: $--picker-font-color-selected;
+      }
+    }
+  }
+  &-spinner {
+    // 任意时间下拉面板 字体
+    &__item {
+      color: $--picker-font-color;
+      // 禁用字体
+      &.disabled {
+        color: $--picker-font-color-disabled;
+      }
+      // hover
+      &:hover:not(.disabled):not(.activate) {
+        background-color: $--picker-bg-color-hover;
+      }
+      // active
+      &.active:not(.disabled) {
+        color: $--picker-font-color-selected;
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+    // 箭头控制 箭头样式
+    &__arrow {
+      color: $--picker-time-arrow-color;
+      &:hover {
+        color: $--picker-time-arrow-color-hover;
+      }
+    }
+    &__wrapper {
+      &.is-arrow {
+        // 箭头控制 hover字体
+        .el-time-spinner__item:hover:not(.disabled):not(.activate) {
+          background-color: transparent;
+        }
+      }
+      &.el-scrollbar .el-scrollbar__view {
+        text-align: center;
+      }
+    }
+  }
+  // 任意时间范围选择器
+  &-range-picker {
+    &__header {
+      margin-bottom: 0.3125rem;
+      font-size: 0.75rem;
+    }
+    &__body {
+      border-color: $--range-picker-border-color;
+    }
+  }
+}
+// 固定时间范围选择器
+.time-select {
+  &-item {
+    &.disabled {
+      color: $--picker-font-color-disabled;
+    }
+  }
+}
+// 年/月份选择器
+.el-year,
+.el-month {
+  &-table {
+    td .cell {
+      color: $--picker-font-color;
+      &:hover {
+        color: $--picker-font-color-hover;
+      }
+    }
+    // 当前年/月份
+    td.current:not(.disabled) .cell {
+      color: $--picker-font-color-selected;
+    }
+    // 年/月范围 选中
+    td.in-range div {
+      background-color: $--date-picker-range-bg-color-select;
+    }
+    // 年/月范围 开始/结束日期
+    td.start-date .cell,
+    td.end-date .cell {
+      background-color: $--date-picker-bg-color-select;
+      color: $--date-picker-font-color-select;
+    }
+  }
+}
+// 时间/日期范围选择器 输入框背景
+.el-range {
+  &-editor {
+    width: 100%;
+    input {
+      background-color: transparent;
+      color: rgba($--picker-font-color, 0.85);
+    }
+  }
+}
+
+// 周选择器
+.is-week-mode {
+  .el-date-table__row.current div,
+  .el-date-table__row:hover div {
+    background-color: $--action-color-2;
+  }
+}
+.el-range-editor--small.el-input__inner {
+  vertical-align: middle;
+}

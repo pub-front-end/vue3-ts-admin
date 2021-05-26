@@ -1,0 +1,24 @@
+// 进度条
+$--circle-progress-out: $--body-bg-color; // 外圆背景
+$--circle-progress-inner: $--primary-color; // 内圆背景
+$--circle-progress-text: $--primary-color-text; // 内圆背景
+
+.el-progress {
+  &__text {
+    color: $--circle-progress-text;
+  }
+  &-circle {
+    path:first-child {
+      stroke: $--circle-progress-out;
+    }
+    path:last-child {
+      stroke: $--circle-progress-inner;
+    }
+  }
+  &-bar__outer {
+    background-color: $--circle-progress-out;
+  }
+  &-bar__inner {
+    background-color: $--circle-progress-inner;
+  }
+}

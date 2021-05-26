@@ -1,0 +1,47 @@
+// message 消息提示
+
+$--message-font-color: $--primary-color-text !default; // 字体 info
+$--message-font-color-success: $--const-color-success !default; // 字体 success
+$--message-font-color-warning: $--const-color-warning !default; // 字体 warning
+$--message-font-color-error: $--const-color-error !default; // 字体 error
+
+$--message-bg-color-info: $--const-color-info-light !default; // 背景 info
+$--message-bg-color-success: $--const-color-success-light !default; // 背景 success
+$--message-bg-color-warning: $--const-color-warning-light !default; // 背景 warning
+$--message-bg-color-error: $--const-color-error-light !default; // 背景 error
+
+$--message-border-color: transparent !default; // 边框
+$--message-close-font-color: $--primary-color-text !default; // 边框
+$--message-close-font-color-hover: $--action-color-4 !default; // 边框
+
+.el-message {
+  padding: 1rem 1rem 1rem 1.6rem;
+  border-color: $--message-border-color;
+  background-color: rgba($--message-bg-color-info, 0.6);
+  &--info {
+    .el-message__content {
+      color: $--message-font-color;
+    }
+  }
+  &--success {
+    color: $--message-font-color-success;
+    background-color: rgba($--message-bg-color-success, 0.9);
+  }
+  &--warning {
+    color: $--message-font-color-warning;
+    background-color: rgba($--message-bg-color-warning, 0.9);
+  }
+  &--error {
+    color: $--message-font-color-error;
+    background-color: rgba($--message-bg-color-error, 0.9);
+  }
+  &__closeBtn {
+    color: $--message-close-font-color;
+    &:hover {
+      color: $--message-close-font-color-hover;
+    }
+  }
+  &__content {
+    font-size: 0.875rem;
+  }
+}

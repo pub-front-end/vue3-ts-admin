@@ -1,0 +1,219 @@
+/* 本文件用于存放除开element-ui的，其他颜色相关的样式
+********************************************************************************************** */
+// 常量
+$--primary-color-black: #000000; // 黑色
+$--primary-color-white: #ffffff; // 白色
+
+$--const-color-disabled: #afacac; // 置灰/失败/离线/错误/placeholder
+$--const-color-info: #909399; // 信息/通知
+$--const-color-info-middle: #b2b6bd; // 信息/通知
+$--const-color-info-light: #edf2fc;
+$--const-color-success: #4dc01a; // 成功/在线
+$--const-color-success-middle: #6dd640; // 成功/在线
+$--const-color-success-light: #f0f9eb;
+$--const-color-warning: #ff7e00; // 警告
+$--const-color-warning-middle: #f58a1f; // 警告
+$--const-color-warning-light: #fdf6ec;
+$--const-color-error: #ff5259; // 失败/错误
+$--const-color-error-middle: #f78989; // 失败/错误
+$--const-color-error-light: #fef0f0;
+
+$--const-alarm-level-1: #1890ff; // 告知
+$--const-alarm-level-2: #02d199; // 一般
+$--const-alarm-level-3: #efc500; // 次要
+$--const-alarm-level-4: #ff7e00; // 重要
+$--const-alarm-level-5: #d80005; // 紧急
+// 在线状态颜色
+$--status-online-color: #4dc01a;
+$--status-online-radial-color: rgba(51, 204, 0, 0.15);
+
+.content-bg {
+  background-color: $--card-bg-color;
+}
+//icon 填充色
+.icon-color {
+  color: $--top-bar-svg-color;
+  cursor: pointer;
+  &:hover {
+    color: $--top-bar-svg-color--hover;
+  }
+}
+//icon 填充色
+.icon-fill {
+  fill: $--primary-color-text;
+  cursor: pointer;
+  &:hover {
+    fill: $--top-bar-svg-color--hover;
+  }
+  &--disabled {
+    fill: $--primary-color-label;
+    cursor: not-allowed;
+    &:hover {
+      fill: $--primary-color-label;
+    }
+  }
+}
+//icon 填充色
+.menu-fill {
+  fill: rgba($color: $--menu-active-color, $alpha: 0.8);
+  cursor: pointer;
+  &:hover {
+    fill: $--menu-active-color;
+  }
+}
+.primary-text-color {
+  color: $--primary-color-text;
+}
+.primary-label-color {
+  color: $--primary-color-label;
+}
+.primary-color {
+  color: $--primary-color;
+}
+.primary-border-color {
+  border-color: $--primary-color;
+}
+.link-color {
+  color: $--primary-color;
+  &:hover {
+    color: $--action-color-5;
+  }
+}
+
+// 顶部栏 header
+.layout-container__header {
+  height: 3.75rem;
+  background-color: $--top-bar-bg-color;
+  border-bottom: 1px solid $--top-bar-border-color;
+}
+.user-content {
+  padding: 0.5rem;
+  .user-fill {
+    fill: $--top-bar-user-svg-color;
+  }
+  &-item:hover {
+    color: $--top-bar-user-svg-color--hover;
+  }
+  .user-info {
+    &--role {
+      .circle {
+        border: 1px solid $--top-bar-user-svg-color;
+        &:hover {
+          border: 1px solid $--top-bar-user-svg-color--hover;
+          .user-fill {
+            fill: $--top-bar-user-svg-color--hover;
+          }
+        }
+      }
+    }
+    &--time {
+      border: 1px solid $--divider-border-color;
+      background: $--top-bar-user-time-bg-color;
+    }
+  }
+}
+.sub-title,
+.content-item__inner-title {
+  .btn-fill {
+    fill: $--top-bar-svg-color;
+    &:hover {
+      fill: $--top-bar-svg-color--hover;
+    }
+  }
+}
+.navbar-user {
+  color: $--top-bar-svg-color;
+  &:hover {
+    color: $--top-bar-svg-color--hover;
+    .svg {
+      fill: $--top-bar-svg-color--hover;
+    }
+  }
+}
+// 页面背景色
+.body-bg {
+  background-color: $--body-bg-color;
+}
+
+// 详情大标题竖线颜色
+.sub-title::before {
+  background-color: $--primary-color;
+}
+// 详情label颜色
+.pub-detail-item--label {
+  color: $--primary-color-label;
+}
+// 详情值 如果有tip提示时的颜色
+.detail-value--tooltip {
+  color: $--action-color-4;
+}
+.pub-search {
+  .el-input-group__append {
+    .el-button {
+      background: $--primary-color;
+    }
+  }
+}
+// FireFox 滚动条颜色
+html,
+body {
+  scrollbar-color: $--scrollbar-thumb-bg-color $--menu-bg-color;
+  scrollbar-width: thin;
+}
+
+/*定义Chrome 滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+
+::-webkit-scrollbar {
+  width: 8px; /*对垂直流动条有效*/
+  height: 8px; /*对水平流动条有效*/
+}
+
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: $--menu-bg-color;
+  //border-radius: 3px;
+}
+
+/*定义滑块颜色、内阴影及圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: $--scrollbar-thumb-bg-color;
+  border: 1px solid $--scrollbar-thumb-border-color;
+}
+
+/*定义两端按钮的样式*/
+::-webkit-scrollbar-button {
+  background-color: none;
+}
+
+/*定义右下角汇合处的样式*/
+::-webkit-scrollbar-corner {
+  background: $--menu-bg-color;
+}
+
+// 标题前面的主题竖线
+.title-before {
+  line-height: 100%;
+  overflow: hidden;
+  &::before {
+    content: '';
+    margin-right: 5px;
+    border: 2px solid $--primary-color;
+  }
+}
+
+.text-success {
+  color: $--const-color-success;
+}
+.text-error {
+  color: $--const-color-error;
+}
+.text-warn {
+  color: $--const-color-warning;
+}
+// color-picker弹出框背景色
+.el-color-picker__panel {
+  background-color: $--card-bg-color;
+}

@@ -1,0 +1,22 @@
+.el-collapse {
+  border-top: 1px solid $--divider-border-color;
+  border-bottom: 1px solid $--divider-border-color;
+  .el-collapse-item__header {
+    background-color: $--card-bg-color;
+    color: $--primary-color-text;
+    border-bottom: 1px solid $--divider-border-color;
+    padding-left: 1rem;
+    font-size: 0.8125rem;
+    line-height: 3rem;
+  }
+  .el-collapse-item__wrap {
+    background-color: $--card-bg-color;
+    color: $--primary-color-text;
+    border-bottom: 1px solid $--divider-border-color;
+  }
+  .el-collapse-item__content {
+    padding-bottom: 1.5625rem;
+    color: $--primary-color-text;
+    font-size: 0.8125rem;
+  }
+}

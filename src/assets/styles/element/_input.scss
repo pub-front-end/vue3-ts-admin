@@ -1,0 +1,236 @@
+// 输入框
+$--input-bg-color: transparent !default; // 背景
+$--input-border-color: $--form-border-color !default; // 边框
+$--input-border-color-hover: $--action-color-5 !default; // 边框hover
+$--input-border-color-focus: $--action-color-4 !default; // 边框focus
+$--input-font-color: $--primary-color-text !default; // 文字
+$--input-placeholder-font-color: $--const-color-disabled !default; // placeholder文字
+
+$--input-count-bg-color: transparent !default; // 字数限制背景
+$--input-count-font-color: $--primary-color-text !default; // 字数限制 文字
+
+$--input-pend-bg-color: transparent !default; // 前缀/后缀 背景
+$--input-pend-font-color: $--primary-color-text !default; // 前缀/后缀 文字
+$--input-pend-border-color: $--form-border-color !default; // 前缀/后缀 边框
+
+$--input-disabled-color: $--const-color-disabled !default; // 置灰/禁用
+$--input-disabled-font-color: $--primary-color-text !default; // 置灰/禁用 文字
+
+$--input-icon-color: $--const-color-disabled !default; // 内图标
+$--input-icon-color-hover: $--action-color-5 !default; // 内图标hover
+
+$--input-suggestion-font-color: $--primary-color-text !default; // 输入建议 文字
+$--input-suggestion-bg-color: $--expanded-bg-color !default; // 输入建议 背景
+$--input-suggestion-border-color: $--expanded-border-color !default; // 输入建议 边框
+$--input-suggestion-shadow-color: $--expanded-shadow-color !default; // 输入建议 阴影
+$--input-suggestion-bg-color-hover: $--action-color-2 !default; // 输入建议 item hover 背景
+$--input-suggestion-scroll-color: $--scrollbar-thumb-bg-color !default; // 输入建议 滚动条背景
+$--input-suggestion-scroll-color-hover: $--scrollbar-thumb-bg-color-hover !default; // 输入建议 滚动条 hover 背景
+
+.el-input,
+.el-textarea {
+  &__inner {
+    background-color: $--input-bg-color;
+    border-color: $--input-border-color;
+    color: rgba($--input-font-color, 0.85);
+    border-radius: 0.25rem;
+    &:hover {
+      border-color: $--input-border-color-hover;
+    }
+    &:focus {
+      border-color: $--input-border-color-focus;
+    }
+    input::-webkit-input-placeholder,
+    &::-webkit-input-placeholder {
+      color: $--input-placeholder-font-color;
+    }
+  }
+  & .el-input__count {
+    font-size: 0.75rem;
+    bottom: 0.3125rem;
+    right: 0.625rem;
+    &,
+    &-inner {
+      background-color: $--input-count-bg-color;
+      color: $--input-count-font-color;
+    }
+  }
+  &-group {
+    &__prepend,
+    &__append {
+      background-color: $--input-pend-bg-color;
+      color: $--input-pend-font-color;
+      border-color: $--input-pend-border-color;
+    }
+  }
+  // 置灰
+  &.is-disabled {
+    .el-input__inner {
+      background-color: $--input-disabled-color;
+      color: $--input-disabled-font-color;
+      border-color: $--input-disabled-color;
+    }
+  }
+  // 清空按钮
+  & .el-input__clear {
+    color: $--input-icon-color;
+    &:hover {
+      color: $--input-icon-color-hover;
+    }
+  }
+  &-number {
+    &--small {
+      width: 100%;
+    }
+    .is-disabled {
+      background-color: $--input-disabled-color;
+      color: $--input-disabled-font-color;
+    }
+    &.is-disabled {
+      .el-input-number {
+        &__decrease,
+        &__increase {
+          background-color: $--input-disabled-color;
+        }
+      }
+    }
+  }
+}
+.el-textarea {
+  &__inner {
+    padding: 0.3125rem 0.9375rem;
+  }
+}
+.pub-search .el-autocomplete {
+  width: 100%;
+}
+
+.el-autocomplete-suggestion {
+  background-color: $--input-suggestion-bg-color;
+  border-color: $--input-suggestion-border-color;
+  box-shadow: 0 2px 12px 0 $--input-suggestion-shadow-color;
+  li {
+    color: $--input-suggestion-font-color;
+    &.highlighted,
+    &:hover {
+      background-color: $--input-suggestion-bg-color-hover;
+    }
+  }
+}
+.el-scrollbar__thumb {
+  background-color: $--input-suggestion-scroll-color;
+  &:hover {
+    background-color: $--input-suggestion-scroll-color-hover;
+  }
+}
+
+.el-input--mini {
+  font-size: 0.75rem;
+  .el-input__inner {
+    height: 1.8rem;
+    line-height: 1.8rem;
+  }
+}
+.el-input-number--mini {
+  width: 8.125rem;
+  line-height: 1.6rem;
+  .el-input-number__decrease,
+  .el-input-number__increase {
+    width: 1.8rem;
+    font-size: 0.75rem;
+  }
+}
+.el-input--small {
+  font-size: 0.8125rem;
+  .el-input__inner {
+    height: 2rem;
+    line-height: 2rem;
+  }
+}
+.el-input-number--small {
+  .el-input-number__decrease,
+  .el-input-number__increase {
+    width: 2rem;
+    font-size: 0.75rem;
+  }
+}
+.el-input--suffix .el-input__inner {
+  padding-right: 2rem;
+}
+.el-input .el-input__clear {
+  font-size: 0.875rem;
+}
+
+.el-range-editor--small {
+  &.el-input__inner {
+    height: 2rem;
+  }
+  .el-range__icon,
+  .el-range__close-icon {
+    line-height: 1;
+    font-size: 0.875rem;
+  }
+  .el-range-input {
+    font-size: 0.8125rem;
+  }
+  .el-range-separator {
+    font-size: 0.8125rem;
+    line-height: 2rem;
+  }
+  .el-input-number__increase,
+  .el-input-number__decrease {
+    width: 2rem;
+    font-size: 0.75rem;
+  }
+}
+.el-range-editor--mini {
+  &.el-input__inner {
+    height: 1.75rem;
+  }
+  .el-range__icon,
+  .el-range__close-icon {
+    line-height: 1;
+    font-size: 0.75rem;
+  }
+  .el-range-input {
+    font-size: 0.75rem;
+  }
+  .el-range-separator {
+    font-size: 0.75rem;
+    line-height: 1.75rem;
+  }
+}
+.el-range-editor--medium {
+  &.el-input__inner {
+    height: 1.75rem;
+  }
+  .el-range__icon,
+  .el-range__close-icon {
+    line-height: 1;
+    font-size: 0.75rem;
+  }
+  .el-range-input {
+    font-size: 0.75rem;
+  }
+  .el-range-separator {
+    font-size: 0.75rem;
+    line-height: 1.75rem;
+  }
+}
+
+.el-input__icon {
+  width: 1.5625rem;
+}
+.el-input--small .el-input__icon {
+  line-height: 2rem;
+}
+.el-input-number.is-controls-right[class*='small'] [class*='decrease'],
+.el-input-number.is-controls-right[class*='small'] [class*='increase'] {
+  line-height: 0.9375rem;
+}
+.el-input--prefix .el-input__inner {
+  padding-left: 1.875rem;
+}
+.el-input__inner {
+  padding: 0 0.9375rem;
+}

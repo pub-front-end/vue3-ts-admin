@@ -1,0 +1,95 @@
+// 选择器
+$--select-font-color: $--primary-color-text !default; // 文字
+$--select-bg-color: $--expanded-bg-color !default; // 展开背景
+$--select-border-color: $--expanded-border-color !default; // 展开边框
+$--select-shadow-color: $--expanded-shadow-color !default; // 展开阴影
+$--select-bg-color-hover: $--action-color-2 !default; // item hover 背景
+
+$--select-font-color-disabled: $--primary-color-text !default; // 文字 禁用
+$--select-bg-color-disabled: $--const-color-disabled !default; // 背景 禁用
+$--select-bg-color-disabled-hover: $--const-color-disabled !default; // 背景 禁用+hover
+
+$--select-font-color-selected: $--action-color-4 !default; // 文字 选中
+$--select-bg-color-selected: $--action-color-3 !default; // 背景 选中
+$--select-bg-color-selected-hover: $--action-color-3 !default; // 背景 选中+hover
+
+$--select-icon-color: $--const-color-disabled !default; // icon颜色
+$--select-icon-color-hover: $--action-color-4 !default; // icon颜色 hover
+
+.el-select {
+  width: 100%;
+  &:hover .el-input__inner,
+  & .el-input.is-focus .el-input__inner {
+    border-color: $--primary-color;
+  }
+  &-dropdown {
+    background-color: $--select-bg-color;
+    border-color: $--select-border-color;
+    box-shadow: 0 0.125rem 0.75rem 0 $--select-shadow-color;
+    &__item {
+      height: 2rem;
+      padding: 0 1.4rem;
+      line-height: 2rem;
+      color: $--select-font-color;
+      font-size: 0.875rem;
+      &:hover,
+      &.hover {
+        background-color: $--select-bg-color-hover;
+      }
+      &.is-disabled {
+        color: $--select-font-color-disabled;
+        background-color: $--select-bg-color-disabled;
+        &:hover {
+          background-color: $--select-bg-color-disabled-hover;
+        }
+      }
+      &.selected {
+        color: $--select-font-color-selected;
+        background-color: $--select-bg-color-selected;
+        &:hover {
+          background-color: $--select-bg-color-selected-hover;
+        }
+      }
+    }
+    &.is-multiple .el-select-dropdown__item.selected {
+      color: $--select-font-color-selected;
+      background-color: $--select-bg-color-selected;
+      &:after {
+        right: 0.625rem;
+        font-size: 0.75rem;
+      }
+      &:hover {
+        background-color: $--select-bg-color-selected-hover;
+      }
+    }
+    &__wrap {
+      max-height: 17.125rem;
+    }
+    &__empty {
+      padding: 0.625rem 0;
+      font-size: 0.75rem;
+    }
+  }
+  &__input {
+    margin-left: 0.9375rem;
+    font-size: 0.75rem;
+    color: rgba($--select-font-color, 0.85);
+  }
+  .el-tag.el-tag--info {
+    color: rgba($--select-font-color, 0.75);
+    border-color: rgba($--select-font-color, 0.65);
+  }
+  // icon
+  & .el-input .el-select__caret {
+    font-size: 0.75rem;
+    color: $--select-icon-color;
+    &:hover {
+      color: $--select-icon-color-hover;
+    }
+  }
+  &-group__title {
+    padding-left: 1.25rem;
+    font-size: 0.75rem;
+    line-height: 1.875rem;
+  }
+}

@@ -1,0 +1,46 @@
+.dark-night {
+  @import './variables.scss';
+  @import '../../public-color.scss';
+  @import '../../element/index.scss';
+  @import '../../public.scss';
+
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+@media only screen and (max-width: 3880px) {
+  .dark-night {
+    font-size: 28px;
+  }
+}
+@media only screen and (max-width: 2880px) {
+  .dark-night {
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width: 2400px) {
+  .dark-night {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 1920px) {
+  .dark-night {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 1920px) {
+  .dark-night {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 1600px) {
+  .dark-night {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 1366px) {
+  .dark-night {
+    font-size: 12px;
+  }
+}

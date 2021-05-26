@@ -1,0 +1,44 @@
+// alert 警告
+
+$--alert-font-color-success: $--const-color-success !default; // 字体 success
+$--alert-font-color-info: $--const-color-info !default; // 字体 info
+$--alert-font-color-error: $--const-color-error !default; // 字体 error
+$--alert-font-color-warning: $--const-color-warning !default; // 字体 warning
+
+$--alert-close-font-color: $--const-color-disabled !default; // 关闭按钮 字体
+$--alert-close-font-color-hover: $--action-color-4 !default; // 关闭按钮 字体 hover
+$--alert-bg-color: $--action-color-3 !default; // 背景
+
+
+.el-alert {
+  @mixin alert-color($color) {
+    &.is-light {
+      color: $color;
+    }
+    &.is-dark {
+      background-color: $color;
+    }
+  }
+
+  background-color: $--alert-bg-color;
+  &--success {
+    @include alert-color($--alert-font-color-success);
+  }
+  &--info {
+    @include alert-color($--alert-font-color-info);
+  }
+  &--warning {
+    @include alert-color($--alert-font-color-warning);
+  }
+  &--error {
+    @include alert-color($--alert-font-color-error);
+  }
+  &.is-light, &.is-dark {
+    .el-alert__closebtn {
+      color: $--alert-close-font-color;
+      &:hover {
+        color: $--alert-close-font-color-hover;
+      }
+    }
+  }
+}

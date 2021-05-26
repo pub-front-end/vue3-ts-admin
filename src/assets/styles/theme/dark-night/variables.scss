@@ -1,0 +1,104 @@
+/* 基本
+********************************************************************************************** */
+$--primary-color: #05aeed; // 主题颜色
+$--primary-color-text: rgba(255, 255, 255, 1); // 字体颜色 文本
+$--primary-color-label: rgba(255, 255, 255, 0.55); // 字体颜色 标签
+
+/* 顶部栏
+********************************************************************************************** */
+$--top-bar-bg-color: #111821; // 背景颜色
+$--top-bar-border-color: rgba(0, 213, 216, 0.2); // 下边框
+$--top-bar-svg-color: $--primary-color-text; // svg图标颜色
+$--top-bar-svg-color--hover: $--primary-color; // svg图标颜色hover
+$--top-bar-user-svg-color: $--top-bar-svg-color; // 用户svg图标颜色
+$--top-bar-user-svg-color--hover: $--primary-color; // 用户svg图标颜色hover
+$--top-bar-user-time-bg-color: #213853; // 用户时间背景色
+
+/* 菜单栏
+********************************************************************************************** */
+$--menu-active-color: $--primary-color;
+$--menu-bg-color: #1e2c3d; //菜单大背景色
+$--menu-item-bg-color-hover: #415361; // 菜单选项hover背景色
+$--menu-item-opened-bg-color: #213853; // 菜单展开背景色
+$--menu-item-actived-bg-color: #354251; // 菜单选中背景色
+$--menu-item-actived-border-color: $--primary-color; // 菜单选中边框背景色
+$--menu-font-color: #ffffff; // 菜单 字体颜色
+$--menu-popup-font-color: #ffffff; // 菜单 popup字体颜色
+$--menu-font-color-opend: $--primary-color; // 菜单 展开字体颜色
+
+/* 内容区域
+********************************************************************************************** */
+$--body-bg-color: #141922; // 页面 背景颜色
+$--card-bg-color: #222832; // 卡片 背景颜色
+
+// 边框
+$--form-border-color: #6a727f; // 表单组件(input,select) 边框颜色
+$--divider-border-color: #626e7f; // 内容区域 分割边框颜色
+$--transparent-border-color: transparent; // 无边框
+$--button-border-color: #ffffff;
+// 展开内容 (select,input,cascader,date,tooltip)
+$--expanded-bg-color: #1e2c3d; // 展开内容 背景颜色
+$--expanded-border-color: #142336; // 展开内容 边框颜色
+$--expanded-shadow-color: #000000; // 展开内容 阴影颜色
+
+// 弹框 (dialog,messagebox,notify)
+$--popup-bg-color: #1e2834; // 弹框内容 背景颜色
+$--popup-title-bg-color: #303a46; // 弹框内容 标题背景颜色
+$--popup-close-bg-color: #8c9eb4; // 弹框内容 关闭按钮背景颜色
+$--popup-border-color: #040000; // 弹框内容 边框颜色
+$--popup-shadow-color: #040000; // 弹框内容 阴影颜色
+
+// 交互 (hover,active,selected)
+$--action-color-1: rgba(0, 0, 0, 0.1); // 最浅
+$--action-color-2: rgba(0, 0, 0, 0.3); // 较深
+$--action-color-3: rgba(0, 0, 0, 0.5); // 深色
+$--action-color-4: $--primary-color; // 主色
+$--action-color-5: hsl(196, 88%, 59%); // 较浅
+$--action-color-6: rgba(59, 194, 243, 0.25); // 最浅
+$--action-color-7: rgba(255, 255, 255, 0.8); //
+$--action-color-8: rgba(255, 255, 255, 0.2); //
+
+// 滚动条
+$--scrollbar-thumb-bg-color: #071120;
+$--scrollbar-thumb-bg-color-hover: #071120;
+$--scrollbar-thumb-border-color: #646f7b;
+
+// 表格
+
+$--table-font-color: $--primary-color-text; // 表格 字体
+$--table-th-bg-color: #172231; // 表头背景
+$--table-tr-bg-color: #202833; // 斑马线条纹深色 背景
+$--table-tr-bg-color--striped: #262d38; // 斑马线条纹浅色 背景
+$--table-tr-bg-color--hover: rgba(59, 194, 243, 0.15); // 行 hover 背景
+$--table-border-color: rgba(58, 58, 58, 0.5); // 表格边框rgba(58, 58, 58, 0.5)
+$--table-remain-bg-color: $--card-bg-color; // 表格剩余内容 背景
+$--table-row-selected-bg-color: rgba(59, 194, 243, 0.35); // 表格行选中
+$--table-loading-mask: rgba(0, 0, 0, 0.4); // 表格加载背景色
+
+
+//离线状态
+$--status-offline-color: #b1b1b1;
+$--status-offline-radial-color: rgba(177, 177, 177, 0.15); //光环颜色
+
+// 标签页
+$--tags-view-border-color: rgba(
+  $color: #050606,
+  $alpha: 0.4
+); // 顶部border颜色
+$--tags-view-box-shadow-color: #000000; // 底部阴影颜色
+$--tags-view-item-active-color: rgba(
+  $color: $--menu-active-color,
+  $alpha: 0.8
+);
+$--tags-view-item-active-hover-color: rgba(
+  $color: $--menu-active-color,
+  $alpha: 1
+);
+$--tags-view-item-hover-color: rgba(
+  $color: $--menu-active-color,
+  $alpha: 0.4
+); // 标签hover背景色
+$--tags-view-item-lock-color: rgba(
+  $color: #046588,
+  $alpha: 0.6
+); // 标签锁定背景色

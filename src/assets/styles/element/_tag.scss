@@ -1,0 +1,90 @@
+// 标签
+$--tag-font-color: $--primary-color-text !default; // 默认标签 字体
+$--tag-font-color-hover: $--action-color-4 !default; // 默认标签 字体 hover
+$--tag-border-color: $--primary-color-text !default; // 默认标签 边框
+$--tag-bg-color: $--action-color-4 !default; // 默认标签 背景
+
+$--tag-font-color-success: $--const-color-success !default; // success标签 字体
+$--tag-font-color-success-hover: $--const-color-success-light !default; // success标签 字体 hover
+$--tag-border-color-success: $--const-color-success !default; // success标签 边框
+$--tag-bg-color-success: $--const-color-success !default; // success标签 背景
+
+$--tag-font-color-info: $--const-color-info !default; // info标签 字体
+$--tag-font-color-info-hover: $--const-color-info-light !default; // info标签 字体 hover
+$--tag-border-color-info: $--const-color-info !default; // info标签 边框
+$--tag-bg-color-info: $--const-color-info !default; // info标签 背景
+
+$--tag-font-color-warning: $--const-color-warning !default; // warning标签 字体
+$--tag-font-color-warning-hover: $--const-color-warning-light !default; // warning标签 字体 hover
+$--tag-border-color-warning: $--const-color-warning !default; // warning标签 边框
+$--tag-bg-color-warning: $--const-color-warning !default; // warning标签 背景
+
+$--tag-font-color-danger: $--const-color-error !default; // danger标签 字体
+$--tag-font-color-danger-hover: $--const-color-error-light !default; // danger标签 字体 hover
+$--tag-border-color-danger: $--const-color-error !default; // danger标签 边框
+$--tag-bg-color-danger: $--const-color-error !default; // danger标签 背景
+
+.el-tag {
+  font-size: 0.75rem;
+  @mixin tag-color($font, $border, $background, $font-hover) {
+    color: $font;
+    border-color: $border;
+    background-color: rgba($background, 0.1);
+    .el-tag__close {
+      color: $font;
+      &:hover {
+        background-color: $font-hover;
+        color: #fff;
+      }
+    }
+  }
+  @include tag-color($--tag-font-color, $--tag-border-color, $--tag-bg-color, $--tag-font-color-hover);
+  &.el-tag--success {
+    @include tag-color(
+      $--tag-font-color-success,
+      $--tag-border-color-success,
+      $--tag-bg-color-success,
+      $--tag-font-color-success-hover
+    );
+  }
+  &.el-tag--info {
+    @include tag-color(
+      $--tag-font-color-info,
+      $--tag-border-color-info,
+      $--tag-bg-color-info,
+      $--tag-font-color-info-hover
+    );
+  }
+  &.el-tag--warning {
+    @include tag-color(
+      $--tag-font-color-warning,
+      $--tag-border-color-warning,
+      $--tag-bg-color-warning,
+      $--tag-font-color-warning-hover
+    );
+  }
+  &.el-tag--danger {
+    @include tag-color(
+      $--tag-font-color-danger,
+      $--tag-border-color-danger,
+      $--tag-bg-color-danger,
+      $--tag-font-color-danger-hover
+    );
+  }
+  &--mini {
+    height: 1.25rem;
+    padding: 0 0.3125rem;
+    line-height: 1.1875rem;
+  }
+  &--small {
+    height: 1.5rem;
+    padding: 0 0.5rem;
+    line-height: 1.375rem;
+  }
+  .el-tag__close {
+    font-size: 0.75rem;
+    height: 1rem;
+    width: 1rem;
+    line-height: 1rem;
+  }
+}

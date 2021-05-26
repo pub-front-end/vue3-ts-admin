@@ -1,0 +1,52 @@
+// 上传
+$--upload-font-color: $--primary-color-text !default; // 上传 字体
+$--upload-bg-color-hover: $--action-color-6 !default; // 上传 hover 背景
+$--upload-close-btn-color: $--primary-color-text !default; // 上传 icon 字体
+
+.el-upload {
+  &-list__item {
+    &-name {
+      color: $--upload-font-color;
+    }
+    &:hover {
+      background-color: $--upload-bg-color-hover;
+    }
+    .el-icon-close {
+      color: $--upload-close-btn-color;
+    }
+    &.is-success {
+      .el-upload-list__item-name {
+        &:hover {
+          color: $--primary-color;
+        }
+      }
+    }
+  }
+}
+.upload-file {
+  &--list {
+    &__icon {
+      .icon {
+        path {
+          fill: $--primary-color-text !important;
+        }
+        &:hover {
+          path {
+            fill: $--primary-color !important;
+          }
+        }
+      }
+
+      .red {
+        path {
+          fill: red !important;
+        }
+        &:hover {
+          path {
+            fill: red !important;
+          }
+        }
+      }
+    }
+  }
+}

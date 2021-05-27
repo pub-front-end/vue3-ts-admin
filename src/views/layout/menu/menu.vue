@@ -1,6 +1,8 @@
 <script lang="tsx">
-  import { defineComponent } from 'vue';
+  import { defineComponent, ref } from 'vue';
   import menuData from './menu-data';
+
+  import { useRoute } from 'vue-router';
   // 菜单接口
   export interface Imenu {
     id: string;
@@ -14,16 +16,15 @@
     [key: string]: any;
   }
   export default defineComponent({
-    data() {
+    setup() {
+      const route = useRoute();
+      let defaultActive = ref(route.path);
       return {
-        menuTreeList: [menuData]
+        menuTreeList: [menuData],
+        defaultActive
       };
     },
-    computed: {
-      defaultActive() {
-        return this.$route.path;
-      }
-    },
+
     methods: {
       hasChildMenu(menu: Imenu[]) {
         return (
@@ -40,15 +41,20 @@
 
       renderMenu(h: any, menuList: Imenu[]) {
         console.log('menuList----', menuList);
+
         return menuList?.length
           ? menuList.map((item) => {
               let href = item.href;
-              return this.hasChildMenu(item.childrenMenu || []) ? (
-                <el-submenu key={item.id} index={item.id || item.href}>
-                  <span v-slot-title>
+              const titleSlot = {
+                title: () => [
+                  <span>
                     <i class={'iconfont ' + item.icon}></i>
                     <span>{item.name}</span>
                   </span>
+                ]
+              };
+              return this.hasChildMenu(item.childrenMenu || []) ? (
+                <el-submenu key={item.id} index={item.id || item.href} v-slots={titleSlot}>
                   {this.renderMenu(h, item.childrenMenu || [])}
                 </el-submenu>
               ) : item.type === '1' && item.isShow === '1' ? (
@@ -57,12 +63,8 @@
                   index={href || item.id}
                   route={href || ''}
                   on-click={() => this.trunTo(href)}
-                >
-                  <template v-slot-title>
-                    <i class={'iconfont ' + item.icon}></i>
-                    <span>{item.name}</span>
-                  </template>
-                </el-menu-item>
+                  v-slots={titleSlot}
+                ></el-menu-item>
               ) : null;
             })
           : null;

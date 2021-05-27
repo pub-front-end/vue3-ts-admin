@@ -10,10 +10,8 @@ import { usI18n } from '../src/lang';
 import App from './app.vue';
 import router from './router';
 import store from './store';
-import { emitter } from './utils/emitter';
 
 const app = createApp(App);
-app.config.globalProperties.$emitter = emitter; // 事件总线
 app.use(store).use(router).use(usI18n);
 app.use(ElementPlus, { size: 'small', zIndex: 3000 });
 

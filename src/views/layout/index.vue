@@ -12,7 +12,7 @@
         wrap-class="layout-container__body__aside left-menu__container left-menu"
         :class="isCollapse ? 'layout-container__body__aside--none' : 'layout-container__body__aside--show'"
       >
-        <!-- <pub-menu></pub-menu> -->
+        <pub-menu></pub-menu>
       </el-scrollbar>
       <div class="layout-container__body__main">
         <svg-icon
@@ -54,13 +54,13 @@
   import { useStore } from 'vuex';
   import { emitter } from '@/utils/emitter';
 
-  // import PubMenu from './menu/menu.vue';
+  import PubMenu from './menu/menu.vue';
   import Navbar from './header/navbar.vue';
   // import TagsView from './tags-view/index.vue';
   export default defineComponent({
     name: 'layout',
     components: {
-      // PubMenu,
+      PubMenu,
       Navbar
       // TagsView
     },

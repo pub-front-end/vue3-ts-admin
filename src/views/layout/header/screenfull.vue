@@ -11,11 +11,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+  import { defineComponent } from 'vue';
+  import { ElMessage } from 'element-plus';
+
   import screenfull from 'screenfull';
   const sf = screenfull;
-
-  export default {
+  export default defineComponent({
     name: 'screenfull',
     data() {
       return {
@@ -24,35 +26,32 @@
     },
 
     mounted() {
-      sf.enabled && sf.on('change', this.change);
+      sf.isEnabled && sf.on('change', this.change);
       window.addEventListener('keydown', this.keyDown, true); //监听按键事件
     },
 
     beforeDestory() {
-      sf.enabled && sf.off('change', this.change);
+      sf.isEnabled && sf.off('change', this.change);
     },
     methods: {
       change() {
-        if (sf.enabled) {
+        if (sf.isEnabled) {
           this.isFullscreen = sf.isFullscreen;
         }
       },
-      keyDown(event) {
+      keyDown(event: any) {
         if (event.keyCode === 122) {
           event.returnValue = false;
           this.toFullscreen();
         }
       },
       toFullscreen() {
-        if (!sf.enabled) {
-          this.$message({
-            message: '当前浏览器不支持全屏功能',
-            type: 'warning'
-          });
+        if (!sf.isEnabled) {
+          ElMessage.warning('当前浏览器不支持全屏功能');
           return false;
         }
         sf.toggle();
       }
     }
-  };
+  });
 </script>

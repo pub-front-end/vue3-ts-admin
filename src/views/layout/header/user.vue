@@ -1,12 +1,11 @@
 <!--L.Dragon-->
 <template>
   <div>
-    <el-popover v-model="userVisible" placement="top-end" :width="280">
+    <el-popover v-model="userVisible" placement="top-end" :width="150">
       <div class="user-content">
         <div class="user-info">
           <div class="user-info--avatar">
-            <!-- <svg-icon name="user-header" class="user-fill" style="width: 3rem; height: 3rem" /> -->
-            <!-- nickname -->
+            <svg-icon data="@svg/user-header.svg" style="width: 3rem; height: 3rem" original />
             <span class="text--normal">
               {{ user.name ? user.name : user.account }}
             </span>
@@ -55,15 +54,7 @@
         </div>
       </template>
     </el-popover>
-    <!-- <reset-password-form
-      :visible="isShowResetPwd"
-      :loading="passwordLoading"
-      :show-old-password="true"
-      :account-info="accountInfo"
-      :password-length="passwordLength"
-      @cancel="cancelChangePassWord"
-      @changePassWord="changePassWord"
-    ></reset-password-form> -->
+
     <el-dialog v-model:visible="systemDialogVisible" title="界面设置" width="25%">
       <el-row>
         <el-col :span="10" class="sys-lable">面包屑</el-col>
@@ -187,6 +178,7 @@
   }
   .user-content {
     padding: 0.5rem;
+    text-align: center;
     &-item {
       height: 2rem;
       line-height: 2rem;

@@ -3,6 +3,8 @@ import '@/assets/styles/theme/dark-night/index.scss'; // 暗夜模式样式
 import '@yzfe/svgicon/lib/svgicon.css';
 import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon';
 import ElementPlus from 'element-plus';
+import 'element-plus/lib/theme-chalk/index.css';
+import 'normalize.css';
 import { createApp } from 'vue';
 import { usI18n } from '../src/lang';
 import App from './app.vue';

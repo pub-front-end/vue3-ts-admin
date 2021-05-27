@@ -16,6 +16,7 @@
     "core-js": "^3.6.5",
     "element-plus": "^1.0.2-beta.44",
     "mitt": "^2.1.0",
+    "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "screenfull": "^5.1.0",
     "vue": "^3.0.0",

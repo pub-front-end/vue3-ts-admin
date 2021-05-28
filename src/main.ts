@@ -8,10 +8,12 @@ import 'normalize.css';
 import { createApp } from 'vue';
 import { usI18n } from '../src/lang';
 import App from './app.vue';
+import { initComponents } from './components';
 import router from './router';
 import store from './store';
 
 const app = createApp(App);
+initComponents(app); //初始化自定义的组件
 app.use(store).use(router).use(usI18n);
 app.use(ElementPlus, { size: 'small', zIndex: 3000 });
 

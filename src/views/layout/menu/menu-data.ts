@@ -81,11 +81,11 @@ export default {
       ...common,
       id: '1111-08',
       level: '2',
-      name: '自定义首页',
+      name: '首页',
       parentId: '1111',
       parentIds: '0,1111',
-      target: '/example/dash-board',
-      href: '/example/dash-board'
+      target: '/home',
+      href: '/home'
     },
 
     {

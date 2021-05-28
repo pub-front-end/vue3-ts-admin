@@ -1,7 +1,7 @@
 <!--L.Dragon-->
 <template>
   <div>
-    <el-popover v-model="userVisible" placement="top-end" :width="150">
+    <el-popover v-model:visible="userVisible" placement="top-end" :width="150">
       <div class="user-content">
         <div class="user-info">
           <div class="user-info--avatar">
@@ -55,7 +55,7 @@
       </template>
     </el-popover>
 
-    <el-dialog v-model:visible="systemDialogVisible" title="界面设置" width="25%">
+    <el-dialog v-model="systemDialogVisible" title="界面设置" width="25%">
       <el-row>
         <el-col :span="10" class="sys-lable">面包屑</el-col>
         <el-col :span="14" class="sys-value">
@@ -81,8 +81,8 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent } from 'vue';
-  import { useRoute } from 'vue-router';
+  import { computed, defineComponent, ref } from 'vue';
+  import { useRoute, useRouter } from 'vue-router';
   // import { updatePassword } from '@/api/common/login';
   // import { TagsViewStore } from '@/store/modules/public/tags-view';
   import { useStore } from 'vuex';
@@ -92,7 +92,33 @@
     setup() {
       const store = useStore();
       const route = useRoute();
+      const router = useRouter();
+      let systemDialogVisible = ref(false);
+      let userVisible = ref(false);
+      let isShowResetPwd = ref(false);
+      const turnToSetting = () => {
+        userVisible.value = false;
+        router.push({ path: '/settings' });
+      };
+      const showPassWord = () => {
+        userVisible.value = false;
+        isShowResetPwd.value = true;
+      };
+      const turnToSystemSetting = () => {
+        systemDialogVisible.value = true;
+      };
+
+      const logout = () => {
+        userVisible.value = false;
+      };
       return {
+        turnToSetting,
+        showPassWord,
+        systemDialogVisible,
+        turnToSystemSetting,
+        logout,
+        userVisible,
+        isShowResetPwd,
         user: computed(() => store.getters.userData),
         isShowTagsView: computed({
           get() {
@@ -124,36 +150,6 @@
           }
         })
       };
-    },
-    data() {
-      return {
-        userVisible: false,
-        systemDialogVisible: false,
-        isShowResetPwd: false,
-        passwordLoading: false,
-        accountInfo: {}
-      };
-    },
-    methods: {
-      turnToSetting() {
-        this.userVisible = false;
-        this.$router.push({ path: '/settings' });
-      },
-      showPassWord() {
-        this.userVisible = false;
-        this.accountInfo = { account: this.user.account };
-        this.isShowResetPwd = true;
-      },
-      turnToSystemSetting() {
-        this.systemDialogVisible = true;
-      },
-
-      cancelChangePassWord() {
-        this.isShowResetPwd = false;
-      },
-      logout() {
-        this.userVisible = false;
-      }
     }
   });
 </script>

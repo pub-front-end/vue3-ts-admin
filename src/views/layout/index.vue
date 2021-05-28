@@ -37,11 +37,18 @@
         <!-- <tags-view v-show="isShowTagsView" /> -->
 
         <div class="layout-container__body__main__center">
-          <transition name="fade-transform" mode="out-in">
+          <!-- <transition name="fade-transform" mode="out-in">
             <keep-alive>
               <router-view />
             </keep-alive>
-          </transition>
+          </transition> -->
+          <router-view v-slot="{ Component, route }">
+            <transition :name="route.meta.transition || 'fade-transform'" mode="out-in">
+              <keep-alive>
+                <component :is="Component" :key="route.path" />
+              </keep-alive>
+            </transition>
+          </router-view>
         </div>
       </div>
     </div>

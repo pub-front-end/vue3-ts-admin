@@ -2,7 +2,7 @@
   import { defineComponent, ref } from 'vue';
   import menuData from './menu-data';
 
-  import { useRoute } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
   // 菜单接口
   export interface Imenu {
     id: string;
@@ -18,15 +18,10 @@
   export default defineComponent({
     setup() {
       const route = useRoute();
+      const router = useRouter();
       let defaultActive = ref(route.path);
-      return {
-        menuTreeList: [menuData],
-        defaultActive
-      };
-    },
 
-    methods: {
-      hasChildMenu(menu: Imenu[]) {
+      const hasChildMenu = (menu: Imenu[]) => {
         return (
           menu &&
           menu.length &&
@@ -34,14 +29,21 @@
             return e && e.type === '1' && e.isShow === '1';
           }) > -1
         );
-      },
-      trunTo(href: string) {
-        href && this.$router.push(href || '');
-      },
+      };
+      const trunTo = (href: string) => {
+        console.log('------------', href, router);
+        href && router.push(href || '');
+      };
+      return {
+        trunTo,
+        hasChildMenu,
+        menuTreeList: [menuData],
+        defaultActive
+      };
+    },
 
+    methods: {
       renderMenu(h: any, menuList: Imenu[]) {
-        console.log('menuList----', menuList);
-
         return menuList?.length
           ? menuList.map((item) => {
               let href = item.href;
@@ -62,12 +64,15 @@
                   key={item.id}
                   index={href || item.id}
                   route={href || ''}
-                  on-click={() => this.trunTo(href)}
+                  onClick={() => this.trunTo(href)}
                   v-slots={titleSlot}
                 ></el-menu-item>
               ) : null;
             })
           : null;
+      },
+      handleSelect(key: string, keyPath: string) {
+        console.log(key, keyPath);
       }
     },
 

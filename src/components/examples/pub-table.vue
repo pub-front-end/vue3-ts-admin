@@ -12,7 +12,7 @@
           ></pub-render-search>
         </div> -->
       </pub-content-item>
-      <pub-content-item class="content-bg async-table">
+      <!-- <pub-content-item class="content-bg async-table">
         <pub-async-table
           ref="pub-table"
           title="异步表格"
@@ -28,11 +28,10 @@
             <el-button type="primary" @click="handleOper">批量操作</el-button>
           </template>
         </pub-async-table>
-      </pub-content-item>
+      </pub-content-item> -->
       <pub-content-item class="content-bg">
         <pub-custom-table
           title="静态表格"
-          page-id="cunstom-table-test"
           :data="tableData"
           show-type="html"
           :is-scroll="true"
@@ -50,15 +49,11 @@
 <script lang="tsx">
   import { defineComponent, ref, reactive, computed } from 'vue';
   import { ElMessage } from 'element-plus';
-  import { PubAsyncTable, PubCustomTable } from '../packages/table/index';
   import { getUserList } from '@/api/user';
 
   export default defineComponent({
     name: 'pub-container-demo',
-    components: {
-      PubAsyncTable,
-      PubCustomTable
-    },
+
     setup() {
       return {
         getUserList,

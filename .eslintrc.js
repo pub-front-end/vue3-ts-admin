@@ -12,7 +12,12 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 2020,
-    parser: '@typescript-eslint/parser' //ESLint的解析器，用于解析TypeScript，从而检查和规范TypeScript代码。
+    parser: '@typescript-eslint/parser', //ESLint的解析器，用于解析TypeScript，从而检查和规范TypeScript代码。
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+      tsx: true
+    }
   },
   overrides: [{ files: '.prettierrc.js' }],
   rules: {

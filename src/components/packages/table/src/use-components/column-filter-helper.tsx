@@ -1,7 +1,7 @@
 import HttpService from '@/utils/http-service';
 import { ElMessage } from 'element-plus';
 import Sortable from 'sortablejs';
-import { computed, getCurrentInstance, onBeforeMount, reactive, ref, toRef, watch } from 'vue';
+import { computed, getCurrentInstance, nextTick, onBeforeMount, reactive, ref, toRef, watch } from 'vue';
 import { ItableProps } from './props-helper';
 
 // 监测设备监测口表格数据分页查询
@@ -18,7 +18,8 @@ const updatePageConfig = (data: any) =>
   });
 
 function useColumnFilter(props: ItableProps) {
-  let vm: any;
+  let vm = getCurrentInstance();
+  console.log(`vm===========`, vm);
   let pageId = toRef(props, 'pageId');
   let isShowPopover = ref(false);
 
@@ -31,6 +32,7 @@ function useColumnFilter(props: ItableProps) {
     originLabelList: [] as string[], // 最初的标签数组
     sortColumn: null as Sortable | null // 拖拽列对象
   });
+  console.log(`column-filter----------`, props.columns);
   const innerColumnLabelObj = computed(() => {
     const obj: any = {};
     props.columns.forEach((e: any) => {
@@ -152,7 +154,7 @@ function useColumnFilter(props: ItableProps) {
       <el-popover
         ref="column-filter"
         class="pub-popover"
-        value={isShowPopover}
+        value={isShowPopover.value}
         onInput={(e: boolean) => {
           isShowPopover.value = e;
         }}
@@ -201,7 +203,7 @@ function useColumnFilter(props: ItableProps) {
     () => isShowPopover,
     (val) => {
       if (val) {
-        vm.$nextTick(() => {
+        nextTick(() => {
           initSortTable();
         });
       } else {

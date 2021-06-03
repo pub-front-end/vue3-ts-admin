@@ -7,7 +7,7 @@
       const { path } = params;
       this.$router.replace({ path: '/' + path, query });
     },
-    render: function (h: () => any) {
+    render(h: any) {
       return h(); // avoid warning message
     }
   });

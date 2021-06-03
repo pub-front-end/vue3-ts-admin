@@ -30,18 +30,20 @@
         </pub-async-table>
       </pub-content-item> -->
       <pub-content-item class="content-bg">
-        <pub-custom-table
+        <simple-table
           title="静态表格"
+          :height="300"
           :data="tableData"
           show-type="html"
           :is-scroll="true"
           :columns="columns"
           :show-sort-table="true"
+          @selection-change="selectionChange"
         >
           <template #headerRight>
             <div>按钮区域</div>
           </template>
-        </pub-custom-table>
+        </simple-table>
       </pub-content-item>
     </pub-content>
   </pub-container>
@@ -55,7 +57,11 @@
     name: 'pub-container-demo',
 
     setup() {
+      function selectionChange(params: any[]) {
+        console.log('selectionChange---', params);
+      }
       return {
+        selectionChange,
         getUserList,
         isBatchDel: ref(true),
         isBatchExport: ref(true),
@@ -272,43 +278,61 @@
           }
         ]),
         columns: computed(() => [
+          { label: '全选', type: 'selection', reserveSelection: true, disabled: true, width: 36 },
+          // {
+          //   label: '告警子类型',
+          //   show: true,
+          //   width: 236,
+          //   prop: 'date',
+          //   render: (h: any, scope: any) => {
+          //     // 自定义编辑列表 注意需要调整输入框的style
+          //     return (
+          //       <el-input
+          //         class="pub-table--input"
+          //         value={scope.row.name}
+          //         on-input={(e: string) => {
+          //           console.log(e);
+          //           // const { row, $index } = scope;
+          //           // this.tableData.splice($index, 1, {
+          //           //   date: row.date,
+          //           //   name: e,
+          //           //   address: row.address
+          //           // });
+          //         }}
+          //       ></el-input>
+          //     );
+          //   }
+          // },
           {
-            label: '告警子类型',
+            label: '姓名1111',
+            prop: 'name',
             show: true,
-            width: 236,
-            prop: 'date',
-            render: (h: any, scope: any) => {
-              // 自定义编辑列表 注意需要调整输入框的style
-              return (
-                <el-input
-                  class="pub-table--input"
-                  value={scope.row.name}
-                  on-input={(e: string) => {
-                    console.log(e);
-                    // const { row, $index } = scope;
-                    // this.tableData.splice($index, 1, {
-                    //   date: row.date,
-                    //   name: e,
-                    //   address: row.address
-                    // });
-                  }}
-                ></el-input>
-              );
+            render(scope: any) {
+              return <div>{scope.$index + scope.row.name}</div>;
             }
           },
           { label: '告警子类型看', prop: 'date', width: 236, show: true },
           { label: '日期1', prop: 'date', show: true },
           { label: '日期3', prop: 'date' },
-          { label: '姓名16', prop: 'name' },
+          { label: '姓名16地址', prop: 'name', customColumn: 'address' },
+
+          { label: '地址', prop: 'address', width: 236, show: true },
           {
-            label: '姓名1',
-            prop: 'name',
+            label: '操作',
+            prop: 'address',
             show: true,
-            render(h: any, scope: any) {
-              return <div>{scope.$index + scope.row.name}</div>;
+            disabled: true,
+            render() {
+              return (
+                <div>
+                  <el-button type="text">编辑</el-button>
+                  <el-button type="text" class="button--del">
+                    删除
+                  </el-button>
+                </div>
+              );
             }
-          },
-          { label: '地址', prop: 'address', width: 236, show: true }
+          }
         ])
       };
     },

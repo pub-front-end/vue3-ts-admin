@@ -1,10 +1,10 @@
 import { App } from 'vue';
 // import PubAsyncTable from './src/pub-async-table';
 // import PubCustomTable from './src/pub-custom-table';
-import PubTable from './src/pub-table';
+import SimpleTable from './src/simple-table';
 
-PubTable.install = (app: App) => {
-  app.component(PubTable.name, PubTable);
+SimpleTable.install = (app: App) => {
+  app.component(SimpleTable.name, SimpleTable);
 };
 // PubAsyncTable.install = (app: App) => {
 //   app.component(PubAsyncTable.name, PubAsyncTable);
@@ -14,16 +14,16 @@ PubTable.install = (app: App) => {
 // };
 
 const install = function (app: App) {
-  PubTable.install(app);
+  SimpleTable.install(app);
   // PubAsyncTable.install(app);
   // PubCustomTable.install(app);
 };
 
-export { install, PubTable };
+export { install, SimpleTable };
 
 export default {
   install,
-  PubTable
+  SimpleTable
   // PubAsyncTable,
   // PubCustomTable
 };

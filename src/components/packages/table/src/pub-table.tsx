@@ -1,18 +1,40 @@
-import { computed, defineComponent } from 'vue';
-import { ItableProps } from './use-components/props-helper';
+import { defineComponent, watch, watchEffect } from 'vue';
+import props from './use-components/props-helper';
 import useTableCore from './use-components/table-core-helper';
+import Render from './utils/render';
 
 export default defineComponent({
   name: 'pub-table',
-  setup(props: ItableProps, { emit }) {
-    const innerTotal = computed(() => {
-      return props.data.length;
-    });
-    const { innerCurrentPage, innerPageSize } = useTableCore(props, emit);
-
-    const layouts = computed(() => props.layout.split(',').map((item: string) => item.trim()));
-    const paginationShow = computed(() => layouts.value.includes('pagination'));
-    const curTableData = computed(() => {
+  components: {
+    Render
+  },
+  props,
+  emits: [
+    'update',
+    'size-change',
+    'pagination-change',
+    'current-page-change',
+    'set-sort-Table',
+    'sort-change',
+    'selection-change',
+    'prev-click',
+    'next-click'
+  ],
+  setup(props: any, { emit }) {
+    let { innerCurrentPage, innerPageSize, innerTotal, paginationShow, curTableData, renderLayout } = useTableCore(
+      props,
+      emit
+    );
+    watch(
+      () => props.data,
+      (val) => {
+        innerTotal.value = val.length;
+      },
+      {
+        deep: true
+      }
+    );
+    watchEffect(() => {
       if (paginationShow.value && innerTotal) {
         let ceilTotalPage = Math.ceil(innerTotal.value / innerPageSize.value);
         if (innerCurrentPage.value > ceilTotalPage) {
@@ -21,15 +43,15 @@ export default defineComponent({
         }
         let from = innerPageSize.value * (innerCurrentPage.value - 1);
         let to = from + innerPageSize.value;
-        return props.data.slice(from, to);
+        curTableData = props.data.slice(from, to);
       } else {
-        return props.data;
+        curTableData = props.data;
       }
     });
 
-    return { curTableData };
+    return { curTableData, renderLayout };
   },
   render() {
-    return <div></div>;
+    return <div>{this.renderLayout()}</div>;
   }
 });

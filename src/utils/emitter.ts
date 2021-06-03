@@ -9,3 +9,4 @@ export const emitter: Emitter = mitt();
 // function onFoo() {}
 // emitter.on('foo', onFoo); // listen
 // emitter.off('foo', onFoo); // unlisten
+// emitter.emit('foo', onFoo); // unlisten

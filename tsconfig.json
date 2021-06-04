@@ -1,16 +1,39 @@
 {
+  // "compilerOptions": {
+  //   "target": "esnext",
+  //   "module": "esnext",
+  //   "strict": true,
+  //   "jsx": "preserve",
+  //   "importHelpers": true,
+  //   "moduleResolution": "node",
+  //   "skipLibCheck": true,
+  //   "esModuleInterop": true,
+  //   "allowSyntheticDefaultImports": true,
+  //   "sourceMap": true,
+  //   "baseUrl": ".",
+  //   "types": ["webpack-env"],
+  //   "paths": {
+  //     "@/*": ["src/*"]
+  //   },
+  //   "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  // },
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
+    "jsxFactory": "h",
     "importHelpers": true,
     "moduleResolution": "node",
-    "skipLibCheck": true,
+    "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitThis": false, // this可以有隐式的any类型
     "sourceMap": true,
     "baseUrl": ".",
+    "allowJs": true,
+    "skipLibCheck": true,
     "types": ["webpack-env"],
     "paths": {
       "@/*": ["src/*"]

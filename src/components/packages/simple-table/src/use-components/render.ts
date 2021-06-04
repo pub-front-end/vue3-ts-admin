@@ -1,4 +1,5 @@
 import { defineComponent } from 'vue';
+
 export default defineComponent({
   name: 'render',
   functional: true,
@@ -7,6 +8,6 @@ export default defineComponent({
     scope: Object
   },
   render(vm: any) {
-    return vm.render(vm.scope);
+    return vm.render && vm.render(vm.scope);
   }
 });

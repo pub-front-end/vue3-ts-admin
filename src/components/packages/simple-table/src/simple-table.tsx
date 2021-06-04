@@ -10,14 +10,13 @@ export default defineComponent({
   },
   props,
   setup(props: any, { emit }) {
-    let { renderTable, curTableData } = useRender(props, emit);
+    let { renderLayout, curTableData } = useRender(props, emit);
     watchEffect(() => {
       curTableData.value = props.data;
     });
-    return { renderTable, curTableData };
+    return { renderLayout };
   },
   render() {
-    console.log(`new Date()`, new Date());
-    return <div>{this.renderTable()}</div>;
+    return this.renderLayout();
   }
 });

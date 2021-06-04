@@ -8,6 +8,7 @@ import ColumnFilter from './column-filter';
 const DefaultPaginationProps = {
   pageSizes: [15, 30, 50, 100],
   layout: '->, total, sizes, prev, pager, next, jumper'
+  //sizes, prev, pager, next, jumper, ->, total, slot
 };
 
 export default {

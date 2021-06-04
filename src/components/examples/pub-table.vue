@@ -32,18 +32,14 @@
       <pub-content-item class="content-bg">
         <simple-table
           title="静态表格"
-          :height="300"
+          page-id="simple-table-test"
           :data="tableData"
           show-type="html"
-          :is-scroll="true"
           :columns="columns"
           :show-sort-table="true"
+          @test="handleTest"
           @selection-change="selectionChange"
-        >
-          <template #headerRight>
-            <div>按钮区域</div>
-          </template>
-        </simple-table>
+        ></simple-table>
       </pub-content-item>
     </pub-content>
   </pub-container>
@@ -337,6 +333,9 @@
       };
     },
     methods: {
+      handleTest() {
+        console.log('test----------');
+      },
       onSearch() {
         // this.$refs['pub-table']?.doRequest(this.searchParams);
       },

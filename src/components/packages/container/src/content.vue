@@ -12,7 +12,11 @@
 
 <script lang="ts">
   import { defineComponent, PropType } from 'vue';
-  type IDirection = 'vertical' | 'horizontal';
+  export enum Direction {
+    vertical = 'vertical', // 垂直的
+    horizontal = 'horizontal' //横向的
+  }
+
   export default defineComponent({
     name: 'pub-content',
     props: {
@@ -23,8 +27,8 @@
       },
       //  内容排列方向 vertical：竖向；horizontal：横向
       direction: {
-        type: String as PropType<IDirection>,
-        default: 'vertical'
+        type: String as PropType<Direction>,
+        default: Direction.vertical
       }
     }
   });

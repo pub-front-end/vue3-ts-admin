@@ -1,7 +1,6 @@
 // vue.config.js
 const path = require('path');
 const isProd = process.env.NODE_ENV === 'production';
-console.log('isProd--', isProd);
 module.exports = {
   configureWebpack: {
     devtool: isProd ? 'none' : 'eval-source-map',

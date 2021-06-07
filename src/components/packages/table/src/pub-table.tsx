@@ -4,7 +4,7 @@ import Render from './use-components/render';
 import useRender from './use-components/render-helper';
 
 export default defineComponent({
-  name: 'simple-table',
+  name: 'pub-table',
   components: {
     Render
   },

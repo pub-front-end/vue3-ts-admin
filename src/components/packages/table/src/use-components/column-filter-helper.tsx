@@ -1,7 +1,7 @@
 import HttpService from '@/utils/http-service';
 import { ElMessage } from 'element-plus';
 import Sortable from 'sortablejs';
-import { computed, getCurrentInstance, nextTick, onBeforeMount, Ref, ref, toRef, watch } from 'vue';
+import { computed, nextTick, Ref, ref, toRef, watch } from 'vue';
 import { ItableProps } from './props-helper';
 
 // 监测设备监测口表格数据分页查询
@@ -18,8 +18,6 @@ const updatePageConfig = (data: any) =>
   });
 
 function useColumnFilter(props: ItableProps) {
-  let vm = getCurrentInstance();
-  console.log(`vm===========`, vm);
   let pageId = toRef(props, 'pageId');
   let isShowPopover = ref(false);
 
@@ -226,9 +224,6 @@ function useColumnFilter(props: ItableProps) {
     }
   );
 
-  onBeforeMount(() => {
-    vm = getCurrentInstance(); //获取组件实例
-  });
   return { innerColumns, renderColumnFilter };
 }
 

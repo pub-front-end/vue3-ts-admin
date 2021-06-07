@@ -51,6 +51,7 @@ module.exports = {
     'no-useless-escape': 'off',
     // 取消优先使用展开操作符
     'prefer-rest-params': 'off',
+    'vue/no-mutating-props': 'off',
     // 组件名称用短线分割
     'vue/component-definition-name-casing': ['error', 'kebab-case'],
     // template中自定义组件用短线分割

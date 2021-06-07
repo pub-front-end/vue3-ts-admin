@@ -13,7 +13,6 @@ const defaultPaginationProps = {
 function useTableCore(props: ItableProps, emit: any) {
   const { renderColumnFilter, innerColumns } = useColumnFilter(props);
   let vm: any = getCurrentInstance();
-  console.log(`vm----------`, vm, innerColumns);
   let tableClientWidth = ref(100); //表格宽度
   let curTableData = ref([] as any[]);
   let selectionList: any[]; // 选中数组

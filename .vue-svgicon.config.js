@@ -1,7 +1,6 @@
 const path = require('path');
 const svgFilePaths = ['./src/assets/svg'].map((v) => path.resolve(v));
 const tagName = 'svg-icon';
-console.log('svgFilePaths---', svgFilePaths);
 module.exports = {
   tagName,
   svgFilePath: svgFilePaths,

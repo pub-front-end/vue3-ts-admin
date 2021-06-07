@@ -2,18 +2,18 @@
   <pub-container>
     <pub-content>
       <pub-content-item class="content-bg">
-        <!-- <div class="search">
+        <div class="search">
           <pub-render-search
             :items="items"
             :gutter="16"
             :form="searchParams"
-            :full-search="true"
+            :full-search="false"
             @search="onSearch"
           ></pub-render-search>
-        </div> -->
+        </div>
       </pub-content-item>
       <pub-content-item class="content-bg async-table">
-        <simple-async-table
+        <pub-async-table
           ref="pub-table"
           title="异步表格"
           :http-request="getUserList"
@@ -27,10 +27,10 @@
           <template v-slot:batchBtn>
             <el-button type="primary" @click="handleOper">批量操作</el-button>
           </template>
-        </simple-async-table>
+        </pub-async-table>
       </pub-content-item>
       <pub-content-item class="content-bg">
-        <simple-table
+        <pub-table
           title="静态表格"
           page-id="simple-table-test"
           :data="tableData"
@@ -39,7 +39,7 @@
           :show-sort-table="true"
           @test="handleTest"
           @selection-change="selectionChange"
-        ></simple-table>
+        ></pub-table>
       </pub-content-item>
     </pub-content>
   </pub-container>
@@ -71,26 +71,26 @@
           value4: []
         }),
         items: [
-          {
-            label: '性别',
-            prop: 'sex',
-            type: 'select',
-            size: 3,
-            placeholder: '选择性别',
-            data: [
-              { valueCn: '女', mapKey: '0', disabled: true },
-              { valueCn: '男', mapKey: '1' }
-            ]
-          },
-          {
-            label: '事件等级',
-            prop: 'interest',
-            type: 'select',
-            size: 3,
-            attrs: { multiple: true, 'collapse-tags': true },
-            placeholder: '选择兴趣',
-            data: 'eventLevel'
-          },
+          // {
+          //   label: '性别',
+          //   prop: 'sex',
+          //   type: 'select',
+          //   size: 3,
+          //   placeholder: '选择性别',
+          //   data: [
+          //     { valueCn: '女', mapKey: '0', disabled: true },
+          //     { valueCn: '男', mapKey: '1' }
+          //   ]
+          // },
+          // {
+          //   label: '事件等级',
+          //   prop: 'interest',
+          //   type: 'select',
+          //   size: 3,
+          //   attrs: { multiple: true, 'collapse-tags': true },
+          //   placeholder: '选择兴趣',
+          //   data: 'eventLevel'
+          // },
           {
             label: '姓名',
             prop: 'name',
@@ -119,64 +119,64 @@
             type: 'input',
             placeholder: '输入姓名',
             size: 3
-          },
-          {
-            label: '住址',
-            prop: 'address',
-            type: 'cascader',
-            size: 3,
-            placeholder: '试试搜索：住址',
-            dataProps: { checkStrictly: true },
-            data: [
-              {
-                value: 'sichuan',
-                label: '四川',
-                children: [
-                  {
-                    value: 'neijiang',
-                    label: '内江',
-                    children: [
-                      {
-                        value: 'zizhong',
-                        label: '资中'
-                      },
-                      {
-                        value: 'jianyang',
-                        label: '简阳'
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            label: '住址2',
-            prop: 'address',
-            type: 'stationSelect',
-            size: 3
-          },
-          {
-            label: '出生日期',
-            prop: 'birthday',
-            type: 'datePicker',
-            subType: 'datetime',
-            size: 3,
-            attrs: {
-              placeholder: '选择出生日期'
-            }
-          },
-          {
-            label: '时间范围',
-            prop: 'value4',
-            type: 'datePicker',
-            subType: 'datetimerange',
-            size: 6,
-            attrs: {
-              'start-placeholder': '选择开始日期',
-              'end-placeholder': '选择结束日期'
-            }
           }
+          // {
+          //   label: '住址',
+          //   prop: 'address',
+          //   type: 'cascader',
+          //   size: 3,
+          //   placeholder: '试试搜索：住址',
+          //   dataProps: { checkStrictly: true },
+          //   data: [
+          //     {
+          //       value: 'sichuan',
+          //       label: '四川',
+          //       children: [
+          //         {
+          //           value: 'neijiang',
+          //           label: '内江',
+          //           children: [
+          //             {
+          //               value: 'zizhong',
+          //               label: '资中'
+          //             },
+          //             {
+          //               value: 'jianyang',
+          //               label: '简阳'
+          //             }
+          //           ]
+          //         }
+          //       ]
+          //     }
+          //   ]
+          // },
+          // {
+          //   label: '住址2',
+          //   prop: 'address',
+          //   type: 'stationSelect',
+          //   size: 3
+          // },
+          // {
+          //   label: '出生日期',
+          //   prop: 'birthday',
+          //   type: 'datePicker',
+          //   subType: 'datetime',
+          //   size: 3,
+          //   attrs: {
+          //     placeholder: '选择出生日期'
+          //   }
+          // },
+          // {
+          //   label: '时间范围',
+          //   prop: 'value4',
+          //   type: 'datePicker',
+          //   subType: 'datetimerange',
+          //   size: 6,
+          //   attrs: {
+          //     'start-placeholder': '选择开始日期',
+          //     'end-placeholder': '选择结束日期'
+          //   }
+          // }
         ],
         tableData: [
           {
@@ -356,6 +356,7 @@
         console.log('test----------');
       },
       onSearch() {
+        console.log(this.searchParams, '------------searchParams');
         // this.$refs['pub-table']?.doRequest(this.searchParams);
       },
       onReset() {

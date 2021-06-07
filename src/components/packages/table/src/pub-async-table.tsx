@@ -6,7 +6,7 @@ import useRender from './use-components/render-helper';
 import { debounce } from './use-components/tools';
 
 export default defineComponent({
-  name: 'simple-async-table',
+  name: 'pub-async-table',
   components: {
     Render
   },
@@ -54,7 +54,6 @@ export default defineComponent({
       innerCurrentPage.value = payload[props.propsQueryMap.currentPage];
       Promise.resolve(_httpRequest(payload))
         .then(({ data }) => {
-          console.log(`data`, data);
           const result = props.transformResult(data);
           innerLoading.value = false;
           if (Array.isArray(result)) {

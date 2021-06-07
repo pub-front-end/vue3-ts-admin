@@ -39,6 +39,11 @@ export interface ItableProps {
   cellClassName: fn; // 单元格添加颜色
   headerCellClassName: fn; // 表头添加颜色
   rowClassName: fn;
+  httpRequest: fn;
+  transformResult: fn;
+  propsMap: AnyObject;
+  propsQueryMap: AnyObject;
+  params: AnyObject;
 }
 
 export default {
@@ -66,5 +71,24 @@ export default {
   showType: propTypes.string.def(''), //展示类型   html：用于全文检索
   cellClassName: propTypes.func.def((className: any) => className), // 单元格添加颜色
   headerCellClassName: propTypes.func.def((className: any) => className), // 表头添加颜色
-  rowClassName: propTypes.func.def((className: any) => className)
+  rowClassName: propTypes.func.def((className: any) => className),
+
+  total: propTypes.number.def(0), // 总数，一般不用传
+  httpRequest: propTypes.func, // 请求方法
+  transformResult: propTypes.func, // 处理返回数据
+  propsMap: propTypes.object.def({
+    // 接口输出映射关系
+    data: 'list',
+    total: 'total',
+    pageSize: 'pageSize',
+    currentPage: 'pageNum'
+  }),
+  propsQueryMap: propTypes.object.def({
+    // 接口输入映射关系
+    data: 'list',
+    total: 'total',
+    pageSize: 'pageSize',
+    currentPage: 'pageNum'
+  }),
+  params: propTypes.object.def({}) // 查询参数
 };

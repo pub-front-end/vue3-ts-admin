@@ -1,8 +1,7 @@
 import { PubCol, PubContainer, PubContent, PubContentItem } from './packages/container';
 import render from './packages/render';
-import { SimpleTable } from './packages/simple-table';
-import { PubTable } from './packages/table';
-const components = [PubContainer, PubContent, PubContentItem, PubCol, SimpleTable, render, PubTable];
+import { SimpleAsyncTable, SimpleTable } from './packages/simple-table';
+const components = [PubContainer, PubContent, PubContentItem, PubCol, SimpleTable, SimpleAsyncTable, render];
 
 export const initComponents = (app: any) => {
   components.forEach((component) => {

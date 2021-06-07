@@ -31,7 +31,6 @@ function useTableCore(props: ItableProps, emit: any) {
   //最后使用的table-column
   const innerTableColumns = computed(() => {
     const tempColumn = [...innerColumns.value];
-    console.log(`computed--innerTableColumns`, tableClientWidth.value, tempColumn);
     // 第一次初始值不进行什么操作
     if (tableClientWidth.value === 100) return tempColumn;
     let index = tempColumn.findIndex((col: any) => !col.width);
@@ -45,14 +44,13 @@ function useTableCore(props: ItableProps, emit: any) {
           item.propWidth = item.propWidth || item.width;
           item.originWidth = item.originWidth || item.propWidth; //保存初始值
           item.width = ((item.propWidth / total) * tableClientWidth.value).toFixed(2);
-          console.log(item.originWidth, item.width);
         });
         return tempColumn;
       });
+
       return tempColumn;
     } else {
       tempColumn.forEach((item) => {
-        console.log(`item`, item.propWidth, item.width);
         item.propWidth = item.propWidth || item.width;
         item.width = item.originWidth || item.propWidth; //还原初始值
         if (!item.width) {
@@ -60,7 +58,6 @@ function useTableCore(props: ItableProps, emit: any) {
           delete item.propWidth;
         }
       });
-      console.log(`tempColumn`, tempColumn);
       return tempColumn;
     }
   });
@@ -68,7 +65,7 @@ function useTableCore(props: ItableProps, emit: any) {
     const result = columns.map((item) => {
       const columnConfig: any = {
         scopedSlots: {},
-        props: { showOverflowTooltip: true, ...item }
+        props: { showOverflowTooltip: true, ...item, key: item.label }
       };
       // 渲染表格 内容
       if (item.render) {
@@ -77,10 +74,6 @@ function useTableCore(props: ItableProps, emit: any) {
         if (item.customColumn) {
           // 自定义展示字段
           columnConfig.scopedSlots.default = (scope: any) => scope.row[item.customColumn || item.prop];
-        } else if (props.showType === 'html' && item.type !== 'selection') {
-          // columnConfig.scopedSlots.default = (scope: any) => renderHtml(scope.row[item.customColumn || item.prop]);
-        } else if (item.isCopy) {
-          // prcolumnConfigops.scopedSlots.default = (scope: any) => renderCopyRow(scope.row[item.customColumn || item.prop]);
         }
       }
       // 渲染表格头部
@@ -197,16 +190,7 @@ function useTableCore(props: ItableProps, emit: any) {
       immediate: true
     }
   );
-  watch(
-    () => innerTableColumns,
-    () => {
-      // 宽度改变之后慢一拍，需强制刷新一下
-      console.log(`11111111`, 11111111);
-      nextTick(() => {
-        vm?.update(); //todo   update不知道能否使用
-      });
-    }
-  );
+
   onMounted(() => {
     emitter.on('visible.window.resize', handleVisibleResize);
     getTableClientWidth();
@@ -231,7 +215,6 @@ function useTableCore(props: ItableProps, emit: any) {
   function handleVisibleResize() {
     nextTick(() => {
       getTableClientWidth();
-      vm?.update();
     });
   }
   function getTableClientWidth() {
@@ -240,20 +223,25 @@ function useTableCore(props: ItableProps, emit: any) {
   function handleSortChange(column: any[]) {
     emit('sort-change', column);
   }
+  // 选中项改变
   function handleSelectionChange(selection: any[]) {
-    console.log(`handleSelectionChange`, 111111);
+    console.log(`handleSelectionChange`);
     selectionList = selection;
     emit('selection-change', selectionList);
   }
+  // 每页显示数变化
   function handleSizeChange(size: number) {
     innerPageSize.value = size;
   }
+  //上一页
   function handlePrevClick(page: number) {
     emit('prev-click', page);
   }
+  //下一页
   function handleNextClick(page: number) {
     emit('next-click', page);
   }
+  //当前页变化
   function handleCurrentChange(page: number) {
     innerCurrentPage.value = page;
   }
@@ -262,7 +250,16 @@ function useTableCore(props: ItableProps, emit: any) {
     vm = getCurrentInstance(); //获取组件实例
   });
 
-  return { curTableData, showDirectives, renderLayout };
+  return {
+    curTableData,
+    showDirectives,
+    innerCurrentPage,
+    innerPageSize,
+    innerTotal,
+    paginationShow,
+    handleSelectionChange,
+    renderLayout
+  };
 }
 
 export default useTableCore;

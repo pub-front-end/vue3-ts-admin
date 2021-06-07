@@ -12,8 +12,8 @@
           ></pub-render-search>
         </div> -->
       </pub-content-item>
-      <!-- <pub-content-item class="content-bg async-table">
-        <pub-async-table
+      <pub-content-item class="content-bg async-table">
+        <simple-async-table
           ref="pub-table"
           title="异步表格"
           :http-request="getUserList"
@@ -27,8 +27,8 @@
           <template v-slot:batchBtn>
             <el-button type="primary" @click="handleOper">批量操作</el-button>
           </template>
-        </pub-async-table>
-      </pub-content-item> -->
+        </simple-async-table>
+      </pub-content-item>
       <pub-content-item class="content-bg">
         <simple-table
           title="静态表格"
@@ -243,6 +243,46 @@
             date: '2016-05-14',
             name: '王小虎',
             address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-14',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-14',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-14',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-14',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-14',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-14',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-14',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          },
+          {
+            date: '2016-05-14',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
           }
         ],
         userTableColumns: computed(() => [
@@ -275,48 +315,27 @@
         ]),
         columns: computed(() => [
           { label: '全选', type: 'selection', reserveSelection: true, disabled: true, width: 36 },
-          // {
-          //   label: '告警子类型',
-          //   show: true,
-          //   width: 236,
-          //   prop: 'date',
-          //   render: (h: any, scope: any) => {
-          //     // 自定义编辑列表 注意需要调整输入框的style
-          //     return (
-          //       <el-input
-          //         class="pub-table--input"
-          //         value={scope.row.name}
-          //         on-input={(e: string) => {
-          //           console.log(e);
-          //           // const { row, $index } = scope;
-          //           // this.tableData.splice($index, 1, {
-          //           //   date: row.date,
-          //           //   name: e,
-          //           //   address: row.address
-          //           // });
-          //         }}
-          //       ></el-input>
-          //     );
-          //   }
-          // },
+
           {
             label: '姓名1111',
             prop: 'name',
+            width: 236,
             show: true,
             render(scope: any) {
               return <div>{scope.$index + scope.row.name}</div>;
             }
           },
-          { label: '告警子类型看', prop: 'date', width: 236, show: true },
-          { label: '日期1', prop: 'date', show: true },
-          { label: '日期3', prop: 'date' },
+          { label: '告警子类型看', prop: 'name', width: 236, show: true },
+          { label: '日期1', prop: 'date', width: 236, show: true },
+          { label: '日期3', prop: 'date', width: 236 },
           { label: '姓名16地址', prop: 'name', customColumn: 'address' },
 
-          { label: '地址', prop: 'address', width: 236, show: true },
+          { label: '地址', prop: 'address', show: true },
           {
             label: '操作',
             prop: 'address',
             show: true,
+            width: 236,
             disabled: true,
             render() {
               return (

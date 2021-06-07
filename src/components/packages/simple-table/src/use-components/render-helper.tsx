@@ -157,7 +157,7 @@ function useTableCore(props: ItableProps, emit: any) {
         props.title || vm.slots.headerLeft || vm.slots.headerRight ? (
           <div class="pub-card__header">
             <div class="pub-card__header-left">
-              {props.title + props.tableCard}
+              {props.title}
               {props.showColumnFilter ? renderColumnFilter() : null}
               {vm.slots.headerLeft && vm.slots.headerLeft()}
             </div>
@@ -257,6 +257,8 @@ function useTableCore(props: ItableProps, emit: any) {
     innerPageSize,
     innerTotal,
     paginationShow,
+    innerLoading,
+    innerPaginationProps,
     handleSelectionChange,
     renderLayout
   };

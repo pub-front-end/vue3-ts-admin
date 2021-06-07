@@ -132,6 +132,30 @@ class UAxios {
                 messageError('您访问的接口不存在');
             }
           }
+          console.log(err.response);
+          if (err.response.config.url === '/user/pageInfo') {
+            return {
+              data: {
+                list: [
+                  {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: "<b class='key' style='color:red'>上海市11普陀</b>"
+                  },
+                  {
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                  },
+                  {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                  }
+                ]
+              }
+            };
+          }
           return Promise.reject(err); // 返回接口返回的错误信息
         }
       }

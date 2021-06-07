@@ -31,9 +31,7 @@ export function debounce(
 ) {
   let timeout: NodeJS.Timeout | null;
 
-  return function () {
-    let args = arguments;
-
+  return function (args?: any) {
     if (timeout) clearTimeout(timeout);
     if (immediate) {
       let callNow = !timeout;

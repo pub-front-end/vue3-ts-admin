@@ -153,7 +153,6 @@ function useColumnFilter(props: ItableProps) {
       labelSortList,
       checkedColumn: checkedColumn
     });
-    console.log(`pageConfig----`, pageConfig);
     //todo 缺少接口支持
     // eslint-disable-next-line no-constant-condition
     if (pageId.value && false) {

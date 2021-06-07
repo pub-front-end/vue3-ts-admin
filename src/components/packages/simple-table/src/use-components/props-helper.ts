@@ -43,7 +43,6 @@ export interface ItableProps {
   transformResult: fn;
   propsMap: AnyObject;
   propsQueryMap: AnyObject;
-  params: AnyObject;
 }
 
 export default {
@@ -75,20 +74,19 @@ export default {
 
   total: propTypes.number.def(0), // 总数，一般不用传
   httpRequest: propTypes.func, // 请求方法
-  transformResult: propTypes.func, // 处理返回数据
+  transformResult: propTypes.func.def((result: any) => result), // 处理返回数据
+  // 接口输出映射关系
   propsMap: propTypes.object.def({
-    // 接口输出映射关系
     data: 'list',
     total: 'total',
     pageSize: 'pageSize',
     currentPage: 'pageNum'
   }),
+  // 接口输入映射关系
   propsQueryMap: propTypes.object.def({
-    // 接口输入映射关系
     data: 'list',
     total: 'total',
     pageSize: 'pageSize',
     currentPage: 'pageNum'
-  }),
-  params: propTypes.object.def({}) // 查询参数
+  })
 };

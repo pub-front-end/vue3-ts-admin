@@ -39,7 +39,7 @@ export interface IRenderItem {
   prop: string; // 属性字段
   type?: TType; // item类型
   ref?: string; // 配置ref
-  data?: IPubValue[] | string; //
+  data?: IPubValue[]; //
   size?: TSize; //长度
   isShowTip?: boolean; // 是否提示
   dataProps?: any; //配置选项  value | label | children | disabled 指定选项的禁用为选项对象的某个属性值

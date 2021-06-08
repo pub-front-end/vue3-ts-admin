@@ -29,9 +29,9 @@ $--cascader-icon-color-hover: $--action-color-4 !default; // icon颜色 hover
     }
   }
   &__dropdown {
-    background-color: $--cascader-bg-color;
-    border-color: $--cascader-border-color;
-    box-shadow: 0 0.125rem 0.75rem 0 $--cascader-shadow-color;
+    background-color: $--cascader-bg-color !important;
+    border-color: $--cascader-border-color !important;
+    box-shadow: 0 0.125rem 0.75rem 0 $--cascader-shadow-color !important;
   }
   // 字体
   &-menu {

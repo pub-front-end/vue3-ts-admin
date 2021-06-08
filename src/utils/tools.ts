@@ -1,10 +1,11 @@
-function hasOwn(obj, key) {
+import PinyinEngine from './pinyin-match-engine/index';
+function hasOwn(obj: any, key: PropertyKey) {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
 // 将origin复制到target
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const deepClone = (origin, target) => {
+export const deepClone = (origin: { [x: string]: any }, target: { [x: string]: any }) => {
   for (let key in origin) {
     // 遍历原对象
     if (hasOwn(origin, key)) {
@@ -29,10 +30,10 @@ export const deepClone = (origin, target) => {
  * @param wait 延迟执行毫秒数
  * @param immediate true 表立即执行，false 表非立即执行
  */
-export function debounce(func, wait, immediate) {
-  let timeout;
+export function debounce(func: { apply: (arg0: any, arg1: any[]) => void }, wait: number | undefined, immediate: any) {
+  let timeout: NodeJS.Timeout;
 
-  return function (...params) {
+  return function (...params: any) {
     let args = params;
     if (timeout) clearTimeout(timeout);
     if (immediate) {
@@ -54,11 +55,11 @@ export function debounce(func, wait, immediate) {
  * @param func throttle
  * @param delay 延迟执行毫秒数，默认 1000ms
  */
-export const throttle = function (func, delay) {
-  let timer;
-  return function () {
+export const throttle = function (func: { apply: (arg0: any, arg1: IArguments) => void }, delay: number | undefined) {
+  let timer: NodeJS.Timeout;
+  return function (...params: any) {
     let context = this;
-    let args = arguments;
+    let args = params;
     if (!timer) {
       timer = setTimeout(function () {
         func.apply(context, args);
@@ -67,4 +68,22 @@ export const throttle = function (func, delay) {
     }
   };
 };
+
+export function pinyinQuery(list: any, query: string, name: string) {
+  const pinyinEngine = new PinyinEngine(list, [name]);
+  pinyinEngine.query(query);
+  return pinyinEngine.query(query);
+}
+/**
+ *  树转换数组
+ * @param data //tree数据
+ * @param subitems //子节点名称
+ */
+export function tree2Array(array: any, subitems?: string) {
+  if (array && array.length) {
+    return [].concat(...array.map((item: any) => [].concat(item, ...tree2Array(item[subitems || 'children']))));
+  }
+  return [];
+}
+
 export default {};

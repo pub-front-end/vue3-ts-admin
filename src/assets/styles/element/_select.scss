@@ -15,7 +15,11 @@ $--select-bg-color-selected-hover: $--action-color-3 !default; // 背景 选中+
 
 $--select-icon-color: $--const-color-disabled !default; // icon颜色
 $--select-icon-color-hover: $--action-color-4 !default; // icon颜色 hover
-
+.el-select__popper.el-popper[role='tooltip'] {
+  background-color: $--select-bg-color;
+  border-color: $--select-border-color;
+  box-shadow: 0 0.125rem 0.75rem 0 $--select-shadow-color;
+}
 .el-select {
   width: 100%;
   &:hover .el-input__inner,
@@ -25,7 +29,7 @@ $--select-icon-color-hover: $--action-color-4 !default; // icon颜色 hover
   &-dropdown {
     background-color: $--select-bg-color;
     border-color: $--select-border-color;
-    box-shadow: 0 0.125rem 0.75rem 0 $--select-shadow-color;
+    // box-shadow: 0 0.125rem 0.75rem 0 $--select-shadow-color;
     &__item {
       height: 2rem;
       padding: 0 1.4rem;

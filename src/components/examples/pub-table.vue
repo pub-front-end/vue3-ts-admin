@@ -71,17 +71,17 @@
           value4: []
         }),
         items: [
-          // {
-          //   label: '性别',
-          //   prop: 'sex',
-          //   type: 'select',
-          //   size: 3,
-          //   placeholder: '选择性别',
-          //   data: [
-          //     { valueCn: '女', mapKey: '0', disabled: true },
-          //     { valueCn: '男', mapKey: '1' }
-          //   ]
-          // },
+          {
+            label: '性别',
+            prop: 'sex',
+            type: 'select',
+            size: 3,
+            placeholder: '选择性别',
+            data: [
+              { valueCn: '女', mapKey: '0' },
+              { valueCn: '男', mapKey: '1' }
+            ]
+          },
           // {
           //   label: '事件等级',
           //   prop: 'interest',
@@ -97,6 +97,37 @@
             type: 'input',
             placeholder: '输入姓名',
             size: 3
+          },
+
+          {
+            label: '住址',
+            prop: 'address',
+            type: 'cascader',
+            size: 3,
+            placeholder: '试试搜索：住址',
+            dataProps: { checkStrictly: true },
+            data: [
+              {
+                value: 'sichuan',
+                label: '四川',
+                children: [
+                  {
+                    value: 'neijiang',
+                    label: '内江',
+                    children: [
+                      {
+                        value: 'zizhong',
+                        label: '资中'
+                      },
+                      {
+                        value: 'jianyang',
+                        label: '简阳'
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           { type: 'seperator' },
           {
@@ -120,36 +151,6 @@
             placeholder: '输入姓名',
             size: 3
           }
-          // {
-          //   label: '住址',
-          //   prop: 'address',
-          //   type: 'cascader',
-          //   size: 3,
-          //   placeholder: '试试搜索：住址',
-          //   dataProps: { checkStrictly: true },
-          //   data: [
-          //     {
-          //       value: 'sichuan',
-          //       label: '四川',
-          //       children: [
-          //         {
-          //           value: 'neijiang',
-          //           label: '内江',
-          //           children: [
-          //             {
-          //               value: 'zizhong',
-          //               label: '资中'
-          //             },
-          //             {
-          //               value: 'jianyang',
-          //               label: '简阳'
-          //             }
-          //           ]
-          //         }
-          //       ]
-          //     }
-          //   ]
-          // },
           // {
           //   label: '住址2',
           //   prop: 'address',

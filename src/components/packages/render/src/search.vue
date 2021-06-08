@@ -1,5 +1,5 @@
 <script lang="tsx">
-  import { computed, defineComponent, PropType, ref } from 'vue';
+  import { computed, defineComponent, PropType, reactive, ref, toRefs } from 'vue';
   import { IRenderItem } from '../render';
   import useRenderItem from './render-itme-helper';
   export default defineComponent({
@@ -51,13 +51,13 @@
     },
     emits: ['search', 'closeTag'],
     setup(props: any, { emit }) {
-      const { renderMap } = useRenderItem(props);
-
       let isShowMore = ref(false);
       let submitLoading = ref(false);
       let isShowAdvancedSearch = ref(true);
       let resetLoading = ref(false);
       let advancedSearch = ref(true);
+      const { form } = reactive(toRefs(props));
+
       function onSubmit(type = '') {
         if (type === 'click') {
           submitLoading.value = true;
@@ -67,36 +67,49 @@
         }
 
         //下转过来的就将页面重置为1 重置按钮 没有标签页 回到第一页；其他情况不变
-        props.form.currentPage = type === 'click' || type === 'drill' || type === 'noCache' ? 1 : '';
-        emit('search', this.form);
+        form.currentPage = type === 'click' || type === 'drill' || type === 'noCache' ? 1 : '';
+        emit('search', form);
       }
+      const { renderMap } = useRenderItem(props, onSubmit);
+
+      const isFormExistValue = computed(() => {
+        let tempForm = JSON.parse(JSON.stringify(form));
+        tempForm.fullText = '';
+        let flag = false;
+        Object.values(tempForm).map((item: any) => {
+          if (item?.length) {
+            flag = true;
+          }
+        });
+        return flag;
+      });
       //重置搜索 type: advancedSearch 点击高级搜索的时候 fullText：点击全文检索的时候 drill：下钻过来的时候 click：表示通过按钮点击
       function onReset(type = '') {
         if (type === 'click') {
-          this.resetLoading = true;
+          resetLoading.value = true;
           setTimeout(() => {
-            this.resetLoading = false;
+            resetLoading.value = false;
           }, 500);
         }
-        // this.isShowMore = false; // 重置后是否折叠组件
-        typeof this.reset === 'function' && this.reset();
+        // isShowMore = false; // 重置后是否折叠组件
+        typeof props.reset === 'function' && props.reset();
 
-        if (this.formChangeItem) {
-          for (let key in this.form) {
-            this.form[key] = Array.isArray(this.form[key]) ? [] : '';
+        if (isFormExistValue.value) {
+          for (let key in form) {
+            form[key] = Array.isArray(form[key]) ? [] : '';
           }
         }
         // type !== 'fullText' && this.defaultDatePicker();
 
         //如果是下钻过来的，先重置查询条件再读取下钻信息
         if (type === 'drill') {
-          this.handleRouteQuery();
+          props.handleRouteQuery();
         }
         //如果点击高级搜索 ，清空全文检索
         if (type === 'advancedSearch') {
-          this.form.fullText = '';
+          form.fullText = '';
         }
-        this.onSubmit(type);
+        onSubmit(type);
       }
       //遍历数组
       const seperatorIndex = computed(() => props.items.findIndex((e: IRenderItem) => e.type === 'seperator'));
@@ -184,7 +197,7 @@
                               this.onSubmit();
                             }}
                           >
-                            查询
+                            {this.$t('button.search')}
                           </el-button>
                         )
                       }}

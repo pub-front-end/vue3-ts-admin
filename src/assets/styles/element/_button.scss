@@ -113,6 +113,7 @@ $--disabled-btn-bg-color-hover: $--const-color-disabled !default; // 背景 hove
   .el-button--small,
   .el-button--small.is-round {
     padding: 0.5rem 0.625rem;
+    min-height: 28px;
   }
   .el-button + .el-button {
     margin-left: 0;
@@ -341,4 +342,10 @@ $--disabled-btn-bg-color-hover: $--const-color-disabled !default; // 背景 hove
 .el-button--mini,
 .el-button--mini.is-round {
   padding: 0.4375rem 0.9375rem;
+}
+
+.pub-button {
+  .el-button [class*='el-icon-'] + span {
+    margin-left: 0;
+  }
 }

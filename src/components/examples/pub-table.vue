@@ -22,7 +22,7 @@
           :is-batch-del="isBatchDel"
         >
           <template #headerRight>
-            <div>新增区域</div>
+            <el-button @click="handleNew">新增</el-button>
           </template>
           <template v-slot:batchBtn>
             <el-button type="primary" @click="handleOper">批量操作</el-button>
@@ -42,21 +42,45 @@
         ></pub-table>
       </pub-content-item>
     </pub-content>
+    <pub-editor v-model="newVisible" :type="editorType" @search="onSearch"></pub-editor>
   </pub-container>
 </template>
 <script lang="tsx">
   import { defineComponent, ref, reactive, computed } from 'vue';
   import { ElMessage } from 'element-plus';
   import { getUserList } from '@/api/user';
+  import pubEditor from './pub-editor.vue';
+  import { IButtonItem } from '../packages/render/render';
 
   export default defineComponent({
     name: 'pub-container-demo',
+    components: { pubEditor },
 
     setup() {
+      let newVisible = ref(false);
+      let editorType = ref('edit');
       function selectionChange(params: any[]) {
         console.log('selectionChange---', params);
       }
+      function handleNew() {
+        newVisible.value = true;
+        editorType.value = 'new';
+      }
+      function showUser() {
+        newVisible.value = true;
+        editorType.value = 'detail';
+      }
+      function handleEdit() {
+        newVisible.value = true;
+        editorType.value = 'edit';
+      }
+      function handleDel(id: string) {
+        console.log('handleDel---', id);
+      }
       return {
+        editorType,
+        newVisible,
+        handleNew,
         selectionChange,
         getUserList,
         isBatchDel: ref(true),
@@ -300,23 +324,59 @@
           {
             label: '操作',
             prop: 'address',
-            show: true,
             disabled: true,
-            render() {
-              return (
-                <div>
-                  <el-button type="text">编辑</el-button>
-                  <el-button type="text" class="button--del">
-                    删除
-                  </el-button>
-                </div>
-              );
+            width: '250',
+            render: (scope: any) => {
+              const { id = '', account = 'user', onlineFlag, defaultFlag } = scope.row;
+
+              const buttonGroup: IButtonItem[] = [
+                {
+                  type: 'primary',
+                  icon: 'el-icon-document',
+                  defaultName: '详情',
+                  oper: () => {
+                    showUser();
+                  }
+                },
+                {
+                  type: 'primary',
+                  // icon: 'el-icon-document',
+                  defaultName: '详情',
+                  oper: () => {
+                    showUser();
+                  }
+                },
+                //=IF(A3,"0",IF(B3,"1",IF(C3,"2",IF(D3,"3",IF(E3,"4",IF(E3,"4","0"))))))
+                {
+                  type: 'primary',
+                  icon: 'el-icon-edit',
+                  defaultName: '编辑',
+                  permission: 'sys:user:edit',
+                  //disabled: onlineFlag === '1',
+                  oper: () => {
+                    handleEdit();
+                  }
+                },
+                {
+                  type: 'danger',
+                  permission: 'sys:user:delete',
+                  popconfirm: true,
+                  icon: 'el-icon-delete',
+                  defaultName: '删除',
+                  disabledMsg: '不可删除在线用户与内置用户',
+                  popTitle: `此操作将永久删除该用户（${account}），是否继续？`,
+                  disabled: onlineFlag === '1' || defaultFlag === '1',
+                  oper: () => {
+                    handleDel(id);
+                  }
+                }
+              ];
+              return <pub-render-button items={buttonGroup}></pub-render-button>;
             }
           }
         ]),
         columns: computed(() => [
           { label: '全选', type: 'selection', reserveSelection: true, disabled: true, width: 36 },
-
           {
             label: '姓名1111',
             prop: 'name',

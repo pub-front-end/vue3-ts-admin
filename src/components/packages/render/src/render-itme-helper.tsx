@@ -2,8 +2,9 @@ import { pinyinQuery, tree2Array } from '@/utils/tools';
 import { reactive, toRefs } from 'vue';
 import { IPubValue, IRenderItem } from '../render';
 const trimStr = (str: string | number) => (typeof str === 'string' ? str.trim() : str);
-function useRenderItem(props: any, onSubmit: any) {
+function useRenderItem(props: any) {
   const selectDataObj = reactive({} as any);
+
   const { form } = reactive(toRefs(props));
 
   //输入框
@@ -16,9 +17,6 @@ function useRenderItem(props: any, onSubmit: any) {
           'onUpdate:modelValue': (e: string | number) => {
             form[key] = trimStr(e);
           }
-        }}
-        onClear={() => {
-          onSubmit('click');
         }}
         placeholder={type === 'editor' ? '请输入' + item.label : item.label}
         type={item.textarea ? 'textarea' : ''}
@@ -45,9 +43,6 @@ function useRenderItem(props: any, onSubmit: any) {
           'onUpdate:modelValue': (e: string | number) => {
             form[key] = trimStr(e);
           }
-        }}
-        onClear={() => {
-          onSubmit('click');
         }}
         placeholder={type === 'editor' ? '请输入' + item.label : item.label}
         disabled={item.disabled}
@@ -111,14 +106,52 @@ function useRenderItem(props: any, onSubmit: any) {
       return item.valueCn === node.label;
     });
   }
+  //自定义
+  function renderCustom(item: IRenderItem) {
+    return typeof item.render === 'function' ? item.render(item) : null;
+  }
+  // 鼠标事件 hover时 计算是否超长显示tip
+  function handleMouseenter(e: MouseEvent, item: IRenderItem) {
+    if (typeof item.isShowTip === 'undefined') {
+      let clientWidth = (e.target as HTMLElement).clientWidth;
+      let scrollWidth = (e.target as HTMLElement).scrollWidth;
+      item.isShowTip = scrollWidth > clientWidth ? false : true;
+      //强制更新
+      // this.$nextTick(() => {
+      //   this.$forceUpdate();
+      // });
+    }
+  }
+  // 编辑界面的详情 默认不超长提示
+  function renderDetail(item: IRenderItem, type?: string, isTip = false) {
+    return item.isTip || isTip ? (
+      <el-tooltip
+        effect="light"
+        placement="bottom-start"
+        open-delay={300}
+        disabled={item.isShowTip}
+        v-slots={{
+          content: () => <div>{form[item.prop || 0] || '-'}</div>
+        }}
+      >
+        <div class="overflow-ellipsis text-align-left" onMouseenter={(e: MouseEvent) => handleMouseenter(e, item)}>
+          {form[item.prop || 0] || '-'}
+        </div>
+      </el-tooltip>
+    ) : (
+      <div class="overflow-ellipsis text-align-left">{form[item.prop || 0] || '-'}</div>
+    );
+  }
   const renderMap: any = {
     input: renderInput,
     cascader: renderCascader,
+    render: renderCustom,
+    detail: renderDetail,
     select: renderSelect
   };
   return {
     renderMap,
-    filterCascader
+    handleMouseenter
   };
 }
 

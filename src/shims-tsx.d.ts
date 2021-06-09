@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { IButtonItem, IDetailItem, IRenderItem } from '@/components/packages/render/render';
 import Vue, { VNode } from 'vue';
 export  interface IScope {
   $index: number;
@@ -25,8 +26,10 @@ declare global {
   // 公共具名空间，避免类型检查 重复引用
   namespace Pub {
     type Scope = IScope;
+    type RenderItem = IRenderItem;
+    type DetailItem = IDetailItem;
+    type ButtonItem = IButtonItem;
   }
-  
 }
 
 /* eslint-enable */

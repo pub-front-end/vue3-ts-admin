@@ -23,17 +23,6 @@ export interface IPubValue {
   disabled?: boolean; //是否禁用
   [key: string]: any;
 }
-
-export interface IDetailItem {
-  label: string; // 名称|标题
-  prop: string; // 属性字段
-  type?: TType; // item类型 title:表示显示标题 ；undefined:显示详情值
-  size?: TSize; // 一行显示几个
-  isShowTip?: boolean; // 是否提示
-  show?: boolean; // 是否显示当前选项
-  isCopy?: boolean; // 是否可复制
-  render?(h: Pub.CreateEl, data: any): any; // 自定义渲染方法
-}
 export interface IRenderItem {
   label: string; // 名称 标题
   prop: string; // 属性字段
@@ -61,12 +50,12 @@ export interface IRenderItem {
   showPassword?: boolean; // 输入框 密码
   isCopy?: boolean; // 是否可复制
   isclearable?: boolean; //是否可清空
-  render?(h: Pub.CreateEl, data: any): any; // 自定义渲染方法
+  render?(data: any): any; // 自定义渲染方法
   callback?(data: any): any; //自定义调用方法
 }
 
 export interface IButtonItem {
-  oper: Function; // 点击按钮执行的方法
+  oper: () => void; // 点击按钮执行的方法
   defaultName?: string; // 默认按钮名称 不写表示没有名称；如：查看、编辑、删除直接使用图标
   name?: string; // 按钮显示名称 不写表示没有名称；如：查看、编辑、删除直接使用图标
   permission?: string; // 按钮权限，不写表示直接显示；如：查看

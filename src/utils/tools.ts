@@ -1,4 +1,6 @@
+import { ElMessage } from 'element-plus';
 import PinyinEngine from './pinyin-match-engine/index';
+
 function hasOwn(obj: any, key: PropertyKey) {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
@@ -30,7 +32,11 @@ export const deepClone = (origin: { [x: string]: any }, target: { [x: string]: a
  * @param wait 延迟执行毫秒数
  * @param immediate true 表立即执行，false 表非立即执行
  */
-export function debounce(func: { apply: (arg0: any, arg1: any[]) => void }, wait: number | undefined, immediate: any) {
+export function debounce(
+  func: { apply: (arg0: any, arg1: any[]) => void },
+  wait: number | undefined,
+  immediate: any = false
+) {
   let timeout: NodeJS.Timeout;
 
   return function (...params: any) {
@@ -85,5 +91,33 @@ export function tree2Array(array: any, subitems?: string) {
   }
   return [];
 }
+/**
+ * @desc 提示表单验证的首个错误信息
+ * @param obj 错误信息对象{}
+ */
+export function messageFirstError(errObj: any) {
+  let keys = Object.keys(errObj);
+  if (keys.length) {
+    ElMessage.error(errObj[keys[0]] && errObj[keys[0]].length && errObj[keys[0]][0].message);
+  }
+}
+// 根据prop获取object上的属性，支持 obj.name.test
+export const getValueByPath = function (object: Record<string, any>, prop: string) {
+  prop = prop || '';
+  const paths = prop.split('.');
+  let current = object;
+  let result = null;
+  for (let i = 0, j = paths.length; i < j; i++) {
+    const path = paths[i];
+    if (!current) current = {};
+
+    if (i === j - 1) {
+      result = current[path];
+      break;
+    }
+    current = current[path];
+  }
+  return result;
+};
 
 export default {};

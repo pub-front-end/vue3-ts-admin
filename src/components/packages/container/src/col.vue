@@ -16,8 +16,8 @@
 
 <script lang="ts">
   import { defineComponent, computed, PropType } from 'vue';
+  import { TSize } from '../../render/render';
 
-  import { TSize } from '../../../types/render';
   // 默认的适屏配置 基础的 24 分栏
   const adaptiveObj: {
     [key: number]: {

@@ -70,7 +70,7 @@
         form.currentPage = type === 'click' || type === 'drill' || type === 'noCache' ? 1 : '';
         emit('search', form);
       }
-      const { renderMap } = useRenderItem(props, onSubmit);
+      const { renderMap } = useRenderItem(props);
 
       const isFormExistValue = computed(() => {
         let tempForm = JSON.parse(JSON.stringify(form));

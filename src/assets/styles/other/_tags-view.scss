@@ -6,12 +6,14 @@
     0 0 3px 0 rgba($color: $--tags-view-box-shadow-color, $alpha: 0.04);
   .tags-view-button {
     fill: $--primary-color-text;
+    color: $--primary-color-text;
     &:hover {
       fill: $--primary-color;
     }
   }
   .tags-view-button--disabled {
     fill: $--primary-color-label;
+    cursor: not-allowed;
     &:hover {
       fill: $--primary-color-label;
     }
@@ -79,6 +81,7 @@
     box-shadow: 0 2px 12px 0 $--expanded-shadow-color;
     li {
       &:hover {
+        color: $--primary-color;
         background-color: $--action-color-2;
       }
     }

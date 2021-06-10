@@ -31,7 +31,7 @@
       :class="rightDisabled ? 'tags-view-button--disabled' : ''"
       @click="scrollToRight"
     ></i>
-    <el-divider direction="vertical" style="height: 2rem"></el-divider>
+    <el-divider direction="vertical" style="height: 1rem"></el-divider>
     <el-dropdown @command="handleCommand">
       <span class="el-dropdown-link">
         <i class="el-icon-arrow-down tags-view-button"></i>
@@ -250,13 +250,7 @@
       padding: 8px;
       cursor: pointer;
     }
-    .tags-view-button--disabled {
-      fill: gray;
-      cursor: not-allowed;
-      &:hover {
-        fill: gray;
-      }
-    }
+
     .el-dropdown-link {
       padding-right: 8px;
     }

@@ -36,47 +36,26 @@ export default {
       target: '/example/pub-container',
       href: '/example/pub-container'
     },
-    {
-      ...common,
-      id: '1111-04',
-      level: '2',
-      name: '详情组件',
-      parentId: '1111',
-      parentIds: '0,1111',
-      target: '/example/pub-detail',
-      href: '/example/pub-detail'
-    },
-    {
-      ...common,
-      id: '1111-05',
-      level: '1',
-      name: '个性化主题',
-      parentId: '1111',
-      parentIds: '0,1111',
-      target: '/example/personalized-theme',
-      href: '/example/personalized-theme'
-    },
-    {
-      ...common,
-      id: '1111-06',
-      level: '2',
-      name: '图表组件',
-      parentId: '1111',
-      parentIds: '0,1111',
-      target: '/example/pub-charts',
-      href: '/example/pub-charts'
-    },
-    {
-      ...common,
-      id: '1111-07',
-      level: '2',
-      name: '面包屑组件',
-      parentId: '1111',
-      parentIds: '0,1111',
-      target: '/example/pub-breadcrumb',
-      href: '/example/pub-breadcrumb'
-    },
-
+    // {
+    //   ...common,
+    //   id: '1111-05',
+    //   level: '1',
+    //   name: '个性化主题',
+    //   parentId: '1111',
+    //   parentIds: '0,1111',
+    //   target: '/example/personalized-theme',
+    //   href: '/example/personalized-theme'
+    // },
+    // {
+    //   ...common,
+    //   id: '1111-06',
+    //   level: '2',
+    //   name: '图表组件',
+    //   parentId: '1111',
+    //   parentIds: '0,1111',
+    //   target: '/example/pub-charts',
+    //   href: '/example/pub-charts'
+    // },
     {
       ...common,
       id: '1111-08',
@@ -86,17 +65,6 @@ export default {
       parentIds: '0,1111',
       target: '/home',
       href: '/home'
-    },
-
-    {
-      ...common,
-      id: '1111-09',
-      level: '2',
-      name: '态势大屏',
-      parentId: '1111',
-      parentIds: '0,1111',
-      target: '/example/sit-screen',
-      href: '/example/sit-screen'
     }
   ]
 };

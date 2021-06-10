@@ -59,6 +59,7 @@
                 <el-tooltip
                   content={(item.disabled && item.disabledMsg) || item.name}
                   enterable={false}
+                  open-delay={500}
                   hide-after={item.disabled ? 1000 : 500}
                   placement="top-start"
                 >

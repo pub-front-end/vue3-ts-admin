@@ -1,5 +1,5 @@
 <template>
-  <el-popover v-model:visible="visible" trigger="click">
+  <el-popover v-model:visible="visible" trigger="click" width="200">
     <div class="el-popconfirm">
       <p class="el-popconfirm__main">
         <i v-if="!hideIcon" :class="icon" class="el-popconfirm__icon" :style="{ color: iconColor }"></i>
@@ -21,7 +21,7 @@
     </div>
     <template #reference>
       <div>
-        <el-tooltip effect="dark" :content="name" placement="top" :disabled="!typeIcon">
+        <el-tooltip effect="dark" :content="name" placement="top" :disabled="!typeIcon" :open-delay="500">
           <div class="pub-button-tip">
             <el-button v-waves :type="type || 'primary'" :icon="typeIcon">{{ !typeIcon ? item.name : '' }}</el-button>
           </div>
@@ -98,11 +98,11 @@
       let visible = ref(false);
       let checked = ref(false);
       function confirm() {
-        this.visible = false;
+        visible.value = false;
         emit('confirm');
       }
       function cancel() {
-        this.visible = false;
+        visible.value = false;
         emit('cancel');
       }
       return { checked, visible, confirm, cancel };

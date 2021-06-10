@@ -2,6 +2,7 @@
 
 $--popover-font-color: $--primary-color-text !default; // 字体
 $--popover-bg-color: $--expanded-bg-color !default; // 背景
+$--popover-border-before-color: $--select-border-color !default; // 背景
 $--popover-border-color: $--expanded-border-color !default; // 边框
 $--popover-shadow-color: $--expanded-shadow-color !default; // 阴影
 
@@ -9,7 +10,8 @@ $--popover-shadow-color: $--expanded-shadow-color !default; // 阴影
   background-color: $--popover-bg-color !important;
 }
 
-.el-popover {
+.el-popover,
+.el-popper.is-dark {
   box-shadow: 0 0.125rem 0.75rem 0 $--popover-shadow-color !important;
   font-size: 0.875rem;
   color: $--popover-font-color !important;
@@ -26,32 +28,32 @@ $--popover-shadow-color: $--expanded-shadow-color !default; // 阴影
 .el-popper[data-popper-placement^='bottom'] .el-popper__arrow {
   border-bottom-color: $--popover-border-color !important;
   &:before {
-    border-top-color: $--popover-bg-color !important;
-    border-left-color: $--popover-bg-color !important;
+    border-top-color: $--popover-border-before-color !important;
+    border-left-color: $--popover-border-before-color !important;
     @include popover-color();
   }
 }
 .el-popper[data-popper-placement^='top'] .el-popper__arrow {
   border-top-color: $--popover-border-color !important;
   &:before {
-    border-bottom-color: $--popover-bg-color !important;
-    border-right-color: $--popover-bg-color !important;
+    border-bottom-color: $--popover-border-before-color !important;
+    border-right-color: $--popover-border-before-color !important;
     @include popover-color();
   }
 }
 .el-popper[data-popper-placement^='left'] .el-popper__arrow {
   border-left-color: $--popover-border-color !important;
   &:before {
-    border-right-color: $--popover-bg-color !important;
-    border-top-color: $--popover-bg-color !important;
+    border-right-color: $--popover-border-before-color !important;
+    border-top-color: $--popover-border-before-color !important;
     @include popover-color();
   }
 }
 .el-popper[data-popper-placement^='right'] .el-popper__arrow {
   border-right-color: $--popover-border-color !important;
   &:before {
-    border-left-color: $--popover-bg-color !important;
-    border-bottom-color: $--popover-bg-color !important;
+    border-left-color: $--popover-border-before-color !important;
+    border-bottom-color: $--popover-border-before-color !important;
     @include popover-color();
   }
 }

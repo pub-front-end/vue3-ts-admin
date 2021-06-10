@@ -1,5 +1,6 @@
 import '@/assets/fonts/iconfont.css';
 import '@/assets/styles/theme/dark-night/index.scss'; // 暗夜模式样式
+import '@/assets/styles/theme/white-day/index.scss'; // 白昼模式样式
 import '@yzfe/svgicon/lib/svgicon.css';
 import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon';
 import ElementPlus from 'element-plus';

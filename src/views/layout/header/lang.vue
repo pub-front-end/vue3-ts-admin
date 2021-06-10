@@ -23,12 +23,12 @@
 
 <script lang="ts">
   import { ref, defineComponent, watch, unref } from 'vue';
-  import { setLocalLang } from '@/utils/storage';
   import ElementLocale from 'element-plus/lib/locale';
   import enLocale from 'element-plus/lib/locale/lang/en';
   import zhLocale from 'element-plus/lib/locale/lang/zh-cn';
   import { useRoute } from 'vue-router';
   import { useI18n } from 'vue-i18n';
+  import { useStore } from 'vuex';
 
   const elLocaleMap: any = {
     zh: zhLocale,
@@ -41,11 +41,13 @@
       const { locale, t } = useI18n();
       const route = useRoute();
 
+      const store = useStore();
       // 国际化语言切换
       const langClick = (command: string): void => {
+        if (command === store.getters.lang) return;
         locale.value = command;
+        store.commit('setLang', command);
         ElementLocale.use(elLocaleMap[command]);
-        setLocalLang(command);
       };
       watch(
         () => langs.value,

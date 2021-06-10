@@ -22,24 +22,15 @@
 </template>
 
 <script lang="ts">
-  import { ref, defineComponent, watch, unref } from 'vue';
-  import ElementLocale from 'element-plus/lib/locale';
-  import enLocale from 'element-plus/lib/locale/lang/en';
-  import zhLocale from 'element-plus/lib/locale/lang/zh-cn';
-  import { useRoute } from 'vue-router';
+  import { ref, defineComponent } from 'vue';
   import { useI18n } from 'vue-i18n';
   import { useStore } from 'vuex';
 
-  const elLocaleMap: any = {
-    zh: zhLocale,
-    en: enLocale
-  };
   export default defineComponent({
     name: 'lang',
     setup() {
       let langs = ref(true);
       const { locale, t } = useI18n();
-      const route = useRoute();
 
       const store = useStore();
       // 国际化语言切换
@@ -47,16 +38,9 @@
         if (command === store.getters.lang) return;
         locale.value = command;
         store.commit('setLang', command);
-        ElementLocale.use(elLocaleMap[command]);
+        document.title = t('navbar.title'); // 动态title
       };
-      watch(
-        () => langs.value,
-        () => {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          //@ts-ignore
-          document.title = t(unref(route.meta.title)); // 动态title
-        }
-      );
+
       return { langs, langClick };
     }
   });

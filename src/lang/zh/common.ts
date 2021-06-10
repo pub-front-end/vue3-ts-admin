@@ -14,6 +14,7 @@ export default {
     fullTextSearch: '全文检索'
   },
   navbar: {
+    title: '系统',
     messageCenter: '通知中心',
     theme: '换肤',
     help: '帮助',

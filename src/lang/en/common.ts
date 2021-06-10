@@ -14,6 +14,7 @@ export default {
     fullTextSearch: 'Full-text Search'
   },
   navbar: {
+    title: 'system',
     messageCenter: 'Message center',
     theme: 'Theme',
     help: 'help',

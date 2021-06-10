@@ -64,6 +64,7 @@
                 >
                   <div class={'pub-button-tip el-button el-button--small'}>
                     <el-button
+                      v-waves
                       class={item.class || ''}
                       type={item.type || 'primary'}
                       icon={item.icon}
@@ -79,6 +80,7 @@
               ) : (
                 <div class={'pub-button-tip el-button el-button--small'}>
                   <el-button
+                    v-waves
                     class={item.class || ''}
                     type={item.type || 'primary'}
                     disabled={item.disabled}

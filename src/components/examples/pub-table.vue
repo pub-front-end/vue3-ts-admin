@@ -22,10 +22,10 @@
           :is-batch-del="isBatchDel"
         >
           <template #headerRight>
-            <el-button @click="handleNew">新增</el-button>
+            <el-button v-waves @click="handleNew">新增</el-button>
           </template>
           <template v-slot:batchBtn>
-            <el-button type="primary" @click="handleOper">批量操作</el-button>
+            <el-button v-waves type="primary" @click="handleOper">批量操作</el-button>
           </template>
         </pub-async-table>
       </pub-content-item>

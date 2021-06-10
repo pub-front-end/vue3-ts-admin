@@ -172,7 +172,9 @@
             </el-row>
             {props.showButton ? (
               <div class="margin-top-1">
-                <el-button onClick={handleCancel}>{vm.ctx.$t('button.back')}</el-button>
+                <el-button v-waves onClick={handleCancel}>
+                  {vm.ctx.$t('button.back')}
+                </el-button>
               </div>
             ) : null}
           </div>
@@ -198,6 +200,7 @@
               {props.showButton ? (
                 <div class="margin-top-1">
                   <el-button
+                    v-waves
                     class="margin-right-1"
                     type="primary"
                     native-type="submit"
@@ -207,7 +210,9 @@
                   >
                     {vm.ctx.$t('button.submit')}
                   </el-button>
-                  <el-button onClick={handleCancel}>{vm.ctx.$t('button.cancel')}</el-button>
+                  <el-button v-waves onClick={handleCancel}>
+                    {vm.ctx.$t('button.cancel')}
+                  </el-button>
                 </div>
               ) : null}
             </el-form>

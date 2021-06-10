@@ -23,14 +23,11 @@
       <div>
         <el-tooltip effect="dark" :content="name" placement="top" :disabled="!typeIcon">
           <div class="pub-button-tip">
-            <el-button :type="type || 'primary'" :icon="typeIcon">{{ !typeIcon ? item.name : '' }}</el-button>
+            <el-button v-waves :type="type || 'primary'" :icon="typeIcon">{{ !typeIcon ? item.name : '' }}</el-button>
           </div>
         </el-tooltip>
       </div>
     </template>
-    <!-- <template #reference>
-      <el-button @click="visible = true">删除</el-button>
-    </template> -->
   </el-popover>
 </template>
 

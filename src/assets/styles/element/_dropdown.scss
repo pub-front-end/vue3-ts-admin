@@ -4,6 +4,12 @@ $--dropdown-group-divider-color: $--divider-border-color !default; // 分组边�
 $--dropdown-font-color-disabled: $--const-color-disabled !default; // 字体 禁用
 $--dropdown-shadow-color: $--select-shadow-color !default; // 背景
 
+.el-dropdown__popper.el-popper[role='tooltip'] {
+  background-color: $--select-bg-color;
+  border-color: $--select-border-color;
+  box-shadow: 0 2px 12px 0 $--dropdown-shadow-color;
+}
+
 .el-dropdown {
   &-menu {
     background-color: $--select-bg-color;

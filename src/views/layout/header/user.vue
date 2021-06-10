@@ -73,7 +73,7 @@
 
       <template #footer>
         <span class="dialog-footer">
-          <el-button @click="systemDialogVisible = false">关 闭</el-button>
+          <el-button v-waves @click="systemDialogVisible = false">关 闭</el-button>
         </span>
       </template>
     </el-dialog>

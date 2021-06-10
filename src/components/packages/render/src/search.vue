@@ -189,6 +189,7 @@
                       v-slots={{
                         append: () => (
                           <el-button
+                            v-waves
                             type="primary"
                             icon="el-icon-search"
                             native-type="submit"
@@ -207,6 +208,7 @@
                 <pub-col size={2}>
                   <el-form-item>
                     <el-button
+                      v-waves
                       class="pub-search-btn"
                       native-type="submit"
                       onClick={() => {
@@ -252,6 +254,7 @@
                     )
                   ) : null}
                   <el-button
+                    v-waves
                     icon="el-icon-search"
                     class="pub-search-btn"
                     type="primary"
@@ -266,6 +269,7 @@
                   </el-button>
                   {this.hasReset ? (
                     <el-button
+                      v-waves
                       class="pub-search-btn"
                       icon="el-icon-refresh"
                       loading={this.resetLoading}
@@ -279,6 +283,7 @@
                   ) : null}
                   {this.fullSearch ? (
                     <el-button
+                      v-waves
                       class="pub-search-btn"
                       native-type="submit"
                       onClick={(e: MouseEvent) => {

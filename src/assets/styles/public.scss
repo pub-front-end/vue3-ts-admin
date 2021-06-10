@@ -31,3 +31,127 @@ body {
 .pointer {
   cursor: pointer;
 }
+//---------------------- waves指令样式------------------------
+.button-waves {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.3s;
+}
+.anim {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+}
+
+.anim:before {
+  position: relative;
+  content: '';
+  display: block;
+  margin-top: 100%;
+}
+
+.anim:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+}
+.button-waves:active {
+  opacity: 0.8;
+}
+
+.button-waves:hover > .anim {
+  animation: anim-out 0.75s;
+}
+
+.button-waves:hover > .anim:after {
+  animation: anim-out-pseudo 0.75s;
+}
+
+@-webkit-keyframes anim-out {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@-moz-keyframes anim-out {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@-ms-keyframes anim-out {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes anim-out {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
+@-moz-keyframes anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
+@-ms-keyframes anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes anim-out-pseudo {
+  0% {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  100% {
+    background: transparent;
+  }
+}

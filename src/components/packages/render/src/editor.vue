@@ -48,7 +48,6 @@
     emits: ['submit', 'cancel'],
     setup(props: any, { emit }) {
       let vm: any = getCurrentInstance();
-      console.log(vm);
       let innerLoading = ref(false);
 
       const { form } = reactive(toRefs(props));

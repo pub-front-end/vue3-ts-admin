@@ -31,7 +31,6 @@
         );
       };
       const trunTo = (href: string) => {
-        console.log('------------', href, router);
         href && router.push(href || '');
       };
       return {

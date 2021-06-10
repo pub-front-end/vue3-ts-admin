@@ -96,7 +96,6 @@ export default defineComponent({
     }
     watchEffect(() => {
       if (typeof props.httpRequest === 'function') {
-        console.log(`innerCurrentPage.value`, innerCurrentPage.value, innerPageSize.value);
         debounceHandleHttpRequest({
           currentPage: innerCurrentPage.value,
           pageSize: innerPageSize.value

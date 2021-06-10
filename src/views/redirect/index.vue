@@ -1,14 +1,21 @@
-<script lang="ts">
+<script lang="tsx">
   import { defineComponent } from 'vue';
+  import { useRoute, useRouter } from 'vue-router';
 
   export default defineComponent({
-    created() {
-      const { params, query } = this.$route;
-      const { path } = params;
-      this.$router.replace({ path: '/' + path, query });
+    setup() {
+      const route = useRoute();
+      const router = useRouter();
+      const {
+        params: { path },
+        query
+      } = route;
+      let pathStr = Array.isArray(path) ? path.join('/') : path;
+      router.replace({ path: '/' + pathStr, query });
+      return {};
     },
-    render(h: any) {
-      return h(); // avoid warning message
+    render() {
+      return <div></div>;
     }
   });
 </script>

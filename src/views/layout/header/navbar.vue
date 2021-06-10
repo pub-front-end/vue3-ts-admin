@@ -5,7 +5,7 @@
 
     <el-dropdown trigger="click" @command="themeClick">
       <div>
-        <el-tooltip :content="$t('navbar.theme')" placement="top" :open-delay="500">
+        <el-tooltip :content="$t('navbar.theme')" placement="top" :open-delay="1000">
           <i class="iconfont icon-theme padding icon-color"></i>
         </el-tooltip>
       </div>
@@ -50,7 +50,6 @@
       if (!themes.includes(localTheme)) {
         localTheme = themes[0];
       }
-      console.log('localTheme---', localTheme);
 
       themeClick(localTheme);
 

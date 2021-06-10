@@ -1,0 +1,89 @@
+//tags-view 标签页
+.tags-view-container {
+  background-color: $--card-bg-color;
+  border-top: 1px solid $--tags-view-border-color;
+  box-shadow: 0 1px 3px 0 rgba($color: $--tags-view-box-shadow-color, $alpha: 0.12),
+    0 0 3px 0 rgba($color: $--tags-view-box-shadow-color, $alpha: 0.04);
+  .tags-view-button {
+    fill: $--primary-color-text;
+    &:hover {
+      fill: $--primary-color;
+    }
+  }
+  .tags-view-button--disabled {
+    fill: $--primary-color-label;
+    &:hover {
+      fill: $--primary-color-label;
+    }
+  }
+  .tags-view-wrapper {
+    .tags-view-item {
+      border: 1px solid $--form-border-color;
+      color: $--primary-color-text;
+      background: $--card-bg-color;
+      &:hover {
+        background-color: $--tags-view-item-hover-color;
+        //color: #fff;
+        border-color: $--tags-view-item-hover-color;
+      }
+      &.active {
+        background-color: $--tags-view-item-active-color;
+        border-color: $--tags-view-item-active-color;
+        &:hover {
+          background-color: $--tags-view-item-active-hover-color;
+          border-color: $--tags-view-item-active-hover-color;
+        }
+        // &::before {
+        //   content: '';
+        //   background: #fff;
+        //   display: inline-block;
+        //   width: 8px;
+        //   height: 8px;
+        //   border-radius: 50%;
+        //   position: relative;
+        //   margin-right: 2px;
+        // }
+      }
+      .lock {
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        // background-color: lawngreen;
+        width: 0px;
+        height: 0px;
+        // border-top: 20px solid #00a497;
+        border-bottom: 28px solid rgba($color: #000000, $alpha: 0);
+        border-left: 28px solid $--tags-view-item-lock-color;
+        // border-right: 20px solid #c85179;
+      }
+      .lock-svg-icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        // background-color: lawngreen;
+        width: 12px !important;
+        height: 12px !important;
+      }
+      .el-icon-close {
+        &:hover {
+          background-color: $--card-bg-color;
+          color: $--primary-color;
+        }
+      }
+    }
+  }
+
+  .contextmenu {
+    color: $--primary-color-text;
+    background: $--expanded-bg-color;
+    box-shadow: 0 2px 12px 0 $--expanded-shadow-color;
+    li {
+      &:hover {
+        background-color: $--action-color-2;
+      }
+    }
+  }
+  .el-scrollbar__bar.is-horizontal {
+    height: 0;
+  }
+}

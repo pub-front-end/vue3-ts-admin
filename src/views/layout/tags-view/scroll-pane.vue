@@ -4,7 +4,7 @@
   </el-scrollbar>
 </template>
 
-<script>
+<script lang="ts">
   import { defineComponent } from 'vue';
   const tagAndTagSpacing = 4; // tagAndTagSpacing
 
@@ -27,7 +27,7 @@
       this.scrollWrapper.removeEventListener('scroll', this.emitScroll);
     },
     methods: {
-      handleScroll(e) {
+      handleScroll(e: any) {
         const eventDelta = e.wheelDelta || -e.deltaY * 40;
         const $scrollWrapper = this.scrollWrapper;
         $scrollWrapper.scrollLeft = $scrollWrapper.scrollLeft + eventDelta / 4;
@@ -40,7 +40,7 @@
         this.emitChangeScrollStatus(scrollLeft, maxScrollLeft);
       },
       // 处理左右是否可以滚动按钮事件
-      emitChangeScrollStatus(scrollLeft, maxScrollLeft) {
+      emitChangeScrollStatus(scrollLeft: number, maxScrollLeft: number) {
         this.$emit('change-scoll-status', {
           leftDisabled: scrollLeft === 0,
           rightDisabled: scrollLeft === maxScrollLeft
@@ -72,14 +72,12 @@
         const $scrollWrapper = this.scrollWrapper;
         const { scrollLeft, scrollWidth, offsetWidth } = $scrollWrapper;
         let maxScrollLeft = scrollWidth - offsetWidth;
-        console.log(scrollLeft, offsetWidth, maxScrollLeft);
         this.emitChangeScrollStatus(scrollLeft, maxScrollLeft);
       },
-      moveToTarget(currentTag) {
+      moveToTarget(currentTag: any, tagList: any[]) {
         const $container = this.$refs.scrollContainer.$el;
         const $containerWidth = $container.offsetWidth;
         const $scrollWrapper = this.scrollWrapper;
-        const tagList = this.$parent.$refs.tag;
         const { scrollWidth, offsetWidth } = $scrollWrapper;
         let maxScrollLeft = scrollWidth - offsetWidth;
 

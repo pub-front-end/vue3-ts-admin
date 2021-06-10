@@ -1,5 +1,5 @@
 import { setIsShowBreadcrumb, setIsShowMenu, setIsShowTagsView, setLocalLang, setLocalTheme } from '@/utils/storage';
-interface stateInter {
+interface systemInter {
   token: string;
   lang: string;
   theme: string;
@@ -25,38 +25,38 @@ export default {
   },
 
   mutations: {
-    setLang(state: stateInter, newVal: string) {
+    setLang(state: systemInter, newVal: string) {
       state.lang = newVal;
       setLocalLang(newVal);
     },
-    setTheme(state: stateInter, newVal: string) {
+    setTheme(state: systemInter, newVal: string) {
       state.theme = newVal;
       setLocalTheme(newVal);
     },
-    setUserData(state: stateInter, newVal: Record<string, unknown>) {
+    setUserData(state: systemInter, newVal: Record<string, unknown>) {
       state.userData = newVal;
       // setLocalLang(JSON.stringify(newVal));
     },
-    setIsShowBreadcrumb(state: stateInter, newVal: string) {
+    setIsShowBreadcrumb(state: systemInter, newVal: string) {
       state.isShowBreadcrumb = newVal;
       setIsShowBreadcrumb(newVal);
     },
-    setIsShowMenu(state: stateInter, newVal: string) {
+    setIsShowMenu(state: systemInter, newVal: string) {
       state.isShowTagsView = newVal;
       setIsShowMenu(newVal);
     },
-    setIsShowTagsView(state: stateInter, newVal: string) {
+    setIsShowTagsView(state: systemInter, newVal: string) {
       state.isShowMenu = newVal;
       setIsShowTagsView(newVal);
     },
 
     // 初始化用户数据
-    initUserData(state: stateInter, newVal: string) {
+    initUserData(state: systemInter, newVal: string) {
       state.token = newVal;
       localStorage.setItem('token', newVal);
     },
     //退出登录，销毁Token
-    clearUserData(state: stateInter) {
+    clearUserData(state: systemInter) {
       state.token = '';
       localStorage.setItem('token', '');
     }

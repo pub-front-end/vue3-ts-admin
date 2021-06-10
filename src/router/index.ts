@@ -33,8 +33,6 @@ const asyncRoutes: Array<RouteRecordRaw> = [
   }
 ];
 
-console.log('asyncRoutes----', asyncRoutes);
-
 const router = createRouter({
   history: createWebHashHistory(),
   routes: asyncRoutes

@@ -224,7 +224,6 @@ function useTableCore(props: ItableProps, emit: any) {
   }
   // 选中项改变
   function handleSelectionChange(selection: any[]) {
-    console.log(`handleSelectionChange`);
     selectionList = selection;
     emit('selection-change', selectionList);
   }

@@ -42,9 +42,6 @@ function useColumnFilter(props: ItableProps) {
   });
 
   function renderColumnFilter() {
-    const referenceSlot = {
-      reference: () => <i class="el-icon-s-grid pub-popover--icon"></i>
-    };
     return (
       <el-popover
         ref="column-filter"
@@ -53,7 +50,9 @@ function useColumnFilter(props: ItableProps) {
         placement="right"
         width={170}
         trigger="click"
-        v-slots={referenceSlot}
+        v-slots={{
+          reference: () => <i class="el-icon-s-grid pub-popover--icon"></i>
+        }}
       >
         <div class="pub-popover">
           <div class="pub-popover--tip">

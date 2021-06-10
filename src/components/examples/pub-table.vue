@@ -16,6 +16,7 @@
         <pub-async-table
           ref="pub-table"
           title="异步表格"
+          page-id="async-table-test"
           :http-request="getUserList"
           :columns="userTableColumns"
           :is-batch-export="isBatchExport"

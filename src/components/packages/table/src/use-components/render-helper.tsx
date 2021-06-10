@@ -61,10 +61,10 @@ function useTableCore(props: ItableProps, emit: any) {
     }
   });
   function renderTableColumns(columns: any[]) {
-    const result = columns.map((item) => {
+    const result = columns.map((item, index) => {
       const columnConfig: any = {
         scopedSlots: {},
-        props: { showOverflowTooltip: true, ...item, key: item.label }
+        props: { showOverflowTooltip: true, ...item, key: item.label + index }
       };
       // 渲染表格 内容
       if (item.render) {

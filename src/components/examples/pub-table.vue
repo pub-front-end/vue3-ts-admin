@@ -43,11 +43,11 @@
         ></pub-table>
       </pub-content-item>
     </pub-content>
-    <pub-editor v-model="newVisible" :type="editorType" @search="onSearch"></pub-editor>
+    <pub-editor v-model="newVisible" :type="editorType" :title="editorTitle" @search="onSearch"></pub-editor>
   </pub-container>
 </template>
 <script lang="tsx">
-  import { defineComponent, ref, reactive, computed } from 'vue';
+  import { defineComponent, ref, reactive, computed, toRefs } from 'vue';
   import { ElMessage } from 'element-plus';
   import { getUserList } from '@/api/user';
   import pubEditor from './pub-editor.vue';
@@ -60,29 +60,34 @@
 
     setup() {
       const { t } = useI18n();
-      let newVisible = ref(false);
-      let editorType = ref('edit');
+      const state = reactive({
+        newVisible: false,
+        editorType: 'edit',
+        editorTitle: t('pubTable.user') + t('button.edit')
+      });
       function selectionChange(params: any[]) {
         console.log('selectionChange---', params);
       }
       function handleNew() {
-        newVisible.value = true;
-        editorType.value = 'new';
+        state.newVisible = true;
+        state.editorType = 'new';
+        state.editorTitle = t('button.new') + t('pubTable.user');
       }
       function showUser() {
-        newVisible.value = true;
-        editorType.value = 'detail';
+        state.newVisible = true;
+        state.editorType = 'detail';
+        state.editorTitle = t('button.show') + t('pubTable.user');
       }
       function handleEdit() {
-        newVisible.value = true;
-        editorType.value = 'edit';
+        state.newVisible = true;
+        state.editorType = 'edit';
+        state.editorTitle = t('button.edit') + t('pubTable.user');
       }
       function handleDel(id: string) {
         console.log('handleDel---', id);
       }
       return {
-        editorType,
-        newVisible,
+        ...toRefs(state),
         handleNew,
         selectionChange,
         getUserList,

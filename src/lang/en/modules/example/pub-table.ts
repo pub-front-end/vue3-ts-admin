@@ -7,6 +7,7 @@ export default {
     address: 'Address',
     regionName: 'Activity Name',
     region: 'Activity Region',
-    date: 'Date'
+    date: 'Date',
+    user: 'User'
   }
 };

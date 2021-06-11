@@ -1,8 +1,10 @@
 import { pinyinQuery, tree2Array } from '@/utils/tools';
 import { reactive, toRefs } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { IPubValue, IRenderItem } from '../render';
 const trimStr = (str: string | number) => (typeof str === 'string' ? str.trim() : str);
 function useRenderItem(props: any) {
+  const { t } = useI18n();
   const selectDataObj = reactive({} as any);
 
   const { form } = reactive(toRefs(props));
@@ -18,7 +20,7 @@ function useRenderItem(props: any) {
             form[key] = trimStr(e);
           }
         }}
-        placeholder={type === 'editor' ? '请输入' + item.label : item.label}
+        placeholder={type === 'editor' ? t('info.please') + t('info.input') + item.label : item.label}
         type={item.textarea ? 'textarea' : ''}
         disabled={item.disabled}
         showPassword={item.showPassword}
@@ -44,7 +46,7 @@ function useRenderItem(props: any) {
             form[key] = trimStr(e);
           }
         }}
-        placeholder={type === 'editor' ? '请输入' + item.label : item.label}
+        placeholder={type === 'editor' ? t('info.please') + t('info.select') + item.label : item.label}
         disabled={item.disabled}
         clearable={item.isclearable === false ? item.isclearable : true}
         filterable
@@ -86,7 +88,7 @@ function useRenderItem(props: any) {
           }
         }}
         options={selectDataObj[key]}
-        placeholder={type === 'editor' ? '请输入' + item.label : item.label}
+        placeholder={type === 'editor' ? t('info.please') + t('info.select') + item.label : item.label}
         props={item.dataProps}
         clearable={item.isclearable === false ? item.isclearable : true}
         filterable

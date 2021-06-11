@@ -12,6 +12,7 @@ export default {
     advancedSearch: '高级搜索',
     cancelSearch: '全文检索',
     fullTextSearch: '全文检索',
+    show: '查看',
     detail: '详情',
     edit: '编辑',
     del: '删除',
@@ -49,11 +50,14 @@ export default {
     closeAll: '关闭所有'
   },
   info: {
+    success: '成功',
     selset: '选择',
     selsetAll: '全选',
+    please: '请',
     oper: '操作',
     input: '输入',
     undeletable: '不可删除',
-    delTip: '此操作将永久删除该条记录，是否继续？'
+    delTip: '此操作将永久删除该条记录，是否继续？',
+    filterTip: '拖拽可修改排序'
   }
 };

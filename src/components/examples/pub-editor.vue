@@ -28,6 +28,8 @@
   import { computed, defineComponent, ref, reactive, getCurrentInstance } from 'vue';
   import { lengthRange, max } from '@/utils/validate';
   import { ElMessage } from 'element-plus';
+  import { useI18n } from 'vue-i18n';
+
   export default defineComponent({
     name: 'test',
     props: {
@@ -37,15 +39,16 @@
       },
       title: {
         type: String,
-        default: '标题'
+        default: ''
       },
       type: {
         type: String,
-        default: '标题'
+        default: ''
       }
     },
     emits: ['update:modelValue', 'search'],
     setup(props, { emit }) {
+      const { t } = useI18n();
       const vm: any = getCurrentInstance();
       const form = reactive({
         name: '',
@@ -58,12 +61,12 @@
       const items = computed(() => {
         // eslint-disable-next-line no-undef
         const temp: Pub.RenderItem[] = [
-          { prop: 'name', label: '姓名', type: 'input', rules: ['required', 'text', lengthRange(2, 16)] },
+          { prop: 'name', label: t('pubTable.name'), type: 'input', rules: ['required', 'text', lengthRange(2, 16)] },
 
-          { prop: 'email', label: '邮箱', type: 'input', rules: ['email', max(32)] },
-          { prop: 'phone', label: '电话号码', rules: ['phone'] },
-          { prop: 'firm', label: '公司名称', rules: ['text', max(32)] },
-          { prop: 'department', label: '部门名称', type: 'input', rules: ['text', max(32)] }
+          { prop: 'email', label: t('pubTable.date'), type: 'input', rules: ['email', max(32)] },
+          { prop: 'phone', label: t('pubTable.region'), rules: ['phone'] },
+          { prop: 'firm', label: t('pubTable.regionName'), rules: ['text', max(32)] },
+          { prop: 'department', label: t('pubTable.address'), type: 'input', rules: ['text', max(32)] }
         ];
         return temp;
       });
@@ -72,7 +75,7 @@
         emit('update:modelValue', false);
       }
       function handleSubmit() {
-        ElMessage.success('新建成功');
+        ElMessage.success(t('button.new') + t('info.success'));
         clear();
         emit('search');
         emit('update:modelValue', false);

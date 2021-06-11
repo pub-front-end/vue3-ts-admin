@@ -6,14 +6,15 @@ export default {
     close: 'Close',
     back: 'Back',
     submit: 'Submit',
-    new: 'New',
+    new: 'New ',
     packUp: 'Pack up',
     unfold: 'Unfold',
     advancedSearch: 'Advanced Search',
     cancelSearch: 'Cancel Search',
     fullTextSearch: 'Full-text Search',
-    detail: 'Detail',
-    edit: 'Edit',
+    show: 'Show ',
+    detail: 'Detail ',
+    edit: 'Edit ',
     del: 'Delete',
     batchDel: 'Batch Delete'
   },
@@ -48,11 +49,14 @@ export default {
     closeAll: 'Close All'
   },
   info: {
-    selset: 'Selset',
+    success: 'Success',
+    selset: 'Selset ',
     selsetAll: 'Selset All',
+    please: 'Please ',
     oper: 'Oper',
-    input: 'Input',
+    input: 'Input ',
     undeletable: 'Undeletable',
-    delTip: 'This action will permanently delete the record, whether to continue? '
+    delTip: 'This action will permanently delete the record, whether to continue?',
+    filterTip: 'Drag and drop to modify the sort'
   }
 };

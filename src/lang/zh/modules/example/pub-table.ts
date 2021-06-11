@@ -7,6 +7,7 @@ export default {
     address: '住址',
     regionName: '活动名称',
     region: '活动区域',
-    date: '日期'
+    date: '日期',
+    user: '用户'
   }
 };

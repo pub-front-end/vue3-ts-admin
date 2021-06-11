@@ -2,6 +2,7 @@ import HttpService from '@/utils/http-service';
 import { ElMessage } from 'element-plus';
 import Sortable from 'sortablejs';
 import { computed, nextTick, Ref, ref, toRef, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { ItableProps } from './props-helper';
 
 // 监测设备监测口表格数据分页查询
@@ -18,6 +19,7 @@ const updatePageConfig = (data: any) =>
   });
 
 function useColumnFilter(props: ItableProps) {
+  const { t } = useI18n();
   let pageId = toRef(props, 'pageId');
   let isShowPopover = ref(false);
 
@@ -55,9 +57,9 @@ function useColumnFilter(props: ItableProps) {
         }}
       >
         <div class="pub-popover">
-          <div class="pub-popover--tip">
+          <div class="pub-popover--tip" style="word-break: break-word;">
             <span class="pub-popover--tip__mark">*</span>
-            拖拽可修改排序
+            {t('info.filterTip')}
           </div>
           <el-checkbox-group
             class={'pub-popover--group ' + pageId.value}
@@ -79,10 +81,10 @@ function useColumnFilter(props: ItableProps) {
           </el-checkbox-group>
           <div class="pub-popover--button">
             <el-button type="primary" size="mini" onClick={saveCheckedColumn}>
-              提 交
+              {t('button.submit')}
             </el-button>
             <el-button type="text" size="mini" onClick={cancelCheckedColumn}>
-              取 消
+              {t('button.cancel')}
             </el-button>
           </div>
         </div>

@@ -15,7 +15,7 @@
       <pub-content-item class="content-bg async-table">
         <pub-async-table
           ref="pub-table"
-          title="异步表格"
+          :title="$t('pubTable.asyncTitle')"
           page-id="async-table-test"
           :http-request="getUserList"
           :columns="userTableColumns"
@@ -23,16 +23,16 @@
           :is-batch-del="isBatchDel"
         >
           <template #headerRight>
-            <el-button v-waves @click="handleNew">新增</el-button>
+            <el-button v-waves @click="handleNew">{{ $t('button.new') }}</el-button>
           </template>
-          <template v-slot:batchBtn>
-            <el-button v-waves type="primary" @click="handleOper">批量操作</el-button>
+          <template #batchBtn>
+            <el-button v-waves type="primary" @click="handleOper">{{ $t('button.batchDel') }}</el-button>
           </template>
         </pub-async-table>
       </pub-content-item>
       <pub-content-item class="content-bg">
         <pub-table
-          title="静态表格"
+          :title="$t('pubTable.staticTitle')"
           page-id="simple-table-test"
           :data="tableData"
           show-type="html"
@@ -47,17 +47,21 @@
   </pub-container>
 </template>
 <script lang="tsx">
-  import { defineComponent, ref, reactive, computed } from 'vue';
+  import { defineComponent, ref, reactive, computed, getCurrentInstance } from 'vue';
   import { ElMessage } from 'element-plus';
   import { getUserList } from '@/api/user';
   import pubEditor from './pub-editor.vue';
   import { IButtonItem } from '../packages/render/render';
+  import { useI18n } from 'vue-i18n';
 
   export default defineComponent({
     name: 'pub-container-demo',
     components: { pubEditor },
 
     setup() {
+      let vm: any = getCurrentInstance();
+      console.log(vm);
+      const { t } = useI18n();
       let newVisible = ref(false);
       let editorType = ref('edit');
       function selectionChange(params: any[]) {
@@ -95,41 +99,29 @@
           birthday: '',
           value4: []
         }),
-        items: [
+        items: computed(() => [
           {
-            label: '性别',
+            label: t('pubTable.sex'), //'性别',
             prop: 'sex',
             type: 'select',
             size: 3,
-            placeholder: '选择性别',
             data: [
               { valueCn: '女', mapKey: '0' },
               { valueCn: '男', mapKey: '1' }
             ]
           },
-          // {
-          //   label: '事件等级',
-          //   prop: 'interest',
-          //   type: 'select',
-          //   size: 3,
-          //   attrs: { multiple: true, 'collapse-tags': true },
-          //   placeholder: '选择兴趣',
-          //   data: 'eventLevel'
-          // },
           {
-            label: '姓名',
+            label: t('pubTable.name'), //'姓名',
             prop: 'name',
             type: 'input',
-            placeholder: '输入姓名',
             size: 3
           },
 
           {
-            label: '住址',
+            label: t('pubTable.address'), //'住址',
             prop: 'address',
             type: 'cascader',
             size: 3,
-            placeholder: '试试搜索：住址',
             dataProps: { checkStrictly: true },
             data: [
               {
@@ -156,54 +148,18 @@
           },
           { type: 'seperator' },
           {
-            label: '活动名称',
+            label: t('pubTable.regionName'), //'活动名称',
             prop: 'regionName',
             type: 'input',
-            placeholder: '输入活动名称',
             size: 3
           },
           {
-            label: '活动区域',
+            label: t('pubTable.region'), //'活动区域',
             prop: 'region',
             type: 'input',
-            placeholder: '输入活动区域',
-            size: 3
-          },
-          {
-            label: '姓名',
-            prop: 'date2',
-            type: 'input',
-            placeholder: '输入姓名',
             size: 3
           }
-          // {
-          //   label: '住址2',
-          //   prop: 'address',
-          //   type: 'stationSelect',
-          //   size: 3
-          // },
-          // {
-          //   label: '出生日期',
-          //   prop: 'birthday',
-          //   type: 'datePicker',
-          //   subType: 'datetime',
-          //   size: 3,
-          //   attrs: {
-          //     placeholder: '选择出生日期'
-          //   }
-          // },
-          // {
-          //   label: '时间范围',
-          //   prop: 'value4',
-          //   type: 'datePicker',
-          //   subType: 'datetimerange',
-          //   size: 6,
-          //   attrs: {
-          //     'start-placeholder': '选择开始日期',
-          //     'end-placeholder': '选择结束日期'
-          //   }
-          // }
-        ],
+        ]),
         tableData: [
           {
             date: '2016-05-01',
@@ -312,29 +268,32 @@
           }
         ],
         userTableColumns: computed(() => [
-          { label: '全选', type: 'selection', reserveSelection: true, disabled: true, width: 36 },
-
-          { label: '账号', prop: 'account', show: true, width: 255 },
-          { label: '姓名', prop: 'name', show: true, width: 236 },
-          { label: '角色名称', prop: 'roleName', show: true },
-          { label: '区域名称', prop: 'areaName', show: true },
-          { label: '在线状态', prop: 'onlineFlagName', show: true },
-          { label: '最近登录时间', prop: 'onlineTime', show: true },
-          { label: '最近登录IP', prop: 'loginIp', show: true },
-          { label: '账号状态', prop: 'disabledFlagName', show: true },
           {
-            label: '操作',
+            label: t('info.selectAll'),
+            labelZh: '全选',
+            type: 'selection',
+            reserveSelection: true,
+            disabled: true,
+            width: 36
+          },
+
+          { label: t('pubTable.name'), labelZh: '姓名', prop: 'name', show: true, width: 236 },
+          { label: t('pubTable.address'), labelZh: '地址', prop: 'address', show: true },
+          { label: t('pubTable.date'), labelZh: '时间', prop: 'date', show: true },
+          {
+            label: t('info.oper'),
+            labelZh: '操作',
             prop: 'address',
             disabled: true,
             width: '250',
             render: (scope: any) => {
-              const { id = '', account = 'user', onlineFlag, defaultFlag } = scope.row;
+              const { id = '', onlineFlag, defaultFlag } = scope.row;
 
               const buttonGroup: IButtonItem[] = [
                 {
                   type: 'primary',
                   icon: 'el-icon-document',
-                  defaultName: '详情',
+                  defaultName: t('button.detail'),
                   oper: () => {
                     showUser();
                   }
@@ -342,7 +301,7 @@
                 {
                   type: 'primary',
                   // icon: 'el-icon-document',
-                  defaultName: '详情',
+                  defaultName: t('button.detail'),
                   oper: () => {
                     showUser();
                   }
@@ -351,7 +310,7 @@
                 {
                   type: 'primary',
                   icon: 'el-icon-edit',
-                  defaultName: '编辑',
+                  defaultName: t('button.edit'), //'编辑',
                   permission: 'sys:user:edit',
                   //disabled: onlineFlag === '1',
                   oper: () => {
@@ -363,9 +322,9 @@
                   permission: 'sys:user:delete',
                   popconfirm: true,
                   icon: 'el-icon-delete',
-                  defaultName: '删除',
-                  disabledMsg: '不可删除在线用户与内置用户',
-                  popTitle: `此操作将永久删除该用户（${account}），是否继续？`,
+                  defaultName: t('button.del'), //'删除',
+                  disabledMsg: t('info.undeletable'), // '不可删除在线用户与内置用户',
+                  popTitle: t('info.delTip'), //`此操作将永久删除该用户（${account}），是否继续？`,
                   disabled: onlineFlag === '1' || defaultFlag === '1',
                   oper: () => {
                     handleDel(id);
@@ -379,7 +338,8 @@
         columns: computed(() => [
           { label: '全选', type: 'selection', reserveSelection: true, disabled: true, width: 36 },
           {
-            label: '姓名1111',
+            label: t('pubTable.name') + 55,
+            labelZh: '姓名1111',
             prop: 'name',
             width: 236,
             show: true,
@@ -387,27 +347,39 @@
               return <div>{scope.$index + scope.row.name}</div>;
             }
           },
-          { label: '告警子类型看', prop: 'name', width: 236, show: true },
-          { label: '日期1', prop: 'date', width: 236, show: true },
-          { label: '日期3', prop: 'date', width: 236 },
-          { label: '姓名16地址', prop: 'name', customColumn: 'address' },
+          { label: t('pubTable.name') + 11, labelZh: '姓名1111', prop: 'name', width: 236, show: true },
+          { label: t('pubTable.date'), labelZh: '日期1', prop: 'date', width: 236, show: true },
+          { label: t('pubTable.date') + 33, labelZh: '日期3', prop: 'date', width: 236 },
+          { label: t('pubTable.name') + 22, labelZh: '姓名222', prop: 'name', customColumn: 'address' },
 
-          { label: '地址', prop: 'address', show: true },
+          { label: t('pubTable.name'), labelZh: '地址', prop: 'address', show: true },
+
           {
-            label: '操作',
+            label: t('info.oper'),
+            labelZh: '操作',
             prop: 'address',
-            show: true,
-            width: 236,
             disabled: true,
-            render() {
-              return (
-                <div>
-                  <el-button type="text">编辑</el-button>
-                  <el-button type="text" class="button--del">
-                    删除
-                  </el-button>
-                </div>
-              );
+            width: '250',
+            render: () => {
+              const buttonGroup: IButtonItem[] = [
+                {
+                  type: 'primary',
+                  icon: 'el-icon-document',
+                  defaultName: t('button.detail'),
+                  oper: () => {
+                    showUser();
+                  }
+                },
+                {
+                  type: 'primary',
+                  icon: 'el-icon-edit',
+                  defaultName: t('button.edit'),
+                  oper: () => {
+                    showUser();
+                  }
+                }
+              ];
+              return <pub-render-button items={buttonGroup}></pub-render-button>;
             }
           }
         ])

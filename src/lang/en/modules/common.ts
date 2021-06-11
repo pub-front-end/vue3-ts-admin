@@ -11,7 +11,11 @@ export default {
     unfold: 'Unfold',
     advancedSearch: 'Advanced Search',
     cancelSearch: 'Cancel Search',
-    fullTextSearch: 'Full-text Search'
+    fullTextSearch: 'Full-text Search',
+    detail: 'Detail',
+    edit: 'Edit',
+    del: 'Delete',
+    batchDel: 'Batch Delete'
   },
   navbar: {
     title: 'system',
@@ -42,5 +46,13 @@ export default {
     close: 'Close',
     closeOthers: 'Close Others',
     closeAll: 'Close All'
+  },
+  info: {
+    selset: 'Selset',
+    selsetAll: 'Selset All',
+    oper: 'Oper',
+    input: 'Input',
+    undeletable: 'Undeletable',
+    delTip: 'This action will permanently delete the record, whether to continue? '
   }
 };

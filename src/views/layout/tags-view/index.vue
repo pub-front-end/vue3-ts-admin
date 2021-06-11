@@ -38,18 +38,18 @@
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item command="now">关闭当前</el-dropdown-item>
-          <el-dropdown-item command="refresh">刷新当前</el-dropdown-item>
-          <el-dropdown-item command="other">关闭其他</el-dropdown-item>
-          <el-dropdown-item command="all">关闭全部</el-dropdown-item>
+          <el-dropdown-item command="now">{{ $t('tagsView.close') }}</el-dropdown-item>
+          <el-dropdown-item command="refresh">{{ $t('tagsView.refresh') }}</el-dropdown-item>
+          <el-dropdown-item command="other">{{ $t('tagsView.closeOthers') }}</el-dropdown-item>
+          <el-dropdown-item command="all">{{ $t('tagsView.closeAll') }}</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
     <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
-      <li @click="closeSelectedTag(selectedTag)">关闭</li>
-      <li @click="refreshSelectedTag(selectedTag)">刷新</li>
-      <li @click="closeOthersTags(selectedTag)">关闭其他</li>
-      <li @click="closeAllTags(selectedTag)">关闭全部</li>
+      <li @click="closeSelectedTag(selectedTag)">{{ $t('tagsView.close') }}</li>
+      <li @click="refreshSelectedTag(selectedTag)">{{ $t('tagsView.refresh') }}</li>
+      <li @click="closeOthersTags(selectedTag)">{{ $t('tagsView.closeOthers') }}</li>
+      <li @click="closeAllTags(selectedTag)">{{ $t('tagsView.closeAll') }}</li>
     </ul>
   </div>
 </template>

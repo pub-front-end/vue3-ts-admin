@@ -11,7 +11,11 @@ export default {
     unfold: '展开',
     advancedSearch: '高级搜索',
     cancelSearch: '全文检索',
-    fullTextSearch: '全文检索'
+    fullTextSearch: '全文检索',
+    detail: '详情',
+    edit: '编辑',
+    del: '删除',
+    batchDel: '批量删除'
   },
   navbar: {
     title: '系统',
@@ -43,5 +47,13 @@ export default {
     close: '关闭',
     closeOthers: '关闭其他',
     closeAll: '关闭所有'
+  },
+  info: {
+    selset: '选择',
+    selsetAll: '全选',
+    oper: '操作',
+    input: '输入',
+    undeletable: '不可删除',
+    delTip: '此操作将永久删除该条记录，是否继续？'
   }
 };

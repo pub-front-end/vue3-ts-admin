@@ -47,7 +47,7 @@
   </pub-container>
 </template>
 <script lang="tsx">
-  import { defineComponent, ref, reactive, computed, getCurrentInstance } from 'vue';
+  import { defineComponent, ref, reactive, computed } from 'vue';
   import { ElMessage } from 'element-plus';
   import { getUserList } from '@/api/user';
   import pubEditor from './pub-editor.vue';
@@ -59,8 +59,6 @@
     components: { pubEditor },
 
     setup() {
-      let vm: any = getCurrentInstance();
-      console.log(vm);
       const { t } = useI18n();
       let newVisible = ref(false);
       let editorType = ref('edit');

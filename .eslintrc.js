@@ -31,6 +31,7 @@ module.exports = {
     eqeqeq: 'warn',
     // 警告出现 空函数  //暂时关闭该规则
     'no-empty-function': 'off',
+    'no-undef': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-this-alias': 'off',
     'no-fallthrough': 'off',

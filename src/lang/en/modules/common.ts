@@ -49,9 +49,9 @@ export default {
     closeAll: 'Close All'
   },
   info: {
-    success: 'Success',
-    selset: 'Selset ',
-    selsetAll: 'Selset All',
+    success: 'Success ',
+    select: 'Select ',
+    selectAll: 'Select All',
     please: 'Please ',
     oper: 'Oper',
     input: 'Input ',

@@ -33,7 +33,7 @@ function useRenderItem(props: any) {
   }
   function renderSelect(item: IRenderItem, type?: string) {
     let key = item.prop;
-    let k = item.optionKeyMap ? item.optionKeyMap : { value: 'mapKey', label: 'valueCn' };
+    let k = item.optionKeyMap ? item.optionKeyMap : { value: 'value', label: 'label' };
     let selectData = item.data || [];
     if (!selectDataObj[key] && selectData.length) {
       selectDataObj[key] = JSON.parse(JSON.stringify(selectData));

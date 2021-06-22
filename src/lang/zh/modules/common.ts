@@ -51,8 +51,8 @@ export default {
   },
   info: {
     success: '成功',
-    selset: '选择',
-    selsetAll: '全选',
+    select: '选择',
+    selectAll: '全选',
     please: '请',
     oper: '操作',
     input: '输入',

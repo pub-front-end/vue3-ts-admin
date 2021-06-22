@@ -1,5 +1,5 @@
 <script lang="tsx">
-  import { defineComponent, getCurrentInstance, PropType, reactive, ref, toRefs } from 'vue';
+  import { defineComponent, getCurrentInstance, PropType, reactive, ref } from 'vue';
   import { IRenderItem } from '../render';
   import useRenderItem from './render-itme-helper';
   import { getValueByPath, messageFirstError } from '@/utils/tools';
@@ -50,7 +50,7 @@
       let vm: any = getCurrentInstance();
       let innerLoading = ref(false);
 
-      const { form } = reactive(toRefs(props));
+      const { form } = reactive(props);
       const { renderMap, handleMouseenter } = useRenderItem(props);
       //对整个表单进行重置，将所有字段值重置为初始值并移除校验结果
       function resetFields() {

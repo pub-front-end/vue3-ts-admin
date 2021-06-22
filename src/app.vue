@@ -3,7 +3,29 @@
     <router-view />
   </div>
 </template>
+<script lang="ts">
+  import { defineComponent, reactive } from 'vue';
+  import { useRouter } from 'vue-router';
+  import NProgress from 'nprogress';
 
+  export default defineComponent({
+    setup() {
+      const router = useRouter();
+      const state = reactive({});
+      router.beforeEach((to, from) => {
+        console.log(to, from);
+        NProgress.start();
+      });
+      router.afterEach(() => {
+        NProgress.done();
+      });
+
+      return {
+        state
+      };
+    }
+  });
+</script>
 <style lang="scss">
   #app,
   .app {

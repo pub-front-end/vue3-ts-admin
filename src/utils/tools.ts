@@ -1,3 +1,4 @@
+import { computed, getCurrentInstance } from '@vue/runtime-core';
 import { ElMessage } from 'element-plus';
 import PinyinEngine from './pinyin-match-engine/index';
 
@@ -120,4 +121,15 @@ export const getValueByPath = function (object: Record<string, any>, prop: strin
   return result;
 };
 
+export const useModel = (props: any, name: string) => {
+  const emit = getCurrentInstance()?.emit;
+  return computed({
+    get() {
+      return props[name];
+    },
+    set(v) {
+      if (typeof emit === 'function') emit(`update:${name}`, v);
+    }
+  });
+};
 export default {};

@@ -42,11 +42,17 @@
         ></pub-table>
       </pub-content-item>
     </pub-content>
-    <pub-editor v-model="newVisible" :type="editorType" :title="editorTitle" @search="onSearch"></pub-editor>
+    <pub-editor
+      v-model="newVisible"
+      :type="editorType"
+      :oper-item="operItem"
+      :title="editorTitle"
+      @search="onSearch"
+    ></pub-editor>
   </pub-container>
 </template>
 <script lang="tsx">
-  import { defineComponent, ref, reactive, computed, toRefs } from 'vue';
+  import { defineComponent, ref, reactive, computed, toRefs, getCurrentInstance } from 'vue';
   import { ElMessage } from 'element-plus';
   import { getUserList } from '@/api/user';
   import pubEditor from './pub-editor.vue';
@@ -57,12 +63,23 @@
     components: { pubEditor },
 
     setup() {
+      let vm: any = getCurrentInstance();
       const { t } = useI18n();
       const state = reactive({
         newVisible: false,
         editorType: 'edit',
         editorTitle: t('pubTable.user') + t('button.edit')
       });
+      const searchParams = reactive({
+        fullText: '', //全文检索字段
+        name: '',
+        account: '',
+        sex: '',
+        address: [],
+        birthday: '',
+        value4: []
+      });
+      let operItem = ref({} as any);
       function selectionChange(params: any[]) {
         console.log('selectionChange---', params);
       }
@@ -71,15 +88,18 @@
         state.editorType = 'new';
         state.editorTitle = t('button.new') + t('pubTable.user');
       }
-      function showUser() {
+      function showUser(row: any) {
         state.newVisible = true;
         state.editorType = 'detail';
         state.editorTitle = t('button.show') + t('pubTable.user');
+        operItem.value = row;
+        console.log(row, '--------');
       }
-      function handleEdit() {
+      function handleEdit(row: any) {
         state.newVisible = true;
         state.editorType = 'edit';
         state.editorTitle = t('button.edit') + t('pubTable.user');
+        operItem.value = row;
       }
       function handleDel(id: string) {
         console.log('handleDel---', id);
@@ -88,11 +108,13 @@
         ElMessage.info('批量操作中...');
       }
 
-     function onSearch() {
-        console.log(this.searchParams, '------------searchParams');
-         this.$refs['pub-table']?.doRequest(this.searchParams);
+      function onSearch() {
+        console.log(searchParams, '------------searchParams');
+        vm.refs['pub-table']?.doRequest(searchParams);
       }
       return {
+        operItem,
+        searchParams,
         ...toRefs(state),
         onSearch,
         handleOper,
@@ -101,15 +123,7 @@
         getUserList,
         isBatchDel: ref(true),
         isBatchExport: ref(true),
-        searchParams: reactive({
-          fullText: '', //全文检索字段
-          name: '',
-          account: '',
-          sex: '',
-          address: [],
-          birthday: '',
-          value4: []
-        }),
+
         items: computed((): Pub.RenderItem[] => [
           {
             label: t('pubTable.sex'), //'性别',
@@ -117,8 +131,8 @@
             type: 'select',
             size: 3,
             data: [
-              { valueCn: '女', mapKey: '0' },
-              { valueCn: '男', mapKey: '1' }
+              { label: '女', value: '0' },
+              { label: '男', value: '1' }
             ]
           },
           {
@@ -297,8 +311,8 @@
             prop: 'address',
             disabled: true,
             width: '250',
-            render: (scope: Pub.Scope) => {
-              const { id = '', onlineFlag, defaultFlag } = scope.row;
+            render: ({ row }: Pub.Scope) => {
+              const { id = '', onlineFlag, defaultFlag } = row;
 
               const buttonGroup: Pub.ButtonItem[] = [
                 {
@@ -306,7 +320,7 @@
                   icon: 'el-icon-document',
                   defaultName: t('button.detail'),
                   oper: () => {
-                    showUser();
+                    showUser(row);
                   }
                 },
                 {
@@ -314,7 +328,7 @@
                   // icon: 'el-icon-document',
                   defaultName: t('button.detail'),
                   oper: () => {
-                    showUser();
+                    showUser(row);
                   }
                 },
                 {
@@ -324,7 +338,7 @@
                   permission: 'sys:user:edit',
                   //disabled: onlineFlag === '1',
                   oper: () => {
-                    handleEdit();
+                    handleEdit(row);
                   }
                 },
                 {
@@ -370,14 +384,15 @@
             prop: 'address',
             disabled: true,
             width: '250',
-            render: () => {
+            render: (scope: Pub.Scope) => {
+              const row = scope.row;
               const buttonGroup: Pub.ButtonItem[] = [
                 {
                   type: 'primary',
                   icon: 'el-icon-document',
                   defaultName: t('button.detail'),
                   oper: () => {
-                    showUser();
+                    showUser(row);
                   }
                 },
                 {
@@ -385,7 +400,7 @@
                   icon: 'el-icon-edit',
                   defaultName: t('button.edit'),
                   oper: () => {
-                    showUser();
+                    showUser(row);
                   }
                 }
               ];
@@ -394,21 +409,6 @@
           }
         ])
       };
-    },
-    methods: {
-     ,
-      onReset() {
-        this.searchParams = {
-          fullText: '', //全文检索字段
-          name: '',
-          account: '',
-          sex: '',
-          address: [],
-          birthday: '',
-          value4: []
-        };
-        this.onSearch();
-      }
     }
   });
 </script>

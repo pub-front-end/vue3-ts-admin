@@ -14,12 +14,8 @@ export type TType =
   | 'stationSelect';
 export type TSize = 2 | 3 | 4 | 6 | 8 | 12 | 16 | 24;
 export interface IPubValue {
-  mapKey: string | boolean; // "0" key
-  valueCn: string; // "合法" 中文值
-  valueEn?: string; // "test" 英文值
-  id?: string;
-  description?: string; //"接入热点的设备的合法性标志" 描述
-  type?: string; //类型
+  label?: string; // "0" key
+  value?: string; // "合法" 中文值
   disabled?: boolean; //是否禁用
   [key: string]: any;
 }

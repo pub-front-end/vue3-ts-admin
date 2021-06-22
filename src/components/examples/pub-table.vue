@@ -38,7 +38,6 @@
           show-type="html"
           :columns="columns"
           :show-sort-table="true"
-          @test="handleTest"
           @selection-change="selectionChange"
         ></pub-table>
       </pub-content-item>
@@ -51,7 +50,6 @@
   import { ElMessage } from 'element-plus';
   import { getUserList } from '@/api/user';
   import pubEditor from './pub-editor.vue';
-  import { IButtonItem } from '../packages/render/render';
   import { useI18n } from 'vue-i18n';
 
   export default defineComponent({
@@ -86,8 +84,18 @@
       function handleDel(id: string) {
         console.log('handleDel---', id);
       }
+      function handleOper() {
+        ElMessage.info('批量操作中...');
+      }
+
+     function onSearch() {
+        console.log(this.searchParams, '------------searchParams');
+         this.$refs['pub-table']?.doRequest(this.searchParams);
+      }
       return {
         ...toRefs(state),
+        onSearch,
+        handleOper,
         handleNew,
         selectionChange,
         getUserList,
@@ -102,7 +110,7 @@
           birthday: '',
           value4: []
         }),
-        items: computed(() => [
+        items: computed((): Pub.RenderItem[] => [
           {
             label: t('pubTable.sex'), //'性别',
             prop: 'sex',
@@ -149,7 +157,7 @@
               }
             ]
           },
-          { type: 'seperator' },
+          { type: 'seperator', label: '', prop: '' },
           {
             label: t('pubTable.regionName'), //'活动名称',
             prop: 'regionName',
@@ -289,10 +297,10 @@
             prop: 'address',
             disabled: true,
             width: '250',
-            render: (scope: any) => {
+            render: (scope: Pub.Scope) => {
               const { id = '', onlineFlag, defaultFlag } = scope.row;
 
-              const buttonGroup: IButtonItem[] = [
+              const buttonGroup: Pub.ButtonItem[] = [
                 {
                   type: 'primary',
                   icon: 'el-icon-document',
@@ -309,7 +317,6 @@
                     showUser();
                   }
                 },
-                //=IF(A3,"0",IF(B3,"1",IF(C3,"2",IF(D3,"3",IF(E3,"4",IF(E3,"4","0"))))))
                 {
                   type: 'primary',
                   icon: 'el-icon-edit',
@@ -364,7 +371,7 @@
             disabled: true,
             width: '250',
             render: () => {
-              const buttonGroup: IButtonItem[] = [
+              const buttonGroup: Pub.ButtonItem[] = [
                 {
                   type: 'primary',
                   icon: 'el-icon-document',
@@ -389,13 +396,7 @@
       };
     },
     methods: {
-      handleTest() {
-        console.log('test----------');
-      },
-      onSearch() {
-        console.log(this.searchParams, '------------searchParams');
-        // this.$refs['pub-table']?.doRequest(this.searchParams);
-      },
+     ,
       onReset() {
         this.searchParams = {
           fullText: '', //全文检索字段
@@ -407,9 +408,6 @@
           value4: []
         };
         this.onSearch();
-      },
-      handleOper() {
-        ElMessage.info('批量操作中...');
       }
     }
   });

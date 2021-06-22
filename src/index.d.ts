@@ -2,20 +2,12 @@ declare interface Fn<T = any, R = T> {
   (...arg: T[]): R;
 }
 
-declare interface PromiseFn<T = any, R = T> {
-  (...arg: T[]): Promise<R>;
-}
+declare type Nullable<T> = T | null;
+declare type NonNullable<T> = T extends null | undefined ? never : T;
 
-declare type RefType<T> = T | null;
-
-declare type LabelValueOptions = {
-  label: string;
-  value: any;
-}[];
-
-declare type EmitType = (event: string, ...args: any[]) => void;
-
-declare type TargetContext = '_self' | '_blank';
+declare type Indexable<T = any> = {
+  [key: string]: T;
+};
 
 declare interface ComponentElRef<T extends HTMLElement = HTMLDivElement> {
   $el: T;
@@ -24,4 +16,3 @@ declare interface ComponentElRef<T extends HTMLElement = HTMLDivElement> {
 declare type ComponentRef<T extends HTMLElement = HTMLDivElement> = ComponentElRef<T> | null;
 
 declare type ElRef<T extends HTMLElement = HTMLDivElement> = Nullable<T>;
-declare type IDirection = 'vertical' | 'horizontal';
